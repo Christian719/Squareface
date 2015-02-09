@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Squareface</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	
+  </head>
+  <body>
+    <h1 align="center">Login</h1>
+	</br>
+	<form action="login/verify_home.php" method="post" name="form_login" id="form_login">
+		<table align="center">			
+			<tr>
+				<td><div align="right">User:</div></td>
+				<td><div><input type="text" name="nickname" required="required" autofocus="autofocus"/></div></td>
+			</tr>	
+			<tr>
+				<td><div align="right">Password:</div></td>
+				<td><div><input type="password" id="texto" name="password" pattern=".{6}" required="required"/></div></td>
+			</tr>	
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><div align="right"><input type="submit" name="access" value="Access"/></div></td>
+			</tr>
+		</table>
+	</form>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
