@@ -8,11 +8,11 @@
 	}
 	
 	//Receive data entered in the form
-	$nickname= $_POST['nickname'];
+	$email= $_POST['email'];
 	$password=md5($_POST['password']);
 	
 	//Check if the data are stored in the database
-	$query= "SELECT * FROM user WHERE nickname='".$nickname."' AND password='".$password."'"; 
+	$query= "SELECT * FROM user WHERE email='".$email."' AND password='".$password."'"; 
 	$result= mysql_query($query,$conex) or die (mysql_error());
 	$row=mysql_fetch_array($result);
 	
@@ -27,8 +27,8 @@
 	else //Option 2: User log in correctly
 	{
 		//We define the session variable and redirect the user page
-		$_SESSION['id'] = $fila['id'];
-		$_SESSION['nickname'] = $fila['nickname'];
+		$_SESSION['id'] = $row['id'];
+		$_SESSION['nickname'] = $row['nickname'];
 	
 		header("Location: user_page.php");
 	}

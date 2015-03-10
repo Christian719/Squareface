@@ -1,0 +1,59 @@
+/* CSS Document */
+
+html, body {
+	height:98%;
+	background-color:#0476D2;
+}
+
+/*mapa----------------------------------*/
+#map-canvas {
+    height: 95%;
+    margin-left: 0.5%;
+	margin-right: 0.5%;
+	margin-bottom:.05%;
+	padding: 0px;
+}
+
+.button_location{
+	position:absolute;
+	right:1%;
+	top:94%;
+}
+/*fin mapa----------------------------------*/
+/*cuadro de login---------------------------*/
+.square_login{
+    position: absolute;
+	top: 10%;
+	left: 3%;
+	width: 30%; height: 75%;
+    background-color: black;
+    filter:alpha(opacity=20);
+    -moz-opacity:0.2;
+    opacity: 0.5;
+}
+
+.image_ur{
+	position: absolute;
+	padding-left:8%;
+	padding-top:10%;
+	padding-right:9%;
+}
+
+.form-signin {
+	position:absolute;
+    padding-left:6%;
+    padding-top:50%;
+	padding-right:6%;
+	width:100%;
+
+}
+
+.button_log{
+	float: right !important;	
+}
+
+.register_user{
+	position: absolute;
+	top: 80%;
+}
+/*fin cuadro de login--------------------------*/
