@@ -22,17 +22,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Squareface</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- css-------------------------- -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 	
+	<!-- js-------------------------- -->
+	<script src="../js/jquery.min.js" type="text/javascript"></script>
+	
+    <script>
+	$(document).ready(function(){
+	   $("#enlaceajax").click(function(evento){
+		  evento.preventDefault();
+		  $("#destino").load("logout.php");
+	   });
+	})
+	</script>  
+		
   </head>
   <body>
+  <div id="destino"> </div>
 	<table align="center">
 	  <tr>
 		<td><div align="right">User: <strong><?php echo $_SESSION['nickname'];?></strong></div></td>
 	  </tr>
 	  <tr>
-		<td><div align="right"><a href="logout.php">logout</a> </div></td>
+		<td><div align="right"><a href="#" id="enlaceajax">logout</a> </div></td>
 	  </tr>
 	  <td>&nbsp;</td>
 	  <td>&nbsp;</td>   

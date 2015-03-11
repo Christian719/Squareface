@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Squareface</title>
-
-    <!-- css------------------------->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Squareface</title>
+	
+	<!-- css------------------------->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/diseño1.css" rel="stylesheet">
 	
 	<!-- script references -->
@@ -16,40 +16,64 @@
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyChEZKZvF-cZPsd-9DXB4jHvxXg1NoV9bo&sensor=true"></script>
 	<script src="js/location.js"></script>
 	
-  </head>
-  <body>
-    <!--mapa-------------------------------------------->
-    <h2 align="center" style="color:#FFFFFF">Squareface</h2>
-	<div id="map-canvas" class="map_canvas">
-	</div>
-	<div class="button_location">
-		<button onClick="initialize()" type="button" class="btn btn-danger">Locate me</button>
-	</div>
-	<!--fin mapa-------------------------------------------->
-	<!--cuadro de login-------------------------------------------->
-	<div class="container">
-    <div class ="square_login">
-      <div class="image_ur">
-	    <img src="images/login.jpg" class="img-circle img-responsive">
-	  </div>
-      <form class="form-signin" action="login/verify_home.php" method="post" name="form_login">
-	    <div class="form-group">
-          <label>Email address</label>
-          <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+	<script>
+	$(document).ready(function(){		
+	   $("#enlaceajax").click(function(evento){
+		 evento.preventDefault();		  
+		  $("#square_register").load("register.html");
+		  $("#login_form").hide();
+		  $("#login_register").hide();
+	   });
+	});
+	</script>
+	
+</head>
+
+<body>	
+	<h2 align="center" style="color:#FFFFFF">Squareface</h2>
+	
+	<div id="map-canvas" class="map_canvas"> </div>
+	
+	<div class="container-fluid">	
+		<div class="row">
+			<div class ="square_login">							
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 log_img">
+						<img src="images/login.jpg" class="img-circle img-responsive">					
+					</div>
+				</div>		
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<form class="log_form" action="login/verify_home.php" method="post" name="form_login" id="login_form">
+						  <div class="form-group">
+							<label class="tags_log">Email address</label>
+							<input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+						  </div>
+						  <div class="form-group">
+							<label class="tags_log">Password</label>
+							<input type="password" name="password" class="form-control" placeholder="Password" pattern=".{6,20}" required>
+						  </div>  
+						  <div class="button_log">
+							<button class="btn btn-primary btn-block" type="submit">Sign in</button>
+						  </div>
+						</form>	
+						
+						<div id="square_register"></div>				
+					</div>
+				</div>			
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 log_regis" id="login_register">
+						<p class="tags_log">Or maybe you want <a href="#" id="enlaceajax"><strong><u>Register</u></strong> </a> </p>				
+					</div>
+				</div>									
+			</div>
+		</div>									
+		<div class="row">
+			<div class="col-md-1 col-md-offset-11 button_location">
+				<button onClick="initialize()" type="button" class="btn btn-danger">Locate me</button>
+			</div>
 		</div>
-		<div class="form-group">
-          <label>Password</label>
-          <input type="password" name="password" class="form-control" placeholder="Password" pattern=".{6,20}" required>
-		</div>  
-        <div class="button_log">
-          <button class="btn btn-primary btn-block" type="submit">Sign in</button>
-		</div>
-      </form>
-	  <div class="register_user">
-		<p>Or maybe you want<a href="#">Register </a> </p>
-	  </div>
-    </div>
-  </div>
-	<!--fin cuadro de login-------------------------------------------->
-  </body>
+	</div>
+	
+</body>
 </html>

@@ -4,56 +4,148 @@ html, body {
 	height:98%;
 	background-color:#0476D2;
 }
-
-/*mapa----------------------------------*/
+/*mapa-----*/
 #map-canvas {
     height: 95%;
     margin-left: 0.5%;
 	margin-right: 0.5%;
 	margin-bottom:.05%;
-	padding: 0px;
 }
 
 .button_location{
 	position:absolute;
-	right:1%;
 	top:94%;
+	right:10px;
 }
-/*fin mapa----------------------------------*/
-/*cuadro de login---------------------------*/
+/*contened_black---------*/
 .square_login{
     position: absolute;
 	top: 10%;
 	left: 3%;
-	width: 30%; height: 75%;
+	width: 400px;
+	height: 76%;
     background-color: black;
     filter:alpha(opacity=20);
     -moz-opacity:0.2;
-    opacity: 0.5;
+    opacity: 0.8;
 }
-
-.image_ur{
-	position: absolute;
-	padding-left:8%;
-	padding-top:10%;
-	padding-right:9%;
-}
-
-.form-signin {
-	position:absolute;
-    padding-left:6%;
-    padding-top:50%;
-	padding-right:6%;
-	width:100%;
-
-}
-
+/*form login*/
 .button_log{
 	float: right !important;	
 }
 
-.register_user{
-	position: absolute;
-	top: 80%;
+.tags_log{
+color:#FFFFFF;
 }
-/*fin cuadro de login--------------------------*/
+
+.log_img{
+top:25px;
+}
+
+.log_form{
+position: absolute;
+top:100px;
+width:325px;
+}
+/*register new*/
+.log_regis{
+position:absolute;
+top:84%;
+}
+/*form register*/
+.button_ok{
+	float: right !important;
+	position:absolute;
+	right:20%;
+}
+
+.button_canc{
+	float: left !important;	
+	position:absolute;
+	left:20%;
+}
+
+/*opcional--------------------------opcional----------------------------opcional*/
+@media (min-width: 1201px) and (max-width: 1366px) { 
+.button_location{
+	right:40px;
+}
+}
+
+/*opcional--------------------------opcional----------------------------opcional*/
+@media (min-width: 992px) and (max-width: 1200px) { 
+.button_location{
+	right:40px;
+}
+}
+
+/*Tablet --------------------------------tablet---------------------------tablet*/
+@media (min-width: 451px) and (max-width: 991px) { 
+.square_login{
+	left: 30px;
+	width: 320px;
+	height: 75%;
+}
+
+.log_form {
+top:200px;
+width:280px;
+left:33px;
+}
+
+.log_img{
+    position: absolute;
+    margin-left:8%;
+    top:8%;
+    padding-right:9%;
+}
+
+.log_regis{
+left:45px;
+}
+
+
+}
+
+/*movil-------------movil---------------------movil-----------------------*/
+@media (min-width: 280px) and (max-width:450px){
+
+.square_login{
+	left: 30px;
+	width: 280px;
+	height: 75%;
+}
+
+.log_img{
+width:240px;
+left:33px;
+}
+
+.log_form{
+width:250px;
+margin-left:15px;
+}
+
+.log_regis{
+left:30px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
