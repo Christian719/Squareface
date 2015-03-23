@@ -30,6 +30,6 @@
 		$_SESSION['id'] = $row['id'];
 		$_SESSION['nickname'] = $row['nickname'];
 	
-		header("Location: user_page.php");
+		header("Location: home.php");
 	}
 ?>

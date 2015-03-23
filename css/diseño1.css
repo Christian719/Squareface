@@ -2,7 +2,11 @@
 
 html, body {
 	height:98%;
-	background-color:#0476D2;
+	background: url(../images/fondo.jpg) no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 /*mapa-----*/
 #map-canvas {
@@ -10,12 +14,22 @@ html, body {
     margin-left: 0.5%;
 	margin-right: 0.5%;
 	margin-bottom:.05%;
+	border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
 }
 
 .button_location{
 	position:absolute;
 	top:94%;
 	right:10px;
+}
+
+.loader_map{
+	position:absolute;
+	top:45%;
+	left:47.5%;
 }
 /*contened_black---------*/
 .square_login{

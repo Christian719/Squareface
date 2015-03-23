@@ -1,0 +1,120 @@
+/* CSS Document */
+
+html,body{
+	height:100%;
+	background: url(../images/fondo.jpg) no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/*contenedor del mapa-------------*/
+.cont-map{
+    position: absolute;
+	width:84%;
+	left: 8%;
+	height:86.2%;
+	top: 6.6%;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+	background: #2a3333;	
+	padding: 1em;
+    margin: 0 0 2em;  
+}
+
+/*mapa--------------------------*/
+#map-canvas {
+  	position:absolute;
+	width:97%;
+    left: 1.5%;
+	height:94%;
+	top:3%;	
+	border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+}
+
+.button_location{
+	position:absolute;
+	top:83.7%;
+}
+
+.loader_map{
+	position:absolute;
+	top:45%;
+	left:47.5%;
+}
+
+/*footer------------------------*/
+#footer{
+	position: absolute;
+	width: 84%;
+	left: 8%;
+	padding:.3em;
+	top:92.7%;
+	height:7%;
+	background:#EEEEEE;	
+	border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -khtml-border-radius: 8px;
+}
+.foot{
+    text-align:center;
+	color:#444444;
+	font-weight:bold;	
+}
+
+/*header---------------------------------------------*/
+.img_ur{
+	width:44px;
+	margin-top:-12px;
+}
+
+.img_user{
+	width:44px;
+	margin-top:-10px;
+}
+
+.mark_header{
+	height:6.6%;
+	width:84%;
+	left:8%;
+}
+
+.options_header{
+}
+
+.search_header{
+	position:absolute;
+	margin-left:42%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
