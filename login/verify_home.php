@@ -1,6 +1,7 @@
 <?php 
 	//connection to the database
-	require_once('connection_db.php');
+	include("functions.php");
+		conexion();
 	
 	//Session variables
 	if (!isset($_SESSION)) {
@@ -13,7 +14,7 @@
 	
 	//Check if the data are stored in the database
 	$query= "SELECT * FROM user WHERE email='".$email."' AND password='".$password."'"; 
-	$result= mysql_query($query,$conex) or die (mysql_error());
+	$result= mysql_query($query);
 	$row=mysql_fetch_array($result);
 	
 	
@@ -29,6 +30,7 @@
 		//We define the session variable and redirect the user page
 		$_SESSION['id'] = $row['id'];
 		$_SESSION['nickname'] = $row['nickname'];
+		$_SESSION['user_new'] = 2;
 	
 		header("Location: home.php");
 	}

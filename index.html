@@ -37,9 +37,10 @@
 </head>
 
 <body>	
-	<h2 align="center" style="color:#FFFFFF">Squareface</h2>
-	
-	<div id="map-canvas" class="map_canvas"><img class="loader_map" src="images/loader.gif" /></div>
+	<h2 class="titul">SQUAREFACE</h2>
+	<div class="mark_map">
+		<div id="map-canvas" class="map_canvas"><img class="loader_map" src="images/loader.gif" /></div>
+	</div>	
 	
 	<div class="container-fluid">	
 		<div class="row">
@@ -54,42 +55,43 @@
 						<form class="log_form" action="login/verify_home.php" method="post" name="form_login" id="form_login">
 						  <div class="form-group">
 							<label class="tags_log">Email address</label>
-							<input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+							<input type="email" name="email" class="form-control" maxlength="50" placeholder="Email address" required autofocus>
 						  </div>
 						  <div class="form-group">
 							<label class="tags_log">Password</label>
-							<input type="password" name="password" class="form-control" placeholder="Password" pattern=".{6,20}" required>
+							<input type="password" name="password" class="form-control" placeholder="Password" maxlength="16" required>
 						  </div>  
-						  <div class="button_log">
-							<button class="btn btn-primary btn-block" type="submit">Sign in</button>
+						  <div class="form-group">
+							<button class="btn btn-primary button_log" type="submit">Sign in</button>
 						  </div>
 						</form>	
 						
 						<form class="register_form" method="post" name="form_register" id="form_register" onSubmit="return comprobarClave()" action="insert_user.php">
 						  <div class="form-group">
-							<input type="text" name="name" class="form-control" placeholder="Name" required autofocus>
+							<h3 class="titul_register">New register</h3>
 						  </div>
 						  <div class="form-group">
-							<input type="text" name="last_name" class="form-control" placeholder="Last name" required>
+							<input type="text" name="name" onKeyPress="javascript: return letter()" pattern="[a-z A-Z]*" class="form-control" maxlength="25" placeholder=" Your name" required>
 						  </div>
 						  <div class="form-group">
-							<input type="text" name="nickname" class="form-control" placeholder="Nickname" required>
+							<input type="text" name="last_name" onKeyPress="javascript: return letter()" pattern="[a-z A-Z]*" class="form-control" maxlength="25" placeholder="Your last name" required>
 						  </div>
 						  <div class="form-group">
-							<input type="email" name="email_new" class="form-control" placeholder="E-mail" required>
+							<input type="text" name="nickname" class="form-control" maxlength="20" placeholder="Your nickname" required>
 						  </div>
 						  <div class="form-group">
-							<input type="password" name="password1_new" class="form-control" placeholder="Password" required>
+							<input type="email" name="email_new" class="form-control" maxlength="50" placeholder="Your e-mail" required>
 						  </div>
 						  <div class="form-group">
-							<input type="password" name="password2" class="form-control" placeholder="Confirm password" required>
+							<input type="password" name="password1_new" class="form-control" maxlength="16" placeholder="Your password" required>
 						  </div>
-							<br><br>	
-						  <div class="button_ok">
-							<button class="btn btn-primary btn-block" type="submit">Done</button>
+						  <div class="form-group">
+							<input type="password" name="password2" class="form-control" maxlength="16" placeholder="Confirm your password" required>
 						  </div>
-						  <div class="button_canc">
-							<button type="button" class="btn" id="cancel">Cancel</button>
+							<br>	
+						  <div class="form-group buttons_reg">
+							<button type="button" class="btn button_canc" id="cancel">Cancel</button>
+							<button class="btn btn-primary button_ok" type="submit">Done</button>
 						  </div>
 						</form>				
 					</div>
@@ -99,11 +101,6 @@
 						<p class="tags_log">Or maybe you want <a href="#" id="reg_user"><strong><u>Register</u></strong> </a> </p>				
 					</div>
 				</div>									
-			</div>
-		</div>									
-		<div class="row">
-			<div class="button_location">
-				<button onClick="initialize()" type="button" class="btn btn-danger">Locate me</button>
 			</div>
 		</div>
 	</div>

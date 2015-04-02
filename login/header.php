@@ -1,6 +1,7 @@
 <?php
 	//connection to the database
-	require_once('connection_db.php');
+	include("functions.php");
+		conexion();
 	
 	//session start
 	session_start();
@@ -23,8 +24,10 @@
 	<title>Squareface</title>
 	
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link  href="../css/magnific-popup.css" rel="stylesheet">
 	<link href="../css/diseño2.css" rel="stylesheet">
-		
+	<link href="../css/diseño3.css" rel="stylesheet">
+	
 </head>
 
 <body>
@@ -39,29 +42,11 @@
     </div>
 	
 	<ul class="nav navbar-nav navbar-right">	
-		<?php
-			//conexion
-			require_once('connection_db.php');
-			
-			//consulta
-			$select_image = mysql_query("SELECT * FROM image WHERE papa_id = '$_SESSION[id]'");
-			$row_select_image = mysql_fetch_assoc($select_image);
-			
-			$id = $row_select_image['id'];
-			$ext = $row_select_image['img_type'];
-			$nombre_fichero = "../photos/user/$id$ext";
-			
-			if (file_exists($nombre_fichero)) {
-				$nombre_fichero = $nombre_fichero;
-			} else {
-				$nombre_fichero = '../photos/user/default.png';
-			}
-		?>
-		<li><a href="#"><img class="img_user" id="user" src="<?php echo $nombre_fichero; ?>"></a></li>	
+		<li><a href="#"><img class="img_user" id="user" src="<?php avatar_user(); ?>"></a></li>	
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Profile</a></li>
+            <li><a href="complete_register.php" class="ajax-popup-link">Profile</a></li>
             <li><a href="#">Administration</a></li>
             <li class="divider"></li>
             <li><a href="logout.php" id="logout">Log out</a></li>
@@ -111,10 +96,10 @@
 		</div>
 	 </form>
 	 
-	 <a href="#"><img class="img_user_m" id="logo" src="<?php echo $nombre_fichero; ?>"></a>      
+	 <a href="#"><img class="img_user_m" id="logo" src="<?php avatar_user(); ?>"></a>      
 	  <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" id="dropdownMenu2" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 	  <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
-		<li><a href="#">Profile</a></li>
+		<li><a href="complete_register.php" class="ajax-popup-link">Profile</a></li>
         <li><a href="#">Administration</a></li>
         <li class="divider"></li>
         <li><a href="logout.php" id="logout">Log out</a></li>
@@ -125,8 +110,6 @@
 	
   </div><!-- /.container-fluid -->
 </nav>
-
-
 
 
 
