@@ -1,7 +1,7 @@
 <?php
 	//connection
 	include("functions.php");
-		conexion();
+	$conex = connection();
 	
 	//session start
 	session_start();
@@ -14,6 +14,9 @@
 		</script>';
 	}	
 	
+	$birthdate= $_POST['birthdate'];
+	$phone= $_POST['phone'];
+	$city= $_POST['city'];
 	//if (file_exists("new_image_user")) {
 	if ($_FILES['new_image_user']['name'] != null){		
 		$img_type=$_FILES["new_image_user"]["type"];
@@ -21,15 +24,18 @@
 		$extension = end($ext);
 		
 		//actualizamos	
-		$update_user = mysql_query("UPDATE user SET birthdate='$_REQUEST[birthdate]', phone='$_REQUEST[phone]', city='$_REQUEST[city]' WHERE id = '$_SESSION[id]'");
+		$update_user = "UPDATE user SET birthdate='$birthdate', phone='$phone', city='$city' WHERE id = '$_SESSION[id]'";
+		$result= $conex->query($update_user);
 		
 		if ($extension == "jpg" || $extension == "gif" || $extension == "png" || $extension == "jpeg"){
 		
 			$type = "user";	
-			$select_image = mysql_query("SELECT * FROM image WHERE papa_id = '$_SESSION[id]'");
-			$row_select_image = mysql_fetch_assoc($select_image);
+			$select_image = "SELECT * FROM image WHERE papa_id = '$_SESSION[id]'";
+			$result= $conex->query($select_image);
+			$row_select_image = $result->fetch_assoc();
 			
-			$update_image = mysql_query("UPDATE image SET img_type='$extension' WHERE papa_id = '$_SESSION[id]' and type = '$type'") or die("Error SQL");
+			$update_image = "UPDATE image SET img_type='$extension' WHERE papa_id = '$_SESSION[id]' and type = '$type'";
+			$result= $conex->query($update_image);
 			
 			$tipo = $ext[1];
 			$destino = "../photos/user/";
@@ -43,13 +49,14 @@
 		
 		else{
 			echo '<script language = javascript>
-					alert("Formato de imagen no valido, la imagen no sera guardada")
+					alert("Invalid image format, the image will not be saved")
 					self.location = "home.php"
 				</script>';
 		}
 	} 
 	else {
-		$update_user = mysql_query("UPDATE user SET birthdate='$_REQUEST[birthdate]', phone='$_REQUEST[phone]', city='$_REQUEST[city]' WHERE id = '$_SESSION[id]'");
+		$update_user = "UPDATE user SET birthdate='$birthdate', phone='$phone', city='$city' WHERE id = '$_SESSION[id]'";
+		$result= $conex->query($update_user);
 		header("Location: home.php");
 	}	
 ?>

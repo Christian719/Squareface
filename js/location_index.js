@@ -15,20 +15,28 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
-	    marker = new google.maps.Marker({
+	  marker = new google.maps.Marker({
 		map: map,
 		position: pos,
 		animation: google.maps.Animation.DROP,
 		title:"My Location"
 	  });
-	google.maps.event.addListener(marker, 'click', toggleBounce);
+	
+	  google.maps.event.addListener(map, 'center_changed', function() {
+		window.setTimeout(function() {
+		  map.panTo(marker.getPosition());
+		}, 3000);
+	  });
+			
+	  google.maps.event.addListener(marker, 'click', toggleBounce);
 
       map.setCenter(pos);
     }, function() {
       handleNoGeolocation(true);
     });
-  } else {
-       handleNoGeolocation(false);
+  } 
+  else {
+     handleNoGeolocation(false);
   }
 }
 

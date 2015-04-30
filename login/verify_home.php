@@ -1,7 +1,7 @@
 <?php 
 	//connection to the database
 	include("functions.php");
-		conexion();
+	$conex = connection();
 	
 	//Session variables
 	if (!isset($_SESSION)) {
@@ -14,16 +14,14 @@
 	
 	//Check if the data are stored in the database
 	$query= "SELECT * FROM user WHERE email='".$email."' AND password='".$password."'"; 
-	$result= mysql_query($query);
-	$row=mysql_fetch_array($result);
+	$result = $conex->query($query);
+	$row = $result->fetch_array(MYSQLI_BOTH);
 	
-	
-	if (!$row[0]) //Option 1: If the user does not exist or data are incorrect
-	{
-		echo '<script language = javascript>
-		alert("User or password invalid. Please check.")
-		self.location = "../"
-		</script>';
+	if (!$row[0]){ //Option 1: If the user does not exist or data are incorrect
+		echo '<script>
+		 		alert("User or password invalid. Please check");
+				window.location.href="../";
+			</script>';	
 	}
 	else //Option 2: User log in correctly
 	{

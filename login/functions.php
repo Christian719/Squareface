@@ -1,26 +1,42 @@
 <?php
-	function conexion(){
+	function connection(){
 		$host = "localhost";
 		$user = "root";
-		$password = "";
+		$password = "Drogas";
 		$db = "squareface";
-		$conex = mysql_connect($host, $user, $password) or die ("Connection error");
-		mysql_select_db ($db, $conex) or die ("Error in the database");
+       
+        $conex = new mysqli($host,$user,$password,$db);
+        
+        if($conex->connect_error){
+            die("Connection error: ".$conex->connect_errno.
+                                      "-".$conex->connect_error);
+        } 
+		
+		/*Change the character set to utf8*/
+		if (!$conex->set_charset("utf8")) {
+			printf("Error loading the character set utf8");
+		} else {
+			$conex->character_set_name();
+		}
+		       
+        return $conex;
 	}
 	
-	function avatar_user(){
-		$select_image = mysql_query("SELECT * FROM image WHERE papa_id = '$_SESSION[id]'");
-		$row_select_image = mysql_fetch_assoc($select_image);
-		
-		$id = $row_select_image['id'];
-		$ext = $row_select_image['img_type'];
-		$nombre_fichero = "../photos/user/$id.$ext";
-		
-		if (file_exists($nombre_fichero)) {
-			$nombre_fichero = $nombre_fichero;
-		} else {
-			$nombre_fichero = '../photos/user/default.png';
+	function user_avatar(){
+		$conex = connection();
+		$select_image = "SELECT * FROM image WHERE papa_id = '$_SESSION[id]'";
+		$result = $conex->query($select_image);
+		$row_select_image = $result->fetch_assoc();
+			$id = $row_select_image['id'];
+			$ext = $row_select_image['img_type'];
+			$filename = "../photos/user/$id.$ext";
+					
+		if (file_exists($filename)) {
+			$filename = $filename;
+		} 
+		else {
+			$filename = '../photos/user/default.png';
 		}
-		echo $nombre_fichero;
-	}
+		echo $filename;
+	}	
 ?>

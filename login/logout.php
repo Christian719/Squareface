@@ -1,9 +1,14 @@
 <?php 
+	include("functions.php");
+	$conex = connection();
+	
 	session_start();	
 	if ($_SESSION['nickname']){	
-		$_SESSION['id'] = null;
-		$_SESSION['nickname'] = null;
+		unset($_SESSION['id']); 
+		unset($_SESSION['nickname']); 
+		
 		session_destroy();
+		$conex->close();
 		echo '<script language = javascript>
 		alert("Session finished successfully")
 		self.location = "../"

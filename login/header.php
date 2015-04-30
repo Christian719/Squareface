@@ -1,7 +1,7 @@
 <?php
 	//connection to the database
+	error_reporting(5);
 	include("functions.php");
-		conexion();
 	
 	//session start
 	session_start();
@@ -22,31 +22,32 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Squareface</title>
+	<link href="../images/icon.png" rel="Shortcut Icon" type="image/x-icon">
 	
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
-	<link  href="../css/magnific-popup.css" rel="stylesheet">
-	<link href="../css/diseño2.css" rel="stylesheet">
-	<link href="../css/diseño3.css" rel="stylesheet">
+	<link href="../css/magnific-popup.css" rel="stylesheet">
+	<link href="../css/jquery-ui.css" rel="stylesheet">
+	<link href="../css/design2.css" rel="stylesheet">
+	<link href="../css/design3.css" rel="stylesheet">
 	
 </head>
 
 <body>
-<nav class="navbar navbar-default mark_header">
+<!-----------------------------------------------desktop----------------------------------------------------->
+<nav class="navbar navbar-default header_container">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed butt_page" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
-      </button>
-      <a class="navbar-brand" href="home.php"><img class="img_ur" id="logo" src="../images/uv.png"></a>
-    </div>
-	
+	  </button>
+      <img class="navbar-brand urvenue_image" src="../images/uv.png" title="Urvenue">
+	</div>	
 	<ul class="nav navbar-nav navbar-right">	
-		<li><a href="#"><img class="img_user" id="user" src="<?php avatar_user(); ?>"></a></li>	
+		<li><img class="user_image" src="<?php user_avatar(); ?>" title="Avatar"></li>	
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?> <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="complete_register.php" class="ajax-popup-link">Profile</a></li>
+          <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?> <span class="caret"></span></a>
+          <ul class="dropdown-menu " role="menu">
+            <li><a href="profile.php" class="ajax-popup-link">Profile</a></li>
             <li><a href="#">Administration</a></li>
             <li class="divider"></li>
             <li><a href="logout.php" id="logout">Log out</a></li>
@@ -58,56 +59,48 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search place">
         </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        <button type="submit" class="btn btn-default" title="Search"><span class="glyphicon glyphicon-search"></span></button>
       </form>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="home.php">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Promotions</a></li>
-		<li><a href="#">Category</a></li>        
+        <li><a href="promotion.php" class="ajax-promotion">Promotions</a></li>
+		<li><a href="category.php" class="ajax-category">Category</a></li>        
       </ul>     
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-<!-----------------------------------------------mobile---------------------->
-<nav class="navbar navbar-default mark_header_mobile">
+<!-----------------------------------------------mobile----------------------------------------------------->
+<nav class="navbar navbar-default header_container_mobile">
   <div class="container-fluid">
     <div class="navbar-header">
-	  <a href="home.php"><img class="img_ur_m" id="logo" src="../images/uv.png"></a> 
-	  
-	  <div>     
-	  <a href="#" class="dropdown-toggle options_page" data-toggle="dropdown" id="dropdownMenu1" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+	  <a href="#" data-toggle="dropdown"><img class="urvenue_image_mobile" src="../images/uv.png" title="Urvenue"></a>	   
+	  <a href="#" class="dropdown-toggle options_page_mobile" data-toggle="dropdown" id="dropdownMenu1" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 		<li class="active"><a href="home.php">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Promotions</a></li>
-		<li><a href="#">Category</a></li> 
-	  </ul>
+        <li><a href="promotion.php" class="ajax-promotion">Promotions</a></li>
+		<li><a href="category.php" class="ajax-category">Category</a></li> 
+	  </ul>	
+	</div>  
+    <form class="option_search" role="search">
+	  <div class="input-group">
+	    <input type="text" class="form-control" placeholder="Search">
+	    <div class="input-group-btn">
+		  <button type="submit" class="btn btn-default" title="Search"><span class="glyphicon glyphicon-search"></span></button>
+	    </div>
 	  </div>
-	  
-	  <form class="option_search" role="search">
-		<div class="input-group">
-		   <input type="text" class="form-control" placeholder="Search">
-		   <div class="input-group-btn">
-			  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-		   </div>
-		</div>
-	 </form>
-	 
-	 <a href="#"><img class="img_user_m" id="logo" src="<?php avatar_user(); ?>"></a>      
-	  <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" id="dropdownMenu2" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-	  <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
-		<li><a href="complete_register.php" class="ajax-popup-link">Profile</a></li>
-        <li><a href="#">Administration</a></li>
-        <li class="divider"></li>
-        <li><a href="logout.php" id="logout">Log out</a></li>
-	  </ul>
-  
-        
-	</div>	
-	
+    </form>	 
+    <a href="#" data-toggle="dropdown"><img class="user_image_mobile" src="<?php user_avatar(); ?>" title="Avatar"></a>      
+    <a href="#" class="dropdown-toggle options_user_mobile" data-toggle="dropdown" id="dropdownMenu2" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
+	  <li><a href="complete_user.php" class="ajax-popup-link">Profile</a></li>
+	  <li><a href="#">Administration</a></li>
+	  <li class="divider"></li>
+	  <li><a href="logout.php" id="logout">Log out</a></li>
+    </ul>
   </div><!-- /.container-fluid -->
 </nav>
 
