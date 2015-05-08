@@ -138,6 +138,12 @@ html,body{
 	height:34px;
 }
 
+.button_close_notifications{
+	position:absolute;
+	right: 20px;
+    top: 37px;
+}
+
 .button_friends{
 	position:absolute;
 	top:712px;
@@ -147,9 +153,19 @@ html,body{
 	height:34px;
 }
 
+.button_close_friends{
+	position:absolute;
+	left: 20px;
+    top: 37px;
+}
+
+.title_panels{
+	text-align:center;
+}
+
 .panel{
     display: none;
-    width: 250px;
+    width: 343px;
     padding: 20px;
     background-color: #333;
     color: #fff;

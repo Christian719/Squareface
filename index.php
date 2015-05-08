@@ -138,7 +138,7 @@
 							<input type="text" name="last_name" id="last_name" class="form-control" maxlength="25" placeholder="Last name">
 						  </div>
 						  <div class="form-group">
-							<input type="text" name="nickname" id="nickname"class="form-control" maxlength="20" placeholder="Nickname">
+							<input type="text" name="nickname" id="nickname" class="form-control" maxlength="20" placeholder="Nickname">
 						  </div>
 						  <div class="form-group">
 							<input type="text" name="email_new" id="email_new" class="form-control" maxlength="50" placeholder="E-mail">

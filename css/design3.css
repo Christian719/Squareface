@@ -81,6 +81,7 @@
 .profile_user_image{
     width: 100%;
 	margin-top:70%;
+	border-radius: 5px;
 }
 
 .design_table_information, design_table_activity{

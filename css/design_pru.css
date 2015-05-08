@@ -1,0 +1,67 @@
+/*option search-------------------------------------------*/
+.ui-autocomplete, .ui-front, .ui-menu ui-widget, .ui-widget-content{
+	z-index: 501;
+}
+
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+  }
+  
+.LV_validation_message{
+    position: absolute;
+    top: 8px;
+    right: 67px;
+    color: firebrick;
+}
+
+/*options friends-------------------------------------------*/
+.image_friends{
+	width:84px;
+	height:84px;
+	border-radius:5px;
+}
+
+.name_friends{
+	position:absolute;
+	margin-top: 65px;
+    font-weight: bold;
+}
+
+/*places-------------------------------------------------------*/
+.place_conten{
+	padding-left:20px;
+	width: 223px;
+}
+
+.place_title{
+	text-align:center;
+	text-transform: uppercase;	
+}
+
+.place_image{
+	width: 49%;
+    max-width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    margin-top: -20px;
+    margin-left: 25.5%;	
+}
+
+.place_raiting{
+	text-align: center;
+    margin-bottom: 20px;
+}
+
+.place_info{
+	margin-top: -25px;
+    text-align: center;
+}
+
+.place_butt{
+	width: 70%;
+	margin-left: 15%;
+	margin-top: -10px;
+}

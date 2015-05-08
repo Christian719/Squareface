@@ -29,6 +29,7 @@
 	<link href="../css/jquery-ui.css" rel="stylesheet">
 	<link href="../css/design2.css" rel="stylesheet">
 	<link href="../css/design3.css" rel="stylesheet">
+	<link href="../css/design_pru.css" rel="stylesheet">
 	
 </head>
 
@@ -45,7 +46,7 @@
 	<ul class="nav navbar-nav navbar-right">	
 		<li><img class="user_image" src="<?php user_avatar(); ?>" title="Avatar"></li>	
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?><span class="caret"></span></a>
           <ul class="dropdown-menu " role="menu">
             <li><a href="profile.php" class="ajax-popup-link">Profile</a></li>
             <li><a href="#">Administration</a></li>
@@ -55,10 +56,10 @@
         </li>
       </ul>
 	  
-      <form class="navbar-form navbar-right search_header" role="search">
+      <form class="navbar-form navbar-right search_header" role="search" method="post" action="search_response.php">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search place">
-        </div>
+          <input type="text" name="tags" id="tags" class="form-control" placeholder="Search place">
+        </div>	
         <button type="submit" class="btn btn-default" title="Search"><span class="glyphicon glyphicon-search"></span></button>
       </form>
 
@@ -87,7 +88,7 @@
 	</div>  
     <form class="option_search" role="search">
 	  <div class="input-group">
-	    <input type="text" class="form-control" placeholder="Search">
+	    <input type="text" class="form-control" name="tags-mobile" id="tags_mobile" placeholder="Search">
 	    <div class="input-group-btn">
 		  <button type="submit" class="btn btn-default" title="Search"><span class="glyphicon glyphicon-search"></span></button>
 	    </div>

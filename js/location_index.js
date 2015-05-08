@@ -3,7 +3,7 @@ var marker;
 
 function initialize() {
   var mapOptions = {
-    zoom: 17,
+    zoom: 16,
 	disableDefaultUI: true
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -25,7 +25,7 @@ function initialize() {
 	  google.maps.event.addListener(map, 'center_changed', function() {
 		window.setTimeout(function() {
 		  map.panTo(marker.getPosition());
-		}, 3000);
+		}, 10000);
 	  });
 			
 	  google.maps.event.addListener(marker, 'click', toggleBounce);

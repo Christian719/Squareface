@@ -12,17 +12,20 @@
 	$row_modif_user = $result->fetch_assoc();
 ?>
 
+<script src="../js/bootstrap-filestyle.min.js"> </script>
+
 	<div class="container">
 		<div class="col-md-12">
             <div class="col-md-1"></div>
             <div class="col-md-10" id="profile_container">
 				<h3 class="profile_title">My profile</h3>
 				<div class="col-md-2">
-					<table class="table">
-						<tr><img class="profile_user_image" name="image_user" src="<?php user_avatar(); ?>"></tr>
-						<tr><td class='editable' data-campo='image'><span>Avatar</span></td></tr>
-					</table>
-					
+					<div class="form-group">
+						<img class="profile_user_image" name="image_user" src="<?php user_avatar(); ?>">
+					</div>
+					<div class="form-group">
+						<input type="file" name="new_image_user" class="filestyle" data-buttonText="Change" data-size="sm" data-iconName="glyphicon glyphicon-user">
+					</div>					
 				</div>	
 				<div class="col-md-5">		
 					<div class="message"></div>
