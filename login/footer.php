@@ -12,6 +12,7 @@
   <script src="../js/functions.js"></script>
   <script src="../js/jquery.panelslider.min.js"></script>
   <script src="../js/jquery.magnific-popup.js"></script>
+  <script src="../js/owl.carousel.js"></script>
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyChEZKZvF-cZPsd-9DXB4jHvxXg1NoV9bo&sensor=true"></script>
   <script src="../js/location.js"></script>
   
