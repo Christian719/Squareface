@@ -26,14 +26,9 @@
 
     // Iterate through the rows, printing XML nodes for each
 	while ($row = $result->fetch_assoc()) {
-		$place_category = $row['category_id'];
-		//select category
-		$select_category = "SELECT name FROM category Where id ='$place_category'";
-		$result_category = $conex->query($select_category);
-		while ($row_select_category = $result_category->fetch_assoc())
-			$type = $row_select_category['name'];
 		//select image
 		$id_place = $row['id'];
+		$type = $row['category'];
 		$image_place = $row['image'];
 		$select_image = "SELECT * FROM image WHERE papa_id = '$id_place' and type = '$type'";
 		$result_image = $conex->query($select_image);
@@ -56,7 +51,7 @@
 		echo 'lon="' . $row['lon'] . '" ';
 		echo 'schedule="' . parseToXML($row['schedule']) . '" ';
 		echo 'phone="' . parseToXML($row['phone']) . '" ';
-		echo 'category_id="' . parseToXML($row['category_id']) . '" ';
+		echo 'category_id="' . parseToXML($row['category']) . '" ';
 		echo 'image="' . parseToXML($filename) . '" ';
 		echo '/>';
     }
