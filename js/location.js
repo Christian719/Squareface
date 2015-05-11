@@ -1,10 +1,10 @@
 var map;
 var marker;
 var customIcons = {   
-	bar:{icon: '../images/icons/bar.png'},
-    restaurant:{icon: '../images/icons/restaurant.png'},
-    zoo:{icon: '../images/icons/zoo.png'},
-    workoffice:{icon: '../images/icons/workoffice.png'}
+	1:{icon: '../images/icons/bar.png'},
+    2:{icon: '../images/icons/restaurant.png'},
+    3:{icon: '../images/icons/zoo.png'},
+    4:{icon: '../images/icons/workoffice.png'}
 };
 
 function initialize() {
