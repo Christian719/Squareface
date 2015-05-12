@@ -70,7 +70,7 @@
 		?>
 	 </div>
   </div>
-  
+
   
 <?php  	
 	if($_SESSION['user_new'] == 1){

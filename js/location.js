@@ -1,5 +1,8 @@
 var map;
 var marker;
+var marker_place;
+var xmlhttp = new XMLHttpRequest();
+var url = "places_json.php";
 var customIcons = {   
 	1:{icon: '../images/icons/bar.png'},
     2:{icon: '../images/icons/restaurant.png'},
@@ -36,80 +39,7 @@ function initialize() {
   } else {
        handleNoGeolocation(false);
   }  
-  //jona's code
-  var infoWindow = new google.maps.InfoWindow;
-  
-  downloadUrl("places_ajax.php", function(data){
-  	var xml = data.responseXML;
-  	var markers = xml.documentElement.getElementsByTagName("place");
-      
-  	for (var i = 0; i < markers.length; i++) {
-	  var name = markers[i].getAttribute("name");
-	  var address = markers[i].getAttribute("address");
-	  var schedule = markers[i].getAttribute("schedule");
-	  var phone = markers[i].getAttribute("phone");
-	  var category_id = markers[i].getAttribute("category_id");
-	  var image = markers[i].getAttribute("image");
-
-	  var point = new google.maps.LatLng(
-		parseFloat(markers[i].getAttribute("lat")),
-		parseFloat(markers[i].getAttribute("lon")));
-
-	  var html = document.createElement('div');
-	  html.innerHTML = "<div class='place_conten'><h4 class='place_title'>" + name + "</h4> <br/>"
-	  		+ "<img class='place_image' src=" + image + "> <br/>"
-			+ "<h5 class='place_raiting'>Raiting</h5> <br/>"
-	  		+ "<h5 class='place_info'>" + address + "</h5> <br/>"
-			+ "<h5 class='place_info'>" + schedule + "</h5> <br/>"
-			+ "<h5 class='place_info'>" + phone + "</h5> <br/>"			
-			+ "<a class='btn btn-primary place_butt ajax_place' role='button' href='place.php'>More Information</a></div>";
-	  
-	  var icon = customIcons[category_id] || {};
-      var marker = new google.maps.Marker({
-      	map: map,
-        position: point,
-        icon: icon.icon
-      });
-	  
-	  bindInfoWindow(marker, map, infoWindow, html);
-	}
-	
-  });
-  
-  google.maps.event.addListener(marker, 'click', function(){
-  	if (!infoWindow.isOpen()) {
-      infoWindow.open(map, marker);
-    }
-  }); 
-  //end of jona's code
 }
-
-//jona's code
-function bindInfoWindow(marker, map, infoWindow, html) {
-	google.maps.event.addListener(marker, 'click', function() {
-	  infoWindow.setContent(html);
-	  infoWindow.open(map, marker);
-	});
-}
-
-function downloadUrl(url, callback) {
-	var request = window.ActiveXObject ?
-		new ActiveXObject('Microsoft.XMLHTTP') :
-		new XMLHttpRequest;
-
-	request.onreadystatechange = function() {
-	  if (request.readyState == 4) {
-		request.onreadystatechange = doNothing;
-		callback(request, request.status);
-	  }
-	};
-
-	request.open('GET', url, true);
-	request.send(null);
-}
-
-function doNothing() {}
-//edn of jona's code
 
 function toggleBounce() {
 
@@ -136,6 +66,101 @@ function handleNoGeolocation(errorFlag) {
   map.setCenter(options.position);
 }
 
+//codigo para agregar los lugares al mapa
+xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        myFunction(xmlhttp.responseText);
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(response) {
+	var infoWindow = new google.maps.InfoWindow;
+	
+    var arr = JSON.parse(response);
+	//esta variable es para obtener las coordenadas
+	var point;
+	
+    var i;
+    var out = "<div>";
+
+    for(i = 0; i < arr.length; i++) {
+		//borramos el contenido del div en caso que contenga informacion
+		out="";
+		
+		//llenamos el div		
+		out += "</br><div class='place_conten'>"
+		+ "<h4 class='place_title'>" + arr[i].Name + "</h4> <br/>"
+		+ "<img class='place_image' src=" + arr[i].Image_place + "> <br/>"
+		+ "<h5 class='place_raiting'>Raiting</h5> <br/>"
+		+ "<h5 class='place_info'>" + arr[i].Address + "</h5> <br/>"
+		+ "<h5 class='place_info'>" + arr[i].Schedule + "</h5> <br/>"
+		+ "<h5 class='place_info'>" + arr[i].Phone + "</h5> <br/>"
+		+ "<a class='btn btn-primary place_more ajax_place' role='button' href='place.php'>More Information</a></div> <a class='btn btn-primary place_here' role='button' href='#'>Take me here</a>";
+		+ "</br></div>"
+		
+		//obtenemos las coordenadas
+		point = new google.maps.LatLng(
+		parseFloat(arr[i].Latitude),
+		parseFloat(arr[i].Longitude));
+		
+		//obtenemos el icono del lugar
+		var category_id = arr[i].Category;
+		var icon = customIcons[category_id] || {};
+		
+		//creamos los marcadores de los lugares
+		marker_place = new google.maps.Marker({
+			map: map,
+			position: point,
+			icon: icon.icon,
+		});	
+		
+		//agregamos la informacion al marcador	
+		bindInfoWindow(marker_place, map, infoWindow, out);
+    }
+    out += "</div>"
+}
+
+//agregamos la funcion para agregar informacion al marcador
+function bindInfoWindow(marker_place, map, infoWindow, out) {
+	google.maps.event.addListener(marker_place, 'click', function() {
+	  infoWindow.setContent(out);
+	  infoWindow.open(map, marker_place);
+	});
+}
+
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
