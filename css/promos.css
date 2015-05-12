@@ -1,0 +1,17 @@
+	#promo-images{
+		height: 210px;
+		width: 210px;
+	}
+
+	.date-picker{
+		position: absolute;
+		top: 520px;
+		left: 170px;
+	}
+	.ui-datepicker {
+    background: #333;
+    border: 1px solid #555;
+    color: #EEE;}
+
+
+   
