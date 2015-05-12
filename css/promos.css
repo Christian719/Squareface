@@ -1,12 +1,22 @@
+	.ui-datepicker-trigger { 
+		position: relative; 
+		left: 200px;
+		bottom: 35px;
+	}
+	.combo-box{
+		position: absolute;
+		top: 476px;
+		right: 50px;
+	}
 	#promo-images{
-		height: 210px;
-		width: 210px;
+		height: 370px;
+		width: 330px;
 	}
 
 	.date-picker{
 		position: absolute;
-		top: 520px;
-		left: 170px;
+		top: 480px;
+		left: 10px;
 	}
 	.ui-datepicker {
     background: #333;

@@ -5,49 +5,69 @@
 	//session start
 	session_start();
 
-	
+	//shows the categories in the combo box
 	$category = "SELECT * FROM category";
-	
 	$catResult = $conex->query($category);
 	if ($catResult->num_rows > 0)
 	{
 		$combo="";
 		while ($row = $catResult->fetch_array(MYSQLI_ASSOC)) {
-			$combo .=" <option value='".$row['id']."'>".$row['name']."</option>";
+		$combo .=" <option value='".$row['id']."'>".$row['name']."</option>";
 		}
 	}
 	else{
 		echo "no hay resultados";
 	}
 								
+	//select image
+	$image = "SELECT * FROM promotion";
+	$imag_promo = $conex->query($image);
+	
+		$photo="";
+		while ($imag_row = $imag_promo->fetch_array(MYSQLI_ASSOC)) {
+			//$type = $imag_row ['name'];
+			$id_promo = $imag_row['id'];
+			$img_place = $imag_row['image'];
+			$select_image = "SELECT * FROM image WHERE papa_id = '$id_promo'";
+			$result_image = $conex->query($select_image);
+			$row_select_image = $result_image->fetch_assoc();
+			$ext = $row_select_image['img_type'];
+			$filename = "../photos/promotion/$img_place$ext";
+			$photo .="<div class='item' id='promo-images><img src='$filename'></div>";
+			if (file_exists($filename)){
+				$filename = $filename;
+			}
+			else {
+				$filename = "../photos/promotion/default.png";
+			}
+		}
+	
+	
 	
 
 	?>
-		<script>
+		<script>//Slider
 			 $(document).ready(function() {
+ 			 var owl = $("#owl-demo");
+ 			 owl.owlCarousel({
+     			itemsCustom : [
+        			[0  , 1],
+        			[450, 1],
+        			[600, 1],
+        			[700, 1],
+        			[1000, 1],
+        			[1200, 1],
+        			[1400, 1],
+        			[1600, 1]
+      			],
+      				navigation : true
  
-  var owl = $("#owl-demo");
- 
-  owl.owlCarousel({
-     
-      itemsCustom : [
-        [0  , 1],
-        [450, 1],
-        [600, 1],
-        [700, 1],
-        [1000, 1],
-        [1200, 1],
-        [1400, 1],
-        [1600, 1]
-      ],
-      navigation : true
- 
-  });
-  });
+  				});
+  				});
  
 
 
-  		    $(function() {
+  		    $(function() {//Calendar date picker
 				$( "#datepicker" ).datepicker({ // for the datepicker	  	
 			 		showOn: "button",
 			 		buttonImage: "../images/calendar.png",
@@ -62,9 +82,7 @@
 				  	  		}
 						});  
 			  		});
-
-  		    
-			</script>  
+						</script>  
 									  
 					<div class="container">
 						<div class="col-md-12">
@@ -73,12 +91,10 @@
 									<h4 class="promotion_title">Promotions</h4>
 										<div id="owl-demo" class="owl-carousel owl-theme">
 										
-													 <div class="item" id="promo-images"><img src="../photos/user/1.jpg"></h1></div>
-													  <div class="item" id="promo-images"><img src="../photos/user/1.jpg"></h1></div>
-													  <div class="item" id="promo-images"><img src="../photos/user/1.jpg"></h1></div>
-													  <div class="item" id="promo-images"><img src="../photos/user/1.jpg"></h1></div>
-													  <div class="item" id="promo-images"><img src="../photos/user/1.jpg"></h1></div>
-													  <div class="item" id="promo-images"><img src="../photos/user/1.jpg"></h1></div>
+													<!-- <div class="item" id="promo-images"><img src="<?php echo $filename; ?>"></h1></div>-->
+													<?php echo $photo; ?>
+
+													 
 
 
 
