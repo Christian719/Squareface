@@ -53,6 +53,7 @@
 .place_raiting{
 	text-align: center;
     margin-bottom: 20px;
+    color: goldenrod;
 }
 
 .place_info{
@@ -61,10 +62,12 @@
 }
 
 .place_more{
-	width: 70%;
-	margin-left: 15%;
-	margin-top: -10px;
+	position: absolute;
+    margin-left: 33px;
+    margin-top: -28px;
 }
 
 .place_here{
+	width: 70%;
+	margin-left: 15%;
 }

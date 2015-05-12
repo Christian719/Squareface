@@ -36,6 +36,7 @@
 		$outp .= '"Address":"'   . $rs["address"] . '",';
 		$outp .= '"Schedule":"'   . $rs["schedule"] . '",';
 		$outp .= '"Phone":"'   . $rs["phone"] . '",';
+		$outp .= '"Rating":"'   . $rs["rating"] . '",';
 		$outp .= '"Category":"'   . $rs["category_id"] . '",';
 		$outp .= '"Image_place":"'   .$filename . '",';
 		$outp .= '"Latitude":"'   . $rs["lat"] . '",';

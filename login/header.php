@@ -29,14 +29,12 @@
 	<link href="../css/jquery-ui.css" rel="stylesheet">
 	<link href="../css/design2.css" rel="stylesheet">
 	<link href="../css/design3.css" rel="stylesheet">
-	<link href="../css/owl.carousel.css" rel="stylesheet">
-	<link href="../css/promos.css" rel="stylesheet">
 	<link href="../css/design_pru.css" rel="stylesheet">
 	
 </head>
 
 <body>
-<!-----------------------------------------------desktop---------------------------------------------------->
+<!-----------------------------------------------desktop----------------------------------------------------->
 <nav class="navbar navbar-default header_container">
   <div class="container-fluid">
     <div class="navbar-header">

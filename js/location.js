@@ -1,4 +1,5 @@
 var map;
+var pos;
 var marker;
 var marker_place;
 var xmlhttp = new XMLHttpRequest();
@@ -9,6 +10,9 @@ var customIcons = {
     3:{icon: '../images/icons/zoo.png'},
     4:{icon: '../images/icons/workoffice.png'}
 };
+var directionsDisplay = new google.maps.DirectionsRenderer({'map-canvas': map }); 
+var directionsService = new google.maps.DirectionsService();
+var point;
 
 function initialize() {
   var mapOptions = {
@@ -17,11 +21,11 @@ function initialize() {
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-
+  
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
+      pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
 	    marker = new google.maps.Marker({
@@ -39,6 +43,7 @@ function initialize() {
   } else {
        handleNoGeolocation(false);
   }  
+  directionsDisplay.setMap(map);
 }
 
 function toggleBounce() {
@@ -76,11 +81,8 @@ xmlhttp.open("GET", url, true);
 xmlhttp.send();
 
 function myFunction(response) {
-	var infoWindow = new google.maps.InfoWindow;
-	
+	var infoWindow = new google.maps.InfoWindow;	
     var arr = JSON.parse(response);
-	//esta variable es para obtener las coordenadas
-	var point;
 	
     var i;
     var out = "<div>";
@@ -88,17 +90,6 @@ function myFunction(response) {
     for(i = 0; i < arr.length; i++) {
 		//borramos el contenido del div en caso que contenga informacion
 		out="";
-		
-		//llenamos el div		
-		out += "</br><div class='place_conten'>"
-		+ "<h4 class='place_title'>" + arr[i].Name + "</h4> <br/>"
-		+ "<img class='place_image' src=" + arr[i].Image_place + "> <br/>"
-		+ "<h5 class='place_raiting'>Raiting</h5> <br/>"
-		+ "<h5 class='place_info'>" + arr[i].Address + "</h5> <br/>"
-		+ "<h5 class='place_info'>" + arr[i].Schedule + "</h5> <br/>"
-		+ "<h5 class='place_info'>" + arr[i].Phone + "</h5> <br/>"
-		+ "<a class='btn btn-primary place_more ajax_place' role='button' href='place.php'>More Information</a></div> <a class='btn btn-primary place_here' role='button' href='#'>Take me here</a>";
-		+ "</br></div>"
 		
 		//obtenemos las coordenadas
 		point = new google.maps.LatLng(
@@ -114,7 +105,20 @@ function myFunction(response) {
 			map: map,
 			position: point,
 			icon: icon.icon,
+			title: arr[i].Name
 		});	
+		
+		//llenamos el div		
+		out += "</br><div class='place_conten'>"
+		+ "<h4 class='place_title'>" + arr[i].Name + "</h4> </br>"
+		+ "<img class='place_image' src=" + arr[i].Image_place + "> </br>"
+		+ "<h5 class='place_raiting'><span class='glyphicon glyphicon-star' aria-hidden='true'></span><span class='glyphicon glyphicon-star' aria-hidden='true'></span><span class='glyphicon glyphicon-star' aria-hidden='true'></span><span class='glyphicon glyphicon-star' aria-hidden='true'></span><span class='glyphicon glyphicon-star' aria-hidden='true'></span></h5> </br>"
+		+ "<h5 class='place_info'>" + arr[i].Address + "</h5> </br>"
+		+ "<h5 class='place_info'>" + arr[i].Schedule + "</h5> </br>"
+		+ "<h5 class='place_info'>" + arr[i].Phone + "</h5> </br>"
+		+ "<a class='btn btn-link place_more ajax_place' href='place.php'>More Information</a> </br>"
+		+ "<a class='btn btn-primary place_here' role='button' href='#' onClick='calcRoute()'>Take me here</a>"
+		+ "</br></div>"
 		
 		//agregamos la informacion al marcador	
 		bindInfoWindow(marker_place, map, infoWindow, out);
@@ -128,6 +132,20 @@ function bindInfoWindow(marker_place, map, infoWindow, out) {
 	  infoWindow.setContent(out);
 	  infoWindow.open(map, marker_place);
 	});
+}
+
+//creamos la funcion de como llegar a un lugar
+function calcRoute() {		
+  var request = {
+      origin:pos,
+      destination:point,
+      travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);	  
+    }
+  });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
