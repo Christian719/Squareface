@@ -120,11 +120,11 @@
 	color:#000000;
 }
 
-.cancelar{
+.cancel{
 	background:url(../images/cancel.png) 0 0 no-repeat;
 }
 
-.guardar{
+.save{
 	background:url(../images/save.png) 0 0 no-repeat;
 }
 
@@ -213,6 +213,11 @@ a.enlace{
 	margin-top: -10px;
 }
 
+
+.complete_register_title{
+	padding-top:13px;
+}
+
 .profile_title{
 	padding-top:15px;
 }
@@ -224,7 +229,7 @@ a.enlace{
 
 .second{
 	margin-left: 135px;
-	margin-top:-202px;;
+	margin-top:-190px;;
 }
 
 }
@@ -235,6 +240,10 @@ a.enlace{
     width: 455px;
     height: 515px;
 	margin: 0px auto;
+}
+
+.complete_register_title{
+	padding-top:13px;
 }
 
 .profile_title{
@@ -248,7 +257,7 @@ a.enlace{
 
 .second{	
 	margin-left:170px;
-	margin-top:-202px;
+	margin-top:-185px;
 }
 
 .tablet_2{

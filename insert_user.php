@@ -25,6 +25,7 @@
 		$serr = serialize(1);
 		file_put_contents('st_err', $serr);
 		
+		$conex->close();
 		echo '<script language = javascript>
 			alert("This email is already in use... Please check")
 			window.location.href="index.php";
@@ -67,6 +68,7 @@
 		$update = "UPDATE user SET image='$id_image' WHERE id = '$id_user'";
 		$result= $conex->query($update);
 		
+		$conex->close();
 		header("Location: login/home.php");
 	}	
 ?>

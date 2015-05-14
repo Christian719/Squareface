@@ -6,7 +6,7 @@
 	//session start
 	session_start();
 		
-	//consulta
+	//query
 	$modif_user = "SELECT * FROM user WHERE id = '$_SESSION[id]'";
 	$result = $conex->query($modif_user);
 	$row_modif_user = $result->fetch_assoc();
@@ -30,7 +30,7 @@
 				</div>	
 				<div class="col-md-8 second">
 					<div class="form-group">
-					  <label class="col-sm-4 control-label labels_complete_register">Nombre:</label>
+					  <label class="col-sm-4 control-label labels_complete_register">Name:</label>
 					  <div class="col-sm-8 info_complete_register">
 						<p class="form-control-static tablet_2"><?php echo $row_modif_user['name']; ?></p>
 					  </div>
@@ -80,6 +80,10 @@
 			<div class="col-md-3"></div>
         </div>
 	</div>
+	
+	<?php
+		$conex->close();
+	?>
 	
   <script>	
 	$(document).ready(function(){	   

@@ -6,7 +6,7 @@
 	//session start
 	session_start();
 	
-	//consulta
+	//query
 	$modif_user = "SELECT * FROM user WHERE id = '$_SESSION[id]'";
 	$result = $conex->query($modif_user);
 	$row_modif_user = $result->fetch_assoc();
@@ -38,7 +38,7 @@
 					<table class="table design_table_activity">
 						<tr><h4 class="table_title">Activity</h4></tr>	
 						<tr>
-							<td><label class="label_table_activity">Nombre:</label></td>
+							<td><label class="label_table_activity">Name:</label></td>
 							<td><span class="info_table_activity"><?php echo $row_modif_user['name']; ?></span></td>
 						</tr>	
 						<tr>
@@ -56,6 +56,10 @@
         </div>
 	</div>
 	
+	<?php
+		$conex->close();
+	?>
+	
 	<script>
 	$(document).ready(function(){
 		/* OBTENEMOS TABLA */
@@ -67,10 +71,10 @@
 			json = $.parseJSON(json)
 			for(var i=0;i<json.length;i++){
 				$('.profile_information').append(
-					"<tr><td class='tag_table_info'>Nombre:</td><td class='editable' data-campo='name'><span>"+json[i].name+"</span></td></tr><tr><td class='tag_table_info'>Last name:</td><td class='editable' data-campo='last_name'><span>"+json[i].last_name+"</span></td></tr><tr><td class='tag_table_info'>Birthdate:</td><td class='editable' data-campo='birthdate'><span>"+json[i].birthdate+"</span></td></tr><tr><td class='tag_table_info'>City:</td><td class='editable' data-campo='city'><span>"+json[i].city+"</span></td></tr><tr><td class='tag_table_info'>Phone:</td><td class='editable' data-campo='phone'><span>"+json[i].phone+"</span></td></tr><tr><td class='tag_table_info'>Nickname:</td><td class='editable' data-campo='nickname'><span>"+json[i].nickname+"</span></td></tr><tr><td class='tag_table_info'>email:</td><td class='editable' data-campo='email'><span>"+json[i].email+"</span></td></tr><tr><td></td><td></td></tr>");
+					"<tr><td class='tag_table_info'>Name:</td><td class='editable' data-campo='name'><span>"+json[i].name+"</span></td></tr><tr><td class='tag_table_info'>Last name:</td><td class='editable' data-campo='last_name'><span>"+json[i].last_name+"</span></td></tr><tr><td class='tag_table_info'>Birthdate:</td><td class='editable' data-campo='birthdate'><span>"+json[i].birthdate+"</span></td></tr><tr><td class='tag_table_info'>City:</td><td class='editable' data-campo='city'><span>"+json[i].city+"</span></td></tr><tr><td class='tag_table_info'>Phone:</td><td class='editable' data-campo='phone'><span>"+json[i].phone+"</span></td></tr><tr><td class='tag_table_info'>Nickname:</td><td class='editable' data-campo='nickname'><span>"+json[i].nickname+"</span></td></tr><tr><td class='tag_table_info'>email:</td><td class='editable' data-campo='email'><span>"+json[i].email+"</span></td></tr><tr><td></td><td></td></tr>");
 			}
 		});
-		/*metoo de edicion*/
+		/*edit method*/
 		var td,campo,valor,id;
 		$(document).on("click","td.editable span",function(e){
 			e.preventDefault();
@@ -81,20 +85,20 @@
 			id=$(this).closest("tr").find(".id").text();
 			
 			if(campo=="birthdate"){
-				td.text("").html("<input type='date' data-format='yyyy-mm-dd' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='enlace guardar' href='#'>Guardar</a><a class='enlace cancelar' href='#'>Cancelar</a>");				
+				td.text("").html("<input type='date' data-format='yyyy-mm-dd' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='enlace save' href='#'>Save</a><a class='enlace cancel' href='#'>Cancel</a>");				
 			}
 			else{
-				td.text("").html("<input type='text' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='enlace guardar' href='#'>Guardar</a><a class='enlace cancelar' href='#'>Cancelar</a>");
+				td.text("").html("<input type='text' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='enlace save' href='#'>Save</a><a class='enlace cancel' href='#'>Cancel</a>");
 			}	
 		});
-		/*metodo cancelar*/
-		$(document).on("click",".cancelar",function(e){
+		/*cancel method*/
+		$(document).on("click",".cancel",function(e){
 			e.preventDefault();
 			td.html("<span>"+valor+"</span>");
 			$("td:not(.id)").addClass("editable");
 		});
-		/*metodo guardar*/
-		$(document).on("click",".guardar",function(e){
+		/*save method*/
+		$(document).on("click",".save",function(e){
 			$(".message").html("<img src='../images/loading.gif'>");
 			e.preventDefault();
 			nuevovalor=$(this).closest("td").find("input").val();
@@ -112,7 +116,7 @@
 				});
 			}
 			else
-				$(".message").html("<p class='ko'>Debes ingresar un valor</p>");
+				$(".message").html("<p class='ko'>You must enter a value</p>");
 				setTimeout(function() {$('.ko').fadeOut('fast');}, 3000);
 		});
 	});	

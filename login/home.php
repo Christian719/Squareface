@@ -58,19 +58,19 @@
 					}
 					
 				echo "<h3>$row_select_friend[nickname]</h3>";
-				echo "<div><p>
+				echo "<div><p class='conten_friend_info'>
 					<img class='image_friends' src='$filename'title='Avatar'>
 					<span class='name_friends'>$row_select_friend[name]</span><br>
 					$row_select_friend[city]<br>
 					$row_select_friend[phone]<br>
-					$row_select_friend[email]
+					$row_select_friend[email]<br>
 					</p></div>";
 			}		
 		}
+		$conex->close();
 		?>
 	 </div>
   </div>
-
   
 <?php  	
 	if($_SESSION['user_new'] == 1){

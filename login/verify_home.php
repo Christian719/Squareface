@@ -18,6 +18,7 @@
 	$row = $result->fetch_array(MYSQLI_BOTH);
 	
 	if (!$row[0]){ //Option 1: If the user does not exist or data are incorrect
+		$conex->close();
 		echo '<script>
 		 		alert("User or password invalid. Please check");
 				window.location.href="../";
@@ -29,7 +30,8 @@
 		$_SESSION['id'] = $row['id'];
 		$_SESSION['nickname'] = $row['nickname'];
 		$_SESSION['user_new'] = 2;
-	
+		
+		$conex->close();
 		header("Location: home.php");
 	}
 ?>

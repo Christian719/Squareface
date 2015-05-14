@@ -32,7 +32,8 @@
 	
 	
 		if ($outp != "[") {$outp .= ",";}
-		$outp .= '{"Name":"'  . $rs["name"] . '",';
+		$outp .= '{"Id":"'  . $rs["id"] . '",';
+		$outp .= '"Name":"'  . $rs["name"] . '",';
 		$outp .= '"Address":"'   . $rs["address"] . '",';
 		$outp .= '"Schedule":"'   . $rs["schedule"] . '",';
 		$outp .= '"Phone":"'   . $rs["phone"] . '",';

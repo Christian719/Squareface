@@ -2,6 +2,8 @@ var map;
 var pos;
 var marker;
 var marker_place;
+var myarray;
+var id_place;
 var xmlhttp = new XMLHttpRequest();
 var url = "places_json.php";
 var customIcons = {   
@@ -86,6 +88,7 @@ function myFunction(response) {
 	
     var i;
     var out = "<div>";
+	myarray = new Array(arr.length);
 
     for(i = 0; i < arr.length; i++) {
 		//borramos el contenido del div en caso que contenga informacion
@@ -95,6 +98,10 @@ function myFunction(response) {
 		point = new google.maps.LatLng(
 		parseFloat(arr[i].Latitude),
 		parseFloat(arr[i].Longitude));
+				
+		//creamos un array para guardar las coordenadas de los lugares y el id
+		id_place = arr[i].Id;
+		myarray[i] = point;
 		
 		//obtenemos el icono del lugar
 		var category_id = arr[i].Category;
@@ -108,16 +115,41 @@ function myFunction(response) {
 			title: arr[i].Name
 		});	
 		
+		//hacemos los calcuilos para el rating
+		var star_1 = "<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+		var star_2 = "<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+		var star_3 = "<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+		var star_4 = "<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+		var star_5 = "<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+		var rating = arr[i].Rating;
+		for (var cont_rat = 0; cont_rat<rating; cont_rat ++){
+			if(cont_rat==0){
+				star_1="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+			}
+			if(cont_rat==1){
+				star_2="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+			}
+			if(cont_rat==2){
+				star_3="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+			}
+			if(cont_rat==3){
+				star_4="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+			}
+			if(cont_rat==4){
+				star_5="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+			}			
+		}
+		
 		//llenamos el div		
 		out += "</br><div class='place_conten'>"
 		+ "<h4 class='place_title'>" + arr[i].Name + "</h4> </br>"
-		+ "<img class='place_image' src=" + arr[i].Image_place + "> </br>"
-		+ "<h5 class='place_raiting'><span class='glyphicon glyphicon-star' aria-hidden='true'></span><span class='glyphicon glyphicon-star' aria-hidden='true'></span><span class='glyphicon glyphicon-star' aria-hidden='true'></span><span class='glyphicon glyphicon-star' aria-hidden='true'></span><span class='glyphicon glyphicon-star' aria-hidden='true'></span></h5> </br>"
+		+ "<img class='place_image' src=" + arr[i].Image_place + "> </br>"		
+		+ "<h5 class='place_raiting'>" + star_1+star_2+star_3+star_4+star_5 + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Address + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Schedule + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Phone + "</h5> </br>"
 		+ "<a class='btn btn-link place_more ajax_place' href='place.php'>More Information</a> </br>"
-		+ "<a class='btn btn-primary place_here' role='button' href='#' onClick='calcRoute()'>Take me here</a>"
+		+ "<a class='btn btn-primary place_here' role='button' href='#' onClick='calcRoute("+id_place+")'>Take me here</a>"
 		+ "</br></div>"
 		
 		//agregamos la informacion al marcador	
@@ -135,10 +167,12 @@ function bindInfoWindow(marker_place, map, infoWindow, out) {
 }
 
 //creamos la funcion de como llegar a un lugar
-function calcRoute() {		
+function calcRoute(id_place) {
+  var cont=id_place-1;
+  var desti = myarray[cont];
   var request = {
       origin:pos,
-      destination:point,
+      destination:desti,
       travelMode: google.maps.TravelMode.DRIVING
   };
   directionsService.route(request, function(response, status) {

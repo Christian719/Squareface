@@ -37,6 +37,7 @@
 		else {
 			$filename = '../photos/user/default.png';
 		}
+		$conex->close();
 		echo $filename;
 	}	
 ?>

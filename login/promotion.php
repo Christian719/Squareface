@@ -5,69 +5,36 @@
 	//session start
 	session_start();
 
-	//shows the categories in the combo box
-	$category = "SELECT * FROM category";
-	$catResult = $conex->query($category);
-	if ($catResult->num_rows > 0)
-	{
-		$combo="";
-		while ($row = $catResult->fetch_array(MYSQLI_ASSOC)) {
-		$combo .=" <option value='".$row['id']."'>".$row['name']."</option>";
-		}
-	}
-	else{
-		echo "no hay resultados";
-	}
+	$promotion = "SELECT * FROM promotion, place, image";
+	$imag = "SELECT * FROM image WHERE type = 'place'";
 								
-	//select image
-	$image = "SELECT * FROM promotion";
-	$imag_promo = $conex->query($image);
-	
-		$photo="";
-		while ($imag_row = $imag_promo->fetch_array(MYSQLI_ASSOC)) {
-			//$type = $imag_row ['name'];
-			$id_promo = $imag_row['id'];
-			$img_place = $imag_row['image'];
-			$select_image = "SELECT * FROM image WHERE papa_id = '$id_promo'";
-			$result_image = $conex->query($select_image);
-			$row_select_image = $result_image->fetch_assoc();
-			$ext = $row_select_image['img_type'];
-			$filename = "../photos/promotion/$img_place$ext";
-			$photo .="<div class='item' id='promo-images><img src='$filename'></div>";
-			if (file_exists($filename)){
-				$filename = $filename;
-			}
-			else {
-				$filename = "../photos/promotion/default.png";
-			}
-		}
-	
-	
-	
+	$imagResult = $conex->query($imag);
+	$showImage = $imagResult->fetch_assoc();
+
+	$result = $conex->query($promotion);
+	$promo_result = $result->fetch_assoc();
 
 	?>
-		<script>//Slider
-			 $(document).ready(function() {
- 			 var owl = $("#owl-demo");
- 			 owl.owlCarousel({
-     			itemsCustom : [
-        			[0  , 1],
-        			[450, 1],
-        			[600, 1],
-        			[700, 1],
-        			[1000, 1],
-        			[1200, 1],
-        			[1400, 1],
-        			[1600, 1]
-      			],
-      				navigation : true
- 
-  				});
-  				});
- 
+		<script>
+			$( document ).ready(function( $ ) {
+				$( '#example3' ).sliderPro({
+					width: 960,
+					height: 500,
+					fade: true,
+					arrows: true,
+					buttons: false,
+					fullScreen: true,
+					shuffle: false,
+					smallSize: 500,
+					mediumSize: 1000,
+					largeSize: 3000,
+					thumbnailArrows: true,
+					autoplay: false
+				});
+			});
 
 
-  		    $(function() {//Calendar date picker
+  		    $(function() {
 				$( "#datepicker" ).datepicker({ // for the datepicker	  	
 			 		showOn: "button",
 			 		buttonImage: "../images/calendar.png",
@@ -82,43 +49,98 @@
 				  	  		}
 						});  
 			  		});
-						</script>  
+			</script>  
 									  
 					<div class="container">
 						<div class="col-md-12">
 							<div class="col-md-1"></div>
 								<div class="col-md-10" id="promotion_container">
 									<h4 class="promotion_title">Promotions</h4>
-										<div id="owl-demo" class="owl-carousel owl-theme">
-										
-													<!-- <div class="item" id="promo-images"><img src="<?php echo $filename; ?>"></h1></div>-->
-													<?php echo $photo; ?>
 
-													 
+										<div id="example3" class="slider-pro">
+											<div class="sp-slides">
+												<div class="sp-slide">
+				
+												<?php
+													
+												while ($array=mysqli_fetch_array($result, MYSQLI_ASSOC)){
+												$id = $showImage ['id'];
+												$ext = $showImage ['img_type'];
+												$filename = "../photos/place/$id.$ext";
+												?>	
+													<!--<div class="item"><h1><img class="urvenue_image" src="../images/uv.png"></h1></div>
+													<a class="item link"><img class="promo-images" src="<?php echo $filename;?>"> </a>-->
+										<img class="sp-image" src="<?php echo $filename?>">
+													
+										<p class="sp-layer sp-white sp-padding"
+										data-horizontal="50" data-vertical="50"
+										data-show-transition="left" data-show-delay="400">
+										<?php echo $promo_result['name']; 
+										echo"</br>";
+										echo $array['name']. "-" .$array['promotion'];
+										echo"</br>";
+										echo $array['name'];
+										echo "</br>";
+										echo $array['schedule']; ?>
+										</p>
 
+										<p class="sp-layer sp-black sp-padding"
+										data-horizontal="180" data-vertical="50"
+										data-show-transition="left" data-show-delay="600">
+										<?php echo $array['category_id'];?>
+										</p>
 
+										 <p class="sp-layer sp-white sp-padding"
+										 data-horizontal="315" data-vertical="50"
+										 data-show-transition="left" data-show-delay="800">
+										 <?php echo $array['schedule'];?>
+										 </p>
 
-													 </div>
-										
-
-										
-
-										
-
-										<div class="date-picker">
-											<p style="color: white;">Looking for another day?: </p>	
-											<input name="date" type="text" id="datepicker" class="form-control">
+										 <p class="sp-layer sp-black sp-padding"
+										 data-horizontal="515" data-vertical="50"
+										 data-show-transition="left" data-show-delay="1000">
+										 <?php echo $array['promotion'];?>
+										 </p>
+											<?php
+												}
+											?>
 										</div>
-										<div class="combo-box">
-											<p style="color: white;">Looking for a different category?: </p>
-			 							<select name="category" class="form-control">
-			 								<?php echo $combo; ?>
-			 							</select>
+
+										<div class="sp-slides">
+										<div class="sp-slide">
+										<img class="sp-image" src="../photos/place/89.jpeg">
+										<p class="sp-layer sp-white sp-padding"
+										data-horizontal="50" data-vertical="50"
+										data-show-transition="left" data-show-delay="400">
+										<?php echo $promo_result['name']; ?>
+										</p>
+
+										<p class="sp-layer sp-black sp-padding"
+										data-horizontal="180" data-vertical="50"
+										data-show-transition="left" data-show-delay="600">
+										<?php echo $promo_result['category_id'];?>
+										</p>
+
+										 <p class="sp-layer sp-white sp-padding"
+										 data-horizontal="315" data-vertical="50"
+										 data-show-transition="left" data-show-delay="800">
+										  <?php echo $promo_result['schedule'];?>
+										 </p>
+
+										 <p class="sp-layer sp-black sp-padding"
+										 data-horizontal="515" data-vertical="50"
+										 data-show-transition="left" data-show-delay="1000">
+										 <?php echo $promo_result['promotion'];?>
+										 </p>
+												</div>
+												</div>
+			 
 										 </div>
 										 <div class="col-md-1">
-
 										 </div>
-
 										 </div>
 									
-										
+										<div class="date-picker">
+											Looking for another day?: 
+											<input style="color:black;" name="date" type="text" id="datepicker">
+										</div>

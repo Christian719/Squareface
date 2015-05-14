@@ -18,6 +18,10 @@
 }
 
 /*options friends-------------------------------------------*/
+.conten_friend_info{
+	height: 120px;
+}
+
 .image_friends{
 	width:84px;
 	height:84px;
@@ -25,8 +29,6 @@
 }
 
 .name_friends{
-	position:absolute;
-	margin-top: 65px;
     font-weight: bold;
 }
 
@@ -53,7 +55,10 @@
 .place_raiting{
 	text-align: center;
     margin-bottom: 20px;
-    color: goldenrod;
+}
+
+.place_rating_color{
+	color: goldenrod;
 }
 
 .place_info{
