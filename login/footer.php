@@ -14,6 +14,7 @@
   <script src="../js/jquery.magnific-popup.js"></script>
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyChEZKZvF-cZPsd-9DXB4jHvxXg1NoV9bo&sensor=true"></script>
   <script src="../js/location.js"></script>
+  <script src="../js/owl.carousel.js"></script>
   
   <script> 
 	$(document).ready(function(){	
@@ -59,8 +60,8 @@
 		tags.add(Validate.Presence);
 		
 		var tags_mobile = new LiveValidation('tags_mobile');
-		tags_mobile.add(Validate.Presence);
-	   
+		tags_mobile.add(Validate.Presence);		
+		
 	});
 	
 	//panel notifications--------------------------
