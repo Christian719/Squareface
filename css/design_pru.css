@@ -76,3 +76,59 @@
 	width: 70%;
 	margin-left: 15%;
 }
+
+/*promotions--------------------promotions--------------------------*/
+#owl-demo .item{
+    color: #FFF;    
+    text-align: center;
+	height:400px;
+}
+
+.promotion_botons{
+	margin-top: -10px;
+}
+
+.promotion_title_cat_place{
+	text-align: left;
+}
+
+.promotion_title_name_place{
+	text-transform:uppercase;
+}
+
+.promotion_place_raiting{
+	margin-top: -20px;
+}
+
+.promotion_info_place, .promotion_info_promo{
+	margin-top: 60px;
+}
+
+.promotion_content_place{
+	margin-top: -15px;
+	text-align: left;
+}
+
+.promotion_content_promo{
+	margin-top: -15px;
+	text-align: left;
+}
+
+.promotion_content_tags{
+	margin-top: -15px;
+	text-align: left;
+}
+
+.promotion_image{
+	border-radius: 5px;
+    margin-top: -15px;
+    width: 400px;
+    height: 350px;
+}
+
+.promotion_line{
+	border-bottom-style: ridge;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
