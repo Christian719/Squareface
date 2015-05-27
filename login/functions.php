@@ -1,10 +1,8 @@
 <?php
 	function connection(){
-		//$host = "localhost";
-		$host = "127.0.0.1";
+		$host = "localhost";
 		$user = "root";
-		//$password = "Drogas";
-		$password = "root123";
+		$password = "Drogas";
 		$db = "squareface";
        
         $conex = new mysqli($host,$user,$password,$db);

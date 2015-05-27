@@ -73,7 +73,7 @@ function handleNoGeolocation(errorFlag) {
   map.setCenter(options.position);
 }
 
-//code that generates the places in the map
+//codigo para agregar los lugares al mapa
 xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         myFunction(xmlhttp.responseText);
@@ -91,23 +91,23 @@ function myFunction(response) {
 	myarray = new Array(arr.length);
 
     for(i = 0; i < arr.length; i++) {
-		//The content in the div will be deleted if there is any information on it
+		//borramos el contenido del div en caso que contenga informacion
 		out="";
 		
-		//Get the coordenates
+		//obtenemos las coordenadas
 		point = new google.maps.LatLng(
 		parseFloat(arr[i].Latitude),
 		parseFloat(arr[i].Longitude));
 				
-		//Create an array to save the place coordenates and their id
+		//creamos un array para guardar las coordenadas de los lugares y el id
 		id_place = arr[i].Id;
 		myarray[i] = point;
 		
-		//Get the place icon
+		//obtenemos el icono del lugar
 		var category_id = arr[i].Category;
 		var icon = customIcons[category_id] || {};
 		
-		//Create the place markers
+		//creamos los marcadores de los lugares
 		marker_place = new google.maps.Marker({
 			map: map,
 			position: point,
@@ -115,7 +115,7 @@ function myFunction(response) {
 			title: arr[i].Name
 		});	
 		
-		//Calculate the rating
+		//hacemos los calcuilos para el rating
 		var star_1 = "<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
 		var star_2 = "<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
 		var star_3 = "<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
@@ -140,7 +140,7 @@ function myFunction(response) {
 			}			
 		}
 		
-		//Fill the div		
+		//llenamos el div		
 		out += "</br><div class='place_conten'>"
 		+ "<h4 class='place_title'>" + arr[i].Name + "</h4> </br>"
 		+ "<img class='place_image' src=" + arr[i].Image_place + "> </br>"		
@@ -152,13 +152,13 @@ function myFunction(response) {
 		+ "<a class='btn btn-primary place_here' role='button' href='#' onClick='calcRoute("+id_place+")'>Take me here</a>"
 		+ "</br></div>"
 		
-		//Add the information to the marker	
+		//agregamos la informacion al marcador	
 		bindInfoWindow(marker_place, map, infoWindow, out);
     }
     out += "</div>"
 }
 
-//Add the function to fill the marker info
+//agregamos la funcion para agregar informacion al marcador
 function bindInfoWindow(marker_place, map, infoWindow, out) {
 	google.maps.event.addListener(marker_place, 'click', function() {
 	  infoWindow.setContent(out);
@@ -166,7 +166,7 @@ function bindInfoWindow(marker_place, map, infoWindow, out) {
 	});
 }
 
-//create the function "calcRoute"
+//creamos la funcion de como llegar a un lugar
 function calcRoute(id_place) {
   var cont=id_place-1;
   var desti = myarray[cont];
@@ -177,7 +177,7 @@ function calcRoute(id_place) {
   };
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(response);	  
+        directionsDisplay.setDirections(response);	
     }
   });
 }

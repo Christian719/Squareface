@@ -51,7 +51,7 @@
           <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?><span class="caret"></span></a>
           <ul class="dropdown-menu " role="menu">
             <li><a href="profile.php" class="ajax-popup-link">Profile</a></li>
-            <li><a href="#">Administration</a></li>
+            <li><a href="../admin/index.php">Administration</a></li>
             <li class="divider"></li>
             <li><a href="logout.php" id="logout">Log out</a></li>
           </ul>
@@ -100,7 +100,7 @@
     <a href="#" class="dropdown-toggle options_user_mobile" data-toggle="dropdown" id="dropdownMenu2" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
 	  <li><a href="complete_user.php" class="ajax-popup-link">Profile</a></li>
-	  <li><a href="#">Administration</a></li>
+	  <li><a href="../admin/index.php">Administration</a></li>
 	  <li class="divider"></li>
 	  <li><a href="logout.php" id="logout">Log out</a></li>
     </ul>

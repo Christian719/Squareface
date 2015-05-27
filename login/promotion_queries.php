@@ -114,87 +114,86 @@
 			$filename = $filename;
 		} 
 		else {
-			$filename = "../photos/$image_type/default.png";
+			$filename = "../photos/$image_type/default.jpg";
 		}			  	  		
 	?>		
 	<!--pages of carrusel-->
-	<div class="item">
-	<div class="col-md-3 promotion_info_place">
-	<h4 class="promotion_title_cat_place">Place information</h4> </br>
-	<p class="promotion_content_place">				  	
-	  <?php echo $place_address;?></br>
-	  <?php echo $place_city;?></br>
-	  <?php echo $place_phone;?></br>
-	  <?php echo $place_schedule;?></br>
-	</p>
+	<div class="item popup_scroll_y">
+		<div class="col-md-3 promotion_info_place">
+			<h4 class="promotion_title_cat_place_info">Place information</h4> </br>
+			<p class="promotion_content_place">				  	
+			  <?php echo $place_address;?></br>
+			  <?php echo $place_city;?></br>
+			  <?php echo $place_phone;?></br>
+			  <?php echo $place_schedule;?></br>
+			</p>
+		</div>
+		<div class="col-md-6 promotion_info_placeandpromo">
+			<a href="#" onClick="calcRoute(<?php echo $place_id;?>)"><h4 class="promotion_title_name_place" title="Take me here"><?php echo $category_name." ".$place_name;?></h4></a></br>
+			<h5 class='promotion_place_raiting'>
+			  <?php
+				$cont = 0;
+				for($cont; $cont<$place_rating; $cont ++){
+					if($cont==0){
+						echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+					}
+					if($cont==1){
+						echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+					}
+					if($cont==2){
+						echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+					}
+					if($cont==3){
+						echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+					}
+					if($cont==4){
+						echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+					}
+				}
+				for($cont; $cont<5; $cont ++){
+					echo"<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+				}						
+			  ?>
+			</h5> </br>
+			<img class="promotion_image" src="<?php echo $filename; ?>" title="<?php echo $promotion;?>">	
+		</div>
+		<div class="col-md-3 promotion_info_promo">  
+			<h4 class="promotion_title_cat_place_promo">Promotion</h4></br>
+			<p class="promotion_content_promo">	
+			  <?php echo $day_name." ".$d.", ".$m.".";?></br>			  	  
+			  <?php echo $promotion;?></br>
+			</p>
+			<h6 class="promotion_line"></h6></br>
+			<h4 class="promotion_title_cat_place_tags">Tags</h4></br>
+			<p class="promotion_content_tags">				  	  
+			  <?php
+				  //tags
+				  $place_tags;	
+				  $tag_list = explode(",", $place_tags);
+				  $tag_ids = array();					  
+				  foreach($tag_list as $tag){
+					  $tag_ids[] = trim($tag, "|");
+				  }		  					  
+				  $select_tags = "SELECT name FROM tags WHERE id in (".implode(",", $tag_ids).") or category_id = 0 limit 10";
+				  $result_tags = $conex->query($select_tags);	
+			   
+				  $cont = 0;
+				  while ($row_tags = $result_tags->fetch_array(MYSQLI_ASSOC)){
+					$cont ++;
+					if ($cont == 10){
+						$tags_name = $row_tags['name'];
+						echo $tags_name.".";
+					}
+					else{
+						$tags_name = $row_tags['name'];
+						echo $tags_name.", ";
+					}						    
+				  }
+			  ?>	
+			</p></br>
+		</div>  
 	</div>
-	<div class="col-md-6">
-	<a href="#" onClick="calcRoute(<?php echo $place_id;?>)"><h4 class="promotion_title_name_place" title="Take me here"><?php echo $category_name." ".$place_name;?></h4></a></br>
-	<h5 class='promotion_place_raiting'>
-	  <?php
-		$cont = 0;
-		for($cont; $cont<$place_rating; $cont ++){
-			if($cont==0){
-				echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
-			}
-			if($cont==1){
-				echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
-			}
-			if($cont==2){
-				echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
-			}
-			if($cont==3){
-				echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
-			}
-			if($cont==4){
-				echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
-			}
-		}
-		for($cont; $cont<5; $cont ++){
-			echo"<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
-		}						
-	  ?>
-	</h5> </br>
-	<img class="promotion_image" src="<?php echo $filename; ?>" title="<?php echo $promotion;?>">	
-	</div>
-	<div class="col-md-3 promotion_info_promo">  
-	<h4 class="promotion_title_cat_place">Promotion</h4></br>
-	<p class="promotion_content_promo">	
-	  <samp class="promotion_day"><?php echo $day_name." ".$d.", ".$m.".";?></samp></br>			  	  
-	  <?php echo $promotion;?></br>
-	</p>
-	<h6 class="promotion_line"></h6>
-	</br>
-	<h4 class="promotion_title_cat_place">Tags</h4></br>
-	<p class="promotion_content_tags">				  	  
-	  <?php
-		  //tags
-		  $place_tags;	
-		  $tag_list = explode(",", $place_tags);
-		  $tag_ids = array();					  
-		  foreach($tag_list as $tag){
-			  $tag_ids[] = trim($tag, "|");
-		  }		  					  
-		  $select_tags = "SELECT name FROM tags WHERE id in (".implode(",", $tag_ids).") or category_id = 0 limit 10";
-		  $result_tags = $conex->query($select_tags);	
-	   
-		  $cont = 0;
-		  while ($row_tags = $result_tags->fetch_array(MYSQLI_ASSOC)){
-			$cont ++;
-			if ($cont == 10){
-				$tags_name = $row_tags['name'];
-				echo $tags_name.".";
-			}
-			else{
-				$tags_name = $row_tags['name'];
-				echo $tags_name.", ";
-			}						    
-		  }
-	  ?>	
-	</p></br>
-	</div>  
-	</div>
-	<?php 
+<?php 
 	}
 	$conex->close();
 ?>
@@ -214,9 +213,15 @@
 		[1600, 1]
 	  ],
 	  navigation : true	 
-	});			
+	});	
+	
+	//close popup
+	$(document).ready(function(){	   
+	   $(".promotion_title_name_place").click(function(evento){
+		  evento.preventDefault();		  
+		  $('.mfp-close').click();
+	   });   	   
+	});
+			
 </script>
-
-
-
 
