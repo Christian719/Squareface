@@ -13,8 +13,6 @@ function letter(e){
     te = String.fromCharCode(tecla);
     return patron.test(te);
 }
-<<<<<<< HEAD
-=======
 
  
 
@@ -90,4 +88,3 @@ function comprueba_extension(formulario, archivo) {
 
 
 
->>>>>>> origin/master

@@ -29,6 +29,7 @@
 	<link href="../css/jquery-ui.css" rel="stylesheet">
 	<link href="../css/owl.carousel.css" rel="stylesheet">
 	<link href="../css/owl.theme.css" rel="stylesheet">
+	<link href="../css/perfect-scrollbar.css" rel="stylesheet">
 	<link href="../css/design2.css" rel="stylesheet">
 	<link href="../css/design3.css" rel="stylesheet">
 	<link href="../css/design_pru.css" rel="stylesheet">

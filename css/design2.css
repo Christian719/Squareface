@@ -240,19 +240,19 @@ html,body{
 
 /*promotions--------------------promotions-----------------------promotions-------------------*/
 #promotion_container {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
 	height:600px;
 }
 
 .promotion_title{
-	color:#EEEEEE;
-	text-align:center;
+	color: #6AB0EC;
+	text-align: center;
 	text-transform: uppercase;
-	border-bottom-style:outset;
+	border-bottom-style: outset;
 	padding-bottom: 10px;
-    padding-top: 5px;
-    
+	padding-top: 5px;
+	font-size: 20px;
 }
 
 #owl-demo .item{
@@ -263,17 +263,18 @@ html,body{
 
 .promotion_botons{
 	margin-top: -10px;
-}
-
-.cat_places{
+    text-transform: capitalize;
 }
 
 .promotion_title_cat_place_info, .promotion_title_cat_place_tags, .promotion_title_cat_place_promo{
 	text-align: left;
+    color: rgb(51, 122, 183);
 }
 
 .promotion_title_name_place{
 	text-transform:uppercase;
+	color: rgb(51, 122, 183);
+    font-weight: bold;
 }
 
 .promotion_place_raiting{
@@ -287,33 +288,17 @@ html,body{
 .promotion_info_placeandpromo{
 }
 
-.promotion_content_place{
+.promotion_content_place, .promotion_content_promo, .promotion_content_tags{
 	margin-top: -15px;
 	text-align: left;
-}
-
-.promotion_content_promo{
-	margin-top: -15px;
-	text-align: left;
-}
-
-.promotion_content_tags{
-	margin-top: -15px;
-	text-align: left;
+	color: rgb(232, 240, 247);
 }
 
 .promotion_image{
 	border-radius: 5px;
     margin-top: -15px;
-	width:98%;
-	max-width: 330px;
+	width:328px;
     height: inherit;
-}
-
-.promotion_line{
-	border-bottom-style: ridge;
-    margin-top: 30px;
-    margin-bottom: 0px;
 }
 
 /*promos carrucel-----------------------------------------*/
@@ -344,9 +329,10 @@ html,body{
 
 /*promos calendar-----------------------------------*/
 .promotion_calendar{
-	margin-left: 34%;
+	margin-left: 33%;
     margin-top: 35px;
-    color: #fff;
+    color: #438ECF;
+    text-transform: uppercase;
 }
 
 .promo_calendar{
@@ -446,7 +432,7 @@ td .ui-state-default {
 @media (min-width: 992px) and (max-width: 1199px) { 
 .promotion_calendar{
     margin-top: 25px;
-    margin-left: 31%;
+    margin-left: 29%;
 }
 
 }
@@ -503,12 +489,12 @@ td .ui-state-default {
     height: inherit;
 }
 
-.promotion_line, .promotion_title_cat_place_tags, .promotion_content_tags{
+.promotion_title_cat_place_tags, .promotion_content_tags{
 	display:none;
 }
 
 .promotion_calendar {
-	margin-left: 28.6%;
+	margin-left: 27%;
 	margin-top:inherit;
 }
 
@@ -595,11 +581,11 @@ td .ui-state-default {
 }
 
 .promotion_image{
-	width: 100%;
+	width: 328px;
     height: inherit;
 }
 
-.promotion_line, .promotion_title_cat_place_tags, .promotion_content_tags{
+.promotion_title_cat_place_tags, .promotion_content_tags{
 	display:none;
 }
 
@@ -609,16 +595,22 @@ td .ui-state-default {
 	margin-top:40px;
 }
 
-.popup_scroll_y{
-	overflow-y:scroll;
-	min-height:530px;
+.owl-next{
+	position:fixed;
+    right: 12%;
 }
 
-.owl-next{
-    right: 51px;
-}
 .owl-prev{
-    left: 34px;
+	position:fixed;
+    left: 12%;
+}
+
+.scroll_y{
+	height: 515px; 
+}
+
+.item{
+	min-height:665px;
 }
 
 }
@@ -689,7 +681,7 @@ td .ui-state-default {
     height: inherit;
 }
 
-.promotion_line, .promotion_title_cat_place_tags, .promotion_content_tags{
+.promotion_title_cat_place_tags, .promotion_content_tags{
 	display:none;
 }
 
@@ -699,16 +691,21 @@ td .ui-state-default {
 	margin-top:40px;
 }
 
-.popup_scroll_y{
-	overflow-y:scroll;
-	min-height:530px;
-}
-
 .owl-next{
-    right: 27px;
+	position:fixed;
+    right: 60px;
 }
 .owl-prev{
-    left: 10px;
+	position:fixed;
+    left: 60px;
+}
+
+.scroll_y{
+	height: 515px; 
+}
+
+.item{
+	min-height:630px;
 }
 }
 
@@ -881,7 +878,7 @@ td .ui-state-default {
     height: inherit;
 }
 
-.promotion_line, .promotion_title_cat_place_tags, .promotion_content_tags{
+.promotion_title_cat_place_tags, .promotion_content_tags{
 	display:none;
 }
 
@@ -891,16 +888,21 @@ td .ui-state-default {
 	margin-top:40px;
 }
 
-.popup_scroll_y{
-	overflow-y:scroll;
-	min-height:580px;
-}
-
 .owl-next{
-    right: 27px;
+	position:fixed;
+    right: 22px;
 }
 .owl-prev{
-    left: 10px;
+	position:fixed;
+    left: 22px;
+}
+
+.scroll_y{
+	height: 565px; 
+}
+
+.item{
+	min-height:600px;
 }
 
 }

@@ -5,7 +5,7 @@
 	$conex = connection();
 	
 ?>
-	<div id="owl-demo" class="owl-carousel owl-theme">	
+	<div id="owl-demo" class="owl-carousel owl-theme scroll_y">	
 <?php	
 	//check if date is of today of caendar
 	$caldate = $_GET["caldate"];
@@ -118,14 +118,14 @@
 		}			  	  		
 	?>		
 	<!--pages of carrusel-->
-	<div class="item popup_scroll_y">
+	<div class="item">
 		<div class="col-md-3 promotion_info_place">
 			<h4 class="promotion_title_cat_place_info">Place information</h4> </br>
 			<p class="promotion_content_place">				  	
-			  <?php echo $place_address;?></br>
-			  <?php echo $place_city;?></br>
-			  <?php echo $place_phone;?></br>
-			  <?php echo $place_schedule;?></br>
+			  <strong>Address: </strong><?php echo $place_address;?></br>
+			  <strong>City: </strong><?php echo $place_city;?></br>
+			  <strong>Phone: </strong><?php echo $place_phone;?></br>
+			  <strong>Shedule: </strong><?php echo $place_schedule;?></br>
 			</p>
 		</div>
 		<div class="col-md-6 promotion_info_placeandpromo">
@@ -160,10 +160,9 @@
 		<div class="col-md-3 promotion_info_promo">  
 			<h4 class="promotion_title_cat_place_promo">Promotion</h4></br>
 			<p class="promotion_content_promo">	
-			  <?php echo $day_name." ".$d.", ".$m.".";?></br>			  	  
-			  <?php echo $promotion;?></br>
-			</p>
-			<h6 class="promotion_line"></h6></br>
+			  <strong>Date: </strong><?php echo $day_name." ".$d.", ".$m.".";?></br>			  	  
+			  <strong>Promo: </strong><?php echo $promotion;?></br>
+			</p></br>
 			<h4 class="promotion_title_cat_place_tags">Tags</h4></br>
 			<p class="promotion_content_tags">				  	  
 			  <?php
@@ -190,7 +189,7 @@
 					}						    
 				  }
 			  ?>	
-			</p></br>
+			</p>
 		</div>  
 	</div>
 <?php 
@@ -217,11 +216,26 @@
 	
 	//close popup
 	$(document).ready(function(){	   
+	   /*close de magnific popup*/ 
 	   $(".promotion_title_name_place").click(function(evento){
 		  evento.preventDefault();		  
 		  $('.mfp-close').click();
-	   });   	   
+	   });  
+	   
+	   /*scrollbar*/
+	   $('.scroll_y').perfectScrollbar(); 	   	   
 	});
 			
 </script>
+
+
+
+
+
+
+
+
+
+
+
 

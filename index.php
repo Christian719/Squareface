@@ -25,15 +25,15 @@
 		$(document).ready(function(){
 		   $("#registration_form_ajax").hide();
 				
-		   $("#registered_user").click(function(events){
-			 events.preventDefault();		  
+		   $("#registered_user").click(function(evento){
+			 evento.preventDefault();		  
 			  $("#registration_form_ajax").show();
 			  $("#login_form_ajax").hide();
 			  $("#new_register_ajax").hide();
 		   });
 		   
-		   $("#cancel").click(function(events){
-			 events.preventDefault();		  
+		   $("#cancel").click(function(evento){
+			 evento.preventDefault();		  
 			  $("#registration_form_ajax").hide();
 			  $("#login_form_ajax").show();
 			  $("#new_register_ajax").show();
@@ -126,7 +126,7 @@
 							<button class="btn btn-primary login_button" type="submit">Sign in</button>
 						  </div>
 						</form>	
-						<!--form to register a new user---------------------->
+						<!--form to register a new user----------------------->
 						<form class="registration_form" method="post" name="registration_form" id="registration_form_ajax" action="insert_user.php">
 						  <div class="form-group">
 							<h3 class="register_title">Sign in</h3>

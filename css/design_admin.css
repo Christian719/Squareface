@@ -1,0 +1,68 @@
+html,body{
+	height:100%;
+	background: url(../images/fondo.png);
+}
+
+/*---------------------------------header-------------------desktop--------------------------*/
+.header_container{
+	position:fixed;
+	height:54px;
+	width:100%;
+	left:0%;
+	z-index:500;
+	border-radius: 0px;
+	border-bottom-color:lightsteelblue;;
+}
+
+.urvenue_image{
+	height:75px;
+	margin-top:-12px;
+	padding-left: 40px;
+}
+
+.user_image{
+	width:44px;
+	height:44px;
+	margin-top:4px;
+	margin-right:2px;
+	border-radius:5px;
+}
+
+.options_user{
+	margin-right:20px;
+}
+
+
+/*footer------------------------------------------------------------------------------------*/
+#footer{
+	position: absolute;
+	width: 100%;
+	left:0%;
+	padding:.3em;
+	top:755px;
+	height:59px;
+	background:#F8F8F8;	
+	border-radius: 0px;
+	border-top-style: solid;
+    border-top-width: thin;
+	border-top-color:lightsteelblue;
+}
+.text_footer{
+    text-align:center;
+	color:#333333;
+	font-weight:bold;	
+}
+
+/*home--------------------------------------------------------------------------*/
+.default_image_admin{
+	height:256px;
+	width:256px;
+	position:absolute;
+	top:250px;
+	left: 42%;
+}
+
+.container_table_user{
+	position: absolute;
+    top: 85px;
+}

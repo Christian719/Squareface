@@ -15,6 +15,7 @@
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyChEZKZvF-cZPsd-9DXB4jHvxXg1NoV9bo&sensor=true"></script>
   <script src="../js/location.js"></script>
   <script src="../js/owl.carousel.js"></script>
+  <script src="../js/perfect-scrollbar.jquery.js"></script>
   
   <script> 
 	$(document).ready(function(){	
