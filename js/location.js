@@ -150,10 +150,20 @@ function myFunction(response) {
 		+ "<h5 class='place_info'>" + arr[i].Phone + "</h5> </br>"
 		+ "<a class='btn btn-link place_more ajax_place' href='place.php'>More Information</a> </br>"
 		+ "<a class='btn btn-primary place_here' role='button' href='#' onClick='calcRoute("+id_place+")'>Take me here</a>"
-		+ "</br></div>"
+		+ "</br></div>";
 		
 		//Add the information to the marker	
 		bindInfoWindow(marker_place, map, infoWindow, out);
+		
+		//information of places
+		google.maps.event.addListener(marker_place,'click',function() {
+	  		$('.ajax_place').magnificPopup({
+			  type: 'ajax',
+			  closeOnBgClick:false,
+			  closeOnContentClick:false,
+			  closeBtnInside:false
+			});
+		});
     }
     out += "</div>"
 }
@@ -183,12 +193,6 @@ function calcRoute(id_place) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
-
-
 
 
 

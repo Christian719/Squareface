@@ -41,13 +41,14 @@
 		});
 		
 		//information of places
-		$('.ajax_place').magnificPopup({
+		/*$('.ajax_place').magnificPopup({
 		  type: 'ajax',
 		  closeOnBgClick:false,
 		  closeOnContentClick:false,
 		  closeBtnInside:false
-		});
-		
+		});*/
+
+		//continue register user		
 		$('.continue_user').magnificPopup({
 		  type: 'ajax',
 		  closeOnBgClick:false,
