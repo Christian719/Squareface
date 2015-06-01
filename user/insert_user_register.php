@@ -1,6 +1,6 @@
 <?php
 	//connection
-	include("login/functions.php");
+	include("../include/functions.php");
 	$conex = connection();
 			
 	$email= $_POST['email_new'];
@@ -12,24 +12,13 @@
 	//verify that the email exists
 	$newemail="SELECT email from user WHERE email='$email'";
 	$result = $conex->query($newemail);
-	if(mysqli_num_rows($result)>0){
-		$sname = serialize($name);
-		$slast_name = serialize($last_name);
-		$snick = serialize($nickname);
-		$semail = serialize($email);
-	    file_put_contents('st_name', $sname);
-		file_put_contents('st_last', $slast_name);
-		file_put_contents('st_nick', $snick);
-		file_put_contents('st_email', $semail);
-		
-		$serr = serialize(1);
-		file_put_contents('st_err', $serr);
-		
+	if(mysqli_num_rows($result)>0){		
 		$conex->close();
 		echo '<script language = javascript>
 			alert("This email is already in use... Please check")
-			window.location.href="index.php";
+			window.location.href="../";
 		</script>';
+		//header("Location: ../");
 	}
 	else{	
 		//insert
@@ -69,6 +58,6 @@
 		$result= $conex->query($update);
 		
 		$conex->close();
-		header("Location: login/home.php");
+		header("Location: ../login/home.php");
 	}	
 ?>

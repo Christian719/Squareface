@@ -1,7 +1,7 @@
 <h4>GALLERIES</h4>
 <?php
 	//connection
-	include("../login/functions.php");
+	include("../include/functions.php");
 	$conex = connection();
 	
 	//query
@@ -17,5 +17,5 @@
 		 echo "0 results";
 	}
 	
-	
+	$conex->close();
 ?>

@@ -1,6 +1,6 @@
 <?php  		
 	//con:nection
-	include("functions.php");
+	include("../include/functions.php");
 	$conex = connection();	
 	//session start
 	session_start();
@@ -32,7 +32,7 @@
 			<div id="test_cat_pro">			
 				<script>
 					var caldate = $("#datepicker").attr('caldate');
-					$("#test_cat_pro").load("promotion_queries.php?caldate="+caldate);		  	
+					$("#test_cat_pro").load("../places/promotion_queries.php?caldate="+caldate);		  	
 				</script>
 			</div>
 			<!--end carrucel-->	
@@ -65,7 +65,7 @@
 					month = $.datepicker.formatDate('MM', seldate);
 					//alert(n+", "+day+", "+month);					
 					caldate = n;
-					$("#test_cat_pro").load("promotion_queries.php?caldate="+caldate+"&day="+day+"&month="+month);
+					$("#test_cat_pro").load("../places/promotion_queries.php?caldate="+caldate+"&day="+day+"&month="+month);
 				}
 		  });		 		
 		});
@@ -73,7 +73,7 @@
 		//We call the carousel of promotions by category filter
 		$('.cat_places').click(function(){
 			var id_cat = $(this).attr('id_category');
-			$("#test_cat_pro").load("promotion_queries.php?id="+id_cat+"&caldate="+caldate+"&day="+day+"&month="+month);
+			$("#test_cat_pro").load("../places/promotion_queries.php?id="+id_cat+"&caldate="+caldate+"&day="+day+"&month="+month);
 		});	
 				
 	});

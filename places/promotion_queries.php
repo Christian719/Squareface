@@ -1,13 +1,12 @@
 <?php
 	//connection
 	error_reporting(5);
-	include("functions.php");
+	include("../include/functions.php");
 	$conex = connection();
-	
 ?>
 	<div id="owl-demo" class="owl-carousel owl-theme scroll_y">	
 <?php	
-	//check if date is of today of caendar
+	//check if date is of today of calendar
 	$caldate = $_GET["caldate"];
 	$d;
 	$m;	

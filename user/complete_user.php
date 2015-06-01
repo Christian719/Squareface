@@ -1,6 +1,6 @@
 <?php  		
 	//connection
-	include("functions.php");
+	include("../include/functions.php");
 	$conex = connection();
 	
 	//session start
@@ -19,7 +19,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6" id="complete_register_container">
 				<h4 class="complete_register_title">Complete your information</h4>
-				<form class="form-horizontal form_complete_register" role="form" method="post" name="update_user" action="update_user.php" enctype="multipart/form-data">
+				<form class="form-horizontal form_complete_register" role="form" method="post" name="update_user" action="../user/update_user.php" enctype="multipart/form-data">
 				<div class="col-md-4 first">
 					<div class="form-group">
 						<img class="image_complete_register" name="image_user" src="<?php user_avatar(); ?>">
@@ -73,7 +73,6 @@
 					</div>
 				</div>	
 					<button class="btn btn-lg btn-primary but_save" type="submit">Save</button>	
-					<!--<a class="btn btn-lg but_skip" role="button" href="home.php" >Skip</a>			-->
 					<button type="button" class="btn btn-lg but_skip" id="skip">Skip</button>		
 				</form>
 			</div>

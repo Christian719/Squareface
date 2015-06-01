@@ -5,7 +5,7 @@ var marker_place;
 var myarray;
 var id_place;
 var xmlhttp = new XMLHttpRequest();
-var url = "places_json.php";
+var url = "../places/places_json.php";
 var customIcons = {   
 	1:{icon: '../images/icons/bar.png'},
     2:{icon: '../images/icons/restaurant.png'},
@@ -148,14 +148,14 @@ function myFunction(response) {
 		+ "<h5 class='place_info'>" + arr[i].Address + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Schedule + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Phone + "</h5> </br>"
-		+ "<a class='btn btn-link place_more ajax_place' href='place.php'>More Information</a> </br>"
+		+ "<a class='btn btn-link place_more ajax_place' href='../places/place.php'>More Information</a> </br>"
 		+ "<a class='btn btn-primary place_here' role='button' href='#' onClick='calcRoute("+id_place+")'>Take me here</a>"
 		+ "</br></div>";
 		
 		//Add the information to the marker	
 		bindInfoWindow(marker_place, map, infoWindow, out);
 		
-		//information of places
+		//information of places button (more information)
 		google.maps.event.addListener(marker_place,'click',function() {
 	  		$('.ajax_place').magnificPopup({
 			  type: 'ajax',

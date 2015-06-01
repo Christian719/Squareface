@@ -1,18 +1,10 @@
 <?php
 	//connection
-	include("functions.php");
+	include("../include/functions.php");
 	$conex = connection();
 	
 	//session start
-	session_start();
-	
-	//Validate if you are actively involved in successfully
-	if (!$_SESSION){
-		echo '<script language = javascript>
-		alert("You must log in")
-		self.location = "../"
-		</script>';
-	}	
+	session_start();	
 	
 	$birthdate= $_POST['birthdate'];
 	$phone= $_POST['phone'];
@@ -23,7 +15,7 @@
 		$ext = explode("image/",$img_type);
 		$extension = end($ext);
 		
-		//actualizamos	
+		//update	
 		$update_user = "UPDATE user SET birthdate='$birthdate', phone='$phone', city='$city' WHERE id = '$_SESSION[id]'";
 		$result= $conex->query($update_user);
 		
@@ -37,22 +29,22 @@
 			$update_image = "UPDATE image SET img_type='$extension' WHERE papa_id = '$_SESSION[id]' and type = '$type'";
 			$result= $conex->query($update_image);
 			
-			$tipo = $ext[1];
-			$destino = "../photos/user/";
-			$nombre = $row_select_image['id'];
-			$ruta = "".$destino."".$nombre.".".$tipo.""; // CREAMOS LA RUTA
-			move_uploaded_file ( $_FILES [ 'new_image_user' ][ 'tmp_name' ], $ruta); // Subimos el archivo
-			//$resultado = "Enhorabuena el archivo ha sido subido con éxito";
+			$type_ext = $ext[1];
+			$destination = "../photos/user/";
+			$name = $row_select_image['id'];
+			$route = "".$destination."".$name.".".$type_ext.""; // add the route
+			move_uploaded_file ( $_FILES [ 'new_image_user' ][ 'tmp_name' ], $route); // Upload file
+			//$resultado = "Congratulations the file has been uploaded successfully";
 		
 			$conex->close();
-			header("Location: home.php");
+			header("Location: ../login/home.php");
 		}
 		
 		else{
 			$conex->close();
 			echo '<script language = javascript>
 					alert("Invalid image format, the image will not be saved")
-					self.location = "home.php"
+					self.location = "../login/home.php"
 				</script>';
 		}
 	} 
@@ -60,6 +52,6 @@
 		$update_user = "UPDATE user SET birthdate='$birthdate', phone='$phone', city='$city' WHERE id = '$_SESSION[id]'";
 		$result= $conex->query($update_user);
 		$conex->close();
-		header("Location: home.php");
+		header("Location: ../login/home.php");
 	}	
 ?>

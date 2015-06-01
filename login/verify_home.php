@@ -1,6 +1,6 @@
 <?php 
 	//connection to the database
-	include("functions.php");
+	include("../include/functions.php");
 	$conex = connection();
 	
 	//Session variables

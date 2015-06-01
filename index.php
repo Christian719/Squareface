@@ -1,9 +1,3 @@
-<?php
-	//connection to the database
-	error_reporting(5);
-	include("login/functions.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,34 +60,6 @@
 			password2.add( Validate.Confirmation, { match: 'password1_new' } );		
 		});
 	</script>
-<?php
-	$serr = file_get_contents('st_err');
-	$err = unserialize($serr);	
-	if($err==1){
-		$sname = file_get_contents('st_name');
-		$slat_name = file_get_contents('st_last');
-		$snickname = file_get_contents('st_nick');
-		$semail = file_get_contents('st_email');
-	    $name = unserialize($sname);		
-		$last_name = unserialize($slat_name);
-		$nickname = unserialize($snickname);		
-		$email = unserialize($semail);
-		?>
-		<script language = javascript>
-			$(document).ready(function(){
-				$("#registration_form_ajax").show();
-				$("#login_form_ajax").hide();
-				$("#new_register_ajax").hide();
-				
-				$("#name").val('<?php echo$name;?>');
-				$("#last_name").val('<?php echo$last_name;?>');
-				$("#nickname").val('<?php echo$nickname;?>');
-				$("#email_new").val('<?php echo$email;?>');	
-			});
-		</script>';	
-		<?php		
-	}
-?>	
 </head>
 
 <body>	
@@ -127,7 +93,7 @@
 						  </div>
 						</form>	
 						<!--form to register a new user----------------------->
-						<form class="registration_form" method="post" name="registration_form" id="registration_form_ajax" action="insert_user.php">
+						<form class="registration_form" method="post" name="registration_form" id="registration_form_ajax" action="user/insert_user_register.php">
 						  <div class="form-group">
 							<h3 class="register_title">Sign in</h3>
 						  </div>
@@ -165,6 +131,6 @@
 			</div>
 		</div>
 	</div>
-	
+		
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php 
-	include("functions.php");
+	include("../include/functions.php");
 	$conex = connection();
 	
 	session_start();	

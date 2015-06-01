@@ -1,6 +1,6 @@
 <?php  		
 	//connection
-	include("functions.php");
+	include("../include/functions.php");
 	
 	//session start
 	session_start();

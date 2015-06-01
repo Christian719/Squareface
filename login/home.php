@@ -1,5 +1,5 @@
 <?php  		
-	include("header.php");
+	include("../include/header.php");
 	$conex = connection();
 ?>
 
@@ -75,12 +75,12 @@
 <?php  	
 	if($_SESSION['user_new'] == 1){
 		?>
-		<a href="complete_user.php" class="continue_user"></a>
+		<a href="../user/complete_user.php" class="continue_user"></a>
 		<?php
 		$_SESSION['user_new'] = 2;
 	}
 
-	include("footer.php");
+	include("../include/footer.php");
 ?>
 
 

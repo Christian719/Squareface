@@ -1,6 +1,6 @@
 <?php
 	//connection to the database
-	include("../login/functions.php");
+	include("../include/functions.php");
 	
 	//session start
 	session_start();
@@ -21,7 +21,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Squareface</title>
-	<link href="../images/icon.png" rel="Shortcut Icon" type="image/x-icon">
+	<link href="../images/icon.jpg" rel="Shortcut Icon" type="image/x-icon">
 	
 	<!--css-->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -46,10 +46,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?><span class="caret"></span></a>
           <ul class="dropdown-menu " role="menu">
-            <li><a href="profile.php" class="ajax-popup-link">Profile</a></li>
             <li><a href="../login/home.php">Home</a></li>
             <li class="divider"></li>
-            <li><a href="logout.php" id="logout">Log out</a></li>
+            <li><a href="../login/logout.php" id="logout">Log out</a></li>
           </ul>
         </li>
     </ul>

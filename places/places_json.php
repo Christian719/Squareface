@@ -1,6 +1,6 @@
 <?php
 	//include the connection
-    include("functions.php");
+    include("../include/functions.php");
 	$conex = connection();
 	
 	$query = "SELECT * FROM place";

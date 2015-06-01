@@ -47,8 +47,8 @@
 		  closeOnContentClick:false,
 		  closeBtnInside:false
 		});*/
-
-		//continue register user		
+		
+		//continue register user
 		$('.continue_user').magnificPopup({
 		  type: 'ajax',
 		  closeOnBgClick:false,

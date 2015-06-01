@@ -1,6 +1,6 @@
 <?php  		
 	//connection
-	include("functions.php");
+	include("../include/functions.php");
 	$conex = connection();
 	
 	//session start
@@ -65,7 +65,7 @@
 		/* OBTENEMOS TABLA */
 		$.ajax({
 			type: "GET",
-			url: "update_profile.php?tabla=1"
+			url: "../user/update_profile.php?tabla=1"
 		})
 		.done(function(json){
 			json = $.parseJSON(json)
@@ -85,10 +85,10 @@
 			id=$(this).closest("tr").find(".id").text();
 			
 			if(campo=="birthdate"){
-				td.text("").html("<input type='date' data-format='yyyy-mm-dd' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='enlace save' href='#'>Save</a><a class='enlace cancel' href='#'>Cancel</a>");				
+				td.text("").html("<input type='date' data-format='yyyy-mm-dd' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='link_pro save' href='#'>Save</a><a class='link_pro cancel' href='#'>Cancel</a>");				
 			}
 			else{
-				td.text("").html("<input type='text' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='enlace save' href='#'>Save</a><a class='enlace cancel' href='#'>Cancel</a>");
+				td.text("").html("<input type='text' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='link_pro save' href='#'>Save</a><a class='link_pro cancel' href='#'>Cancel</a>");
 			}	
 		});
 		/*cancel method*/
@@ -106,7 +106,7 @@
 				$.ajax({
 					type: "POST",
 					data: { campo: campo, valor: nuevovalor},
-					url: "update_profile.php"					
+					url: "../user/update_profile.php"					
 				})
 				.done(function( msg ) {
 					$(".message").html(msg);

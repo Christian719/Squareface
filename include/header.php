@@ -22,7 +22,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Squareface</title>
-	<link href="../images/icon.png" rel="Shortcut Icon" type="image/x-icon">
+	<link href="../images/icon.jpg" rel="Shortcut Icon" type="image/x-icon">
 	
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 	<link href="../css/magnific-popup.css" rel="stylesheet">
@@ -51,7 +51,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?><span class="caret"></span></a>
           <ul class="dropdown-menu " role="menu">
-            <li><a href="profile.php" class="ajax-popup-link">Profile</a></li>
+            <li><a href="../user/profile.php" class="ajax-popup-link">Profile</a></li>
             <li><a href="../admin/index.php">Administration</a></li>
             <li class="divider"></li>
             <li><a href="logout.php" id="logout">Log out</a></li>
@@ -59,7 +59,7 @@
         </li>
       </ul>
 	  
-      <form class="navbar-form navbar-right search_header" role="search" method="post" action="search_response.php">
+      <form class="navbar-form navbar-right search_header" role="search">
         <div class="form-group">
           <input type="text" name="tags" id="tags" class="form-control" placeholder="Search place">
         </div>	
@@ -70,8 +70,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="home.php">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="promotion.php" class="ajax-promotion">Promotions</a></li>
-		<li><a href="category.php" class="ajax-category">Category</a></li>        
+        <li><a href="../places/promotion.php" class="ajax-promotion">Promotions</a></li>
+		<li><a href="../places/category.php" class="ajax-category">Category</a></li>        
       </ul>     
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -85,8 +85,8 @@
 	  <a href="#" class="dropdown-toggle options_page_mobile" data-toggle="dropdown" id="dropdownMenu1" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 		<li class="active"><a href="home.php">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="promotion.php" class="ajax-promotion">Promotions</a></li>
-		<li><a href="category.php" class="ajax-category">Category</a></li> 
+        <li><a href="../places/promotion.php" class="ajax-promotion">Promotions</a></li>
+		<li><a href="../places/category.php" class="ajax-category">Category</a></li> 
 	  </ul>	
 	</div>  
     <form class="option_search" role="search">
@@ -100,7 +100,7 @@
     <a href="#" data-toggle="dropdown"><img class="user_image_mobile" src="<?php user_avatar(); ?>" title="Avatar"></a>      
     <a href="#" class="dropdown-toggle options_user_mobile" data-toggle="dropdown" id="dropdownMenu2" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
-	  <li><a href="complete_user.php" class="ajax-popup-link">Profile</a></li>
+	  <li><a href="../user/profile.php" class="ajax-popup-link">Profile</a></li>
 	  <li><a href="../admin/index.php">Administration</a></li>
 	  <li class="divider"></li>
 	  <li><a href="logout.php" id="logout">Log out</a></li>

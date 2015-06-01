@@ -1,7 +1,7 @@
 <h4>USERS</h4>
 <?php
 	//connection
-	include("../login/functions.php");
+	include("../include/functions.php");
 	$conex = connection();
 	
 	//query
