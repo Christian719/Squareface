@@ -12,12 +12,16 @@
 	$email= $_POST['email'];
 	$password=md5($_POST['password']);
 	
+	//Escape email and password
+	$email = $conex->real_escape_string($email);
+	
 	//Check if the data are stored in the database
 	$query= "SELECT * FROM user WHERE email='".$email."' AND password='".$password."'"; 
 	$result = $conex->query($query);
-	$row = $result->fetch_array(MYSQLI_BOTH);
+	$row = $result->fetch_assoc();
+	//$row = mysqli_fetch_assoc($result);
 	
-	if (!$row[0]){ //Option 1: If the user does not exist or data are incorrect
+	if ($row==0){ //Option 1: If the user does not exist or data are incorrect
 		$conex->close();
 		echo '<script>
 		 		alert("User or password invalid. Please check");

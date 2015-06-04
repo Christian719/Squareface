@@ -18,9 +18,9 @@
 	if (isset($_GET) && count($_GET)==1){
 		$query = "select * from user WHERE id = '$_SESSION[id]'";
 		$result = $conex->query($query);
-		$datos=array();
+		$data=array();
 		while ($users=$result->fetch_array()){
-			$datos[]=array(	"id"=>$users["id"],
+			$data[]=array(	"id"=>$users["id"],
 							"name"=>$users["name"],
 							"last_name"=>$users["last_name"],
 							"birthdate"=>$users["birthdate"],
@@ -31,7 +31,7 @@
 							"password"=>$users["password"]
 			);
 		}
-		echo json_encode($datos);
+		echo json_encode($data);
 	}
 	$conex->close();
 ?>

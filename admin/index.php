@@ -25,8 +25,7 @@
 	
 	<!--css-->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
-	<link href="../css/jquery-ui.css" rel="stylesheet">
-	<link href="../css/ui.jqgrid.css" rel="stylesheet">
+	<link href="../css/perfect-scrollbar.css" rel="stylesheet">
 	<link href="../css/design_admin.css" rel="stylesheet">	
 	
 </head>
@@ -56,7 +55,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-	  	<li><a href="#" id="users">Users</a></li>
 		<li><a href="#" id="categories">Categories</a></li>
 		<li><a href="#" id="places">Places</a></li>
 		<li><a href="#" id="galleries">Galleries</a></li>
@@ -70,13 +68,14 @@
 <!--HOME---------------------------------------------------------------->
 <img class="default_image_admin" id="default_image" src="../images/administration.png">
 
-<div id="container_users" class="container_table_user"></div>
-<div id="container_categories" class="container_table_user"></div>
-<div id="container_places" class="container_table_user"></div>
-<div id="container_galleries" class="container_table_user"></div>
-<div id="container_promotions" class="container_table_user"></div>
-<div id="container_tags" class="container_table_user"></div>
-	
+<div class="content_tables">
+	<div id="container_categories"></div>
+	<div id="container_places"></div>
+	<div id="container_galleries"></div>
+	<div id="container_promotions"></div>
+	<div id="container_tags"></div>
+</div>	
+		
 <!--FOOTER-------------------------------------------------------------->		
 <div id="footer">  
   <div class="text_footer">
@@ -88,27 +87,14 @@
 <!--JS----------------------------------------------------------------->	
 <script src="../js/jquery.min.js"></script>  
 <script src="../js/bootstrap.min.js"></script> 
-<script src="../js/jquery.jqGrid.min.js"></script>    
+<script src="../js/perfect-scrollbar.jquery.js"></script>  
 
 <script>
 	$(document).ready(function(){
-		//load pages and show/hide------------------------------
-	    //users	
-		$("#users").click(function(evento){
-	   		$("#container_users").load("adm_users.php");
-			$("#container_users").show();
-			$("#container_categories").hide();
-			$("#container_places").hide();
-			$("#container_galleries").hide();
-			$("#container_promotions").hide();
-			$("#container_tags").hide();
-			$("#default_image").hide();				
-	    });
-		
+		//load pages and show/hide------------------------------		
 		//categories	
 		$("#categories").click(function(evento){
 	   		$("#container_categories").load("adm_categories.php");
-			$("#container_users").hide();
 			$("#container_categories").show();
 			$("#container_places").hide();
 			$("#container_galleries").hide();
@@ -120,7 +106,6 @@
 		//places	
 		$("#places").click(function(evento){
 	   		$("#container_places").load("adm_places.php");	
-			$("#container_users").hide();
 			$("#container_categories").hide();
 			$("#container_places").show();
 			$("#container_galleries").hide();
@@ -132,7 +117,6 @@
 		//galleries	
 		$("#galleries").click(function(evento){
 	   		$("#container_galleries").load("adm_galleries.php");	
-			$("#container_users").hide();
 			$("#container_categories").hide();
 			$("#container_places").hide();
 			$("#container_galleries").show();
@@ -144,7 +128,6 @@
 		//promotions	
 		$("#promotions").click(function(evento){
 	   		$("#container_promotions").load("adm_promotions.php");	
-			$("#container_users").hide();
 			$("#container_categories").hide();
 			$("#container_places").hide();
 			$("#container_galleries").hide();
@@ -156,7 +139,6 @@
 		//tags	
 		$("#tags").click(function(evento){
 	   		$("#container_tags").load("adm_tags.php");	
-			$("#container_users").hide();
 			$("#container_categories").hide();
 			$("#container_places").hide();
 			$("#container_galleries").hide();

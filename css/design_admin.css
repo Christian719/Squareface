@@ -68,7 +68,174 @@ html,body{
 	left: 42%;
 }
 
-.container_table_user{
+/*tables-----------------------tables------------------------------*/
+.content_tables{
 	position: absolute;
     top: 85px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	left:0;
+	right:0;
 }
+
+.title_option{
+	text-transform:uppercase;
+}
+
+.design_tables{
+    text-align: left;
+}
+
+.rows_table{
+	background-color: white;
+}
+
+.table_places{
+	width: 1400px;
+    margin: 0 auto;
+}
+
+.table_categories{
+	width: 272px;
+    margin: 0 auto;
+}
+
+.table_galleries{
+	width: 800px;
+    margin: 0 auto;
+}
+
+.table_promotions{
+	width: 900px;
+    margin: 0 auto;
+}
+
+.table_tags{
+	width: 410px;
+    margin: 0 auto;
+}
+
+
+/*json tables---------------json tables---------------------*/
+.editable span{
+	display:block;
+}
+
+.editable span:hover {
+	background:url(../images/edit.png) 90% 50% no-repeat;
+	cursor:pointer;
+}
+
+.text_editable{
+	color:#000000;
+}
+
+.cancel{
+	background:url(../images/cancel.png) 0 0 no-repeat;
+}
+
+.save{
+	background:url(../images/save.png) 0 0 no-repeat;
+}
+
+.message{
+	display:block;
+	text-align:center;
+	margin:15px 0 10px 0;
+}
+
+.ok{
+	display:block;
+	padding:10px;
+	text-align:center;
+	background:rgb(0, 50, 109);
+	color:#fff;
+	border-radius:5px;
+	width: 200px;
+    margin: 0 auto;
+}
+
+.ko{
+	display:block;
+	padding:10px;
+	text-align:center;
+	background:rgb(206, 19, 19);
+	color:#fff;
+	border-radius:5px;
+	width: 200px;
+    margin: 0 auto;
+}
+
+td input{
+	height:24px;
+	width:170px;
+	border:1px solid #ddd;
+	padding:0 5px;
+	margin:0;
+	border-radius:6px;
+	vertical-align:middle;
+}
+
+a.link_pro{
+	display:inline-block;
+	width:24px;
+	height:24px;
+	margin:0 0 0 5px;
+	overflow:hidden;
+	text-indent:-999em;
+	vertical-align:middle;
+}
+
+/*add new info---------------form's---------------------------*/
+.form_container{
+	width:300px;
+	margin: 0 auto;
+}
+
+.title_form{
+	text-transform: capitalize;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.label_input_form{
+	text-align:left;
+}
+
+.butt_cancel{
+	width:100px;
+}
+
+.butt_add{
+	width:100px;
+}
+
+.scroll_form_y{
+	position:absolute;
+	height: 550px;	
+	width:300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -100,7 +100,7 @@
     <a href="#" data-toggle="dropdown"><img class="user_image_mobile" src="<?php user_avatar(); ?>" title="Avatar"></a>      
     <a href="#" class="dropdown-toggle options_user_mobile" data-toggle="dropdown" id="dropdownMenu2" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
-	  <li><a href="../user/profile.php" class="ajax-popup-link">Profile</a></li>
+	  <li><a href="../user/complete_user.php" class="ajax-popup-link">Profile</a></li>
 	  <li><a href="../admin/index.php">Administration</a></li>
 	  <li class="divider"></li>
 	  <li><a href="logout.php" id="logout">Log out</a></li>

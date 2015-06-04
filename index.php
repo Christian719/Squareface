@@ -57,13 +57,14 @@
 			password1_new.add(Validate.Length, { minimum: 6 } );
 			
 			var password2 = new LiveValidation('password2');
-			password2.add( Validate.Confirmation, { match: 'password1_new' } );		
+			password2.add( Validate.Confirmation, { match: 'password1_new' } );	
 		});
 	</script>
 </head>
 
 <body>	
 	<h2 class="page_title">SQUAREFACE</h2>
+	<div id="aeiou"></div>
 	<div class="map_frame">
 		<div id="map-canvas" class="map_canvas"><img class="loading_map" src="images/loader.gif"/></div>
 	</div>	

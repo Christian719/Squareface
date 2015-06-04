@@ -7,7 +7,7 @@
 	$result = $conex->query($query);
 
 	$outp = "[";
-	while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
+	while($rs = $result->fetch_assoc()) {
 		$place_category = $rs['category_id'];
 		//select category
 		$select_category = "SELECT name FROM category Where id ='$place_category'";

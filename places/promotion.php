@@ -12,18 +12,20 @@
 		<div class="col-md-10" id="promotion_container">
 			<h4 class="promotion_title">Promotions</h4>
 			<!--categories botons-->
-			<div class="btn-group btn-group-justified promotion_botons" role="group" aria-label="...">
+			<div id="owl_buttons" class="btn-group btn-group-justified owl-carousel promotion_botons" role="group" aria-label="...">
 			<?php
 				$category = "SELECT id, name FROM category";
 				$category_result = $conex->query($category);
-				while ($category_row = $category_result->fetch_array(MYSQLI_ASSOC)){
+				$cont = 0;
+				while ($category_row = $category_result->fetch_assoc()){
 				  $category_row_name = $category_row['name'];
 				  $category_row_id = $category_row['id'];
 			?>				
 			  <div class="btn-group" role="group">
-			    <a class="btn btn-primary cat_places" id_category="<?php echo $category_row_id;?>" href="#" role="button"><?php echo $category_row_name;?></a>
+				<a class="btn btn-primary owl-item cat_places" id_category="<?php echo $category_row_id;?>" href="#" role="button"><?php echo $category_row_name;?></a>
 			  </div>
-			<?php	
+			<?php
+				  $cont = $cont + 1;	
 				}
 			?>
 			</div>
@@ -44,6 +46,19 @@
 </div>
 
 <script>
+	//carrucel_buttons
+	var owl_b = $("#owl_buttons");	 
+	owl_b.owlCarousel({		 
+	  itemsCustom : [
+		[0, 2],
+		[450, 2],
+		[527, 3],
+		[650, 4],
+		[768, <?php echo $cont; ?>]
+	  ],
+	  navigation : true	 
+	});	
+
 	$(document).ready(function(){		
 		//calendar	
 		var n;	

@@ -270,6 +270,10 @@ html,body{
     text-transform: capitalize;
 }
 
+.cat_places{
+	border-radius: 0px;
+}
+
 .promotion_title_cat_place_info, .promotion_title_cat_place_tags, .promotion_title_cat_place_promo{
 	text-align: left;
     color: rgb(51, 122, 183);
@@ -415,6 +419,13 @@ td .ui-state-default {
 	color: #b73c37;
 }
 
+/*Today there are no promotions--------*/
+.no_promos{
+	color: whitesmoke;
+    text-align: center;
+    margin-top: 15px;
+}
+
 /*category-----------------------------------------------------*/
 #category_container {
     background-color: rgba(0, 0, 0, 0.8);
@@ -435,7 +446,7 @@ td .ui-state-default {
 /*Desktop ------------992--------------------Desktop------------1199---------------Desktop*/
 @media (min-width: 992px) and (max-width: 1199px) { 
 .promotion_calendar{
-    margin-top: 25px;
+    margin-top: 35px;
     margin-left: 29%;
 }
 
@@ -498,8 +509,8 @@ td .ui-state-default {
 }
 
 .promotion_calendar {
-	margin-left: 27%;
-	margin-top:inherit;
+	margin-left: 0%;
+	text-align:center;
 }
 
 }
@@ -523,7 +534,7 @@ td .ui-state-default {
 
 .second{	
 	margin-left:170px;
-	margin-top:-185px;
+	margin-top:-200px;
 }
 
 .tablet_2{

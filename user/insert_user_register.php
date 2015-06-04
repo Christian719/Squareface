@@ -28,7 +28,7 @@
 		//Check if the data are stored in the database
 		$query= "SELECT * FROM user WHERE email='".$email."' AND password='".$password."'"; 
 		$result= $conex->query($query);
-		$row = $result->fetch_array(MYSQLI_BOTH);
+		$row = $result->fetch_assoc();
 		
 		$id_user=$row['id'];
 		

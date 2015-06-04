@@ -148,7 +148,7 @@ function myFunction(response) {
 		+ "<h5 class='place_info'>" + arr[i].Address + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Schedule + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Phone + "</h5> </br>"
-		+ "<a class='btn btn-link place_more ajax_place' href='../places/place.php'>More Information</a> </br>"
+		+ "<a class='btn btn-link place_more ajax_place' href='../places/place.php?id_place="+id_place+"'>More Information</a> </br>"
 		+ "<a class='btn btn-primary place_here' role='button' href='#' onClick='calcRoute("+id_place+")'>Take me here</a>"
 		+ "</br></div>";
 		
@@ -163,6 +163,10 @@ function myFunction(response) {
 			  closeOnContentClick:false,
 			  closeBtnInside:false
 			});
+			
+			/*$('.place_here').click(function() {
+			    infoWindow.close();
+			});*/
 		});
     }
     out += "</div>"
@@ -188,8 +192,8 @@ function calcRoute(id_place) {
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);	
-    }
-  });
+    }	
+  }); 
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

@@ -62,7 +62,7 @@
 	
 	<script>
 	$(document).ready(function(){
-		/* OBTENEMOS TABLA */
+		/* info of table */
 		$.ajax({
 			type: "GET",
 			url: "../user/update_profile.php?tabla=1"
@@ -71,7 +71,14 @@
 			json = $.parseJSON(json)
 			for(var i=0;i<json.length;i++){
 				$('.profile_information').append(
-					"<tr><td class='tag_table_info'>Name:</td><td class='editable' data-campo='name'><span>"+json[i].name+"</span></td></tr><tr><td class='tag_table_info'>Last name:</td><td class='editable' data-campo='last_name'><span>"+json[i].last_name+"</span></td></tr><tr><td class='tag_table_info'>Birthdate:</td><td class='editable' data-campo='birthdate'><span>"+json[i].birthdate+"</span></td></tr><tr><td class='tag_table_info'>City:</td><td class='editable' data-campo='city'><span>"+json[i].city+"</span></td></tr><tr><td class='tag_table_info'>Phone:</td><td class='editable' data-campo='phone'><span>"+json[i].phone+"</span></td></tr><tr><td class='tag_table_info'>Nickname:</td><td class='editable' data-campo='nickname'><span>"+json[i].nickname+"</span></td></tr><tr><td class='tag_table_info'>email:</td><td class='editable' data-campo='email'><span>"+json[i].email+"</span></td></tr><tr><td></td><td></td></tr>");
+					"<tr><td class='tag_table_info'>Name:</td><td class='editable' data-campo='name'><span>"+json[i].name+"</span></td></tr>"+
+					"<tr><td class='tag_table_info'>Last name:</td><td class='editable' data-campo='last_name'><span>"+json[i].last_name+"</span></td></tr>"+
+					"<tr><td class='tag_table_info'>Birthdate:</td><td class='editable' data-campo='birthdate'><span>"+json[i].birthdate+"</span></td></tr>"+
+					"<tr><td class='tag_table_info'>City:</td><td class='editable' data-campo='city'><span>"+json[i].city+"</span></td></tr>"+
+					"<tr><td class='tag_table_info'>Phone:</td><td class='editable' data-campo='phone'><span>"+json[i].phone+"</span></td></tr>"+
+					"<tr><td class='tag_table_info'>Nickname:</td><td class='editable' data-campo='nickname'><span>"+json[i].nickname+"</span></td></tr>"+
+					"<tr><td class='tag_table_info'>email:</td><td class='editable' data-campo='email'><span>"+json[i].email+"</span></td></tr>"+
+					"<tr><td></td><td></td></tr>");
 			}
 		});
 		/*edit method*/
