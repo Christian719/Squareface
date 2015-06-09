@@ -7,14 +7,16 @@ var id_place;
 var xmlhttp = new XMLHttpRequest();
 var url = "../places/places_json.php";
 var customIcons = {   
-	1:{icon: '../images/icons/bar.png'},
-    2:{icon: '../images/icons/restaurant.png'},
-    3:{icon: '../images/icons/zoo.png'},
-    4:{icon: '../images/icons/workoffice.png'}
+	1:{icon: '../images/icons/Bar.png'},
+    2:{icon: '../images/icons/Restaurant.png'},
+    3:{icon: '../images/icons/Zoo.png'},
+    4:{icon: '../images/icons/Workoffice.png'}
 };
 var directionsDisplay = new google.maps.DirectionsRenderer({'map-canvas': map }); 
 var directionsService = new google.maps.DirectionsService();
 var point;
+var marker_user_old;
+var marker_user;
 
 function initialize() {
   var mapOptions = {
@@ -48,8 +50,8 @@ function initialize() {
   directionsDisplay.setMap(map);
 }
 
+/*function toggle bounce*/
 function toggleBounce() {
-
   if (marker.getAnimation() != null) {
     marker.setAnimation(null);
   } else {
@@ -194,6 +196,63 @@ function calcRoute(id_place) {
         directionsDisplay.setDirections(response);	
     }	
   }); 
+}
+
+//function create check in
+function create_check(user_id, lat, lon, date, nickname, image, place_name) {
+	var user_id=user_id;
+	var latitude=lat;
+	var longitude=lon;
+	var date=date;
+	
+	var nickname=nickname;
+	var image="../"+image;
+	var place_name=place_name;
+	
+	var avatar = '../images/icons/marker_user.png';
+	var marker = "marker";
+	var marker_user_new = marker+user_id;
+	
+	
+	if(marker_user_new==marker_user_old){
+		marker_user.setMap(null);
+	}
+	
+	marker_user_old=marker_user_new;
+	/*marker*/
+	marker_user = new google.maps.Marker({
+		  position: new google.maps.LatLng(latitude,longitude),
+		  map: map,
+		  icon: avatar,
+		  title: nickname,
+		  animation: google.maps.Animation.DROP
+	});
+	/*infowindow*/
+	google.maps.event.addListener(marker_user, 'click', function() {
+		var infowindow = new google.maps.InfoWindow({
+			content: "<p class='mark_date'>"+date+"</p></br><img class='mark_image' src='"+image+"'/></br><p class='mark_details'>"+nickname+" check in "+place_name+"</p>"
+		});
+		infowindow.open(map,marker_user);
+	});
+}
+
+//function for show and hide markers
+function select_marker(type_mark){
+	var type_mark = type_mark;
+	if(type_mark="places"){
+		marker_place.setVisible(true);
+		marker_user.setVisible(false);
+	}
+	else{
+		if(type_mark="users"){
+			marker_place.setVisible(false);
+			marker_user.setVisible(true);
+		}
+		else{
+			marker_place.setVisible(true);
+			marker_user.setVisible(true);
+		}
+	}
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

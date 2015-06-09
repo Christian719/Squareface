@@ -1,6 +1,5 @@
 <?php
-	//connection
-	
+	//connection	
 	include("../include/functions.php");
 	$conex = connection();
 	
@@ -9,7 +8,7 @@
 	
 	//Update
 	if (isset($_POST) && count($_POST)>0){
-		$update = "update category set ".$_POST["campo"]."='".$_POST["valor"]."' where id='".intval($_POST["id"])."'";
+		$update = "update category set ".$_POST['campo']."='".$_POST['valor']."' where id='".intval($_POST['id'])."'";
 		$result_update = $conex->query($update);
 		if ($result_update) echo "<span class='ok'>Updated values</span>";
 		else echo "<span class='ko'>".$conex->error."</span>";	

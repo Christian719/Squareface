@@ -8,7 +8,10 @@
 	//session start
 	session_start();
 	
-	//id of place
+	//select place's id
+	$time = time();
+	$date = date("Y-m-d H:i:s", $time);
+	
 	$id_place = $_GET["id_place"];
 	
 	//select all from the table 'place' whit the id
@@ -22,6 +25,8 @@
 		$place_phone = $row['phone'];
 		$place_schedule = $row['schedule'];
 		$place_rating = $row['rating'];
+		$place_lat = $row['lat'];
+		$place_lon = $row['lon'];
 		
 		$place_id_cat = $row['category_id'];
 		$place_tags = $row['tags_id'];
@@ -31,13 +36,13 @@
 		$result_category = $conex->query($query_category);
 		$row_category = $result_category->fetch_assoc();
 			$category_name = $row_category['name'];
-		//select image of place
+		//select place's image
 		$select_image = "SELECT * FROM image WHERE id='$place_image'";
 		$result_image = $conex->query($select_image);
 		$row_image = $result_image->fetch_assoc();
 		  $ext = $row_image['img_type'];
 		  $image_type = $row_image['type'];	
-		  $filename = "../photos/place/$image_type/$place_image$ext";			
+		  $filename = "../photos/place/$image_type/$place_image.$ext";			
 			if (file_exists($filename)) {
 				$filename = $filename;
 			} 
@@ -146,7 +151,7 @@
 				<div class="button_comments" id="ajax_button_comments">
 					<!--show comments-------->
 					<p class="button_comments_title_comms"><strong>Comments</strong></p>
-					<div class="col-md-6 scroll_comments_y">						
+					<div class="col-md-6 scroll_comments_y cont_show_comments">						
 					<?php	
 						$select_comments = "SELECT * FROM comment WHERE place_id = '$place_id' ORDER BY id DESC limit 7";
 						$result_comments = $conex->query($select_comments);
@@ -158,14 +163,14 @@
 								$com_place_id = $comment_row['place_id'];
 								$com_user_id = $comment_row['user_id'];
 								
-								//select image---------comment--------
+								//select comment's image
 								$sel_comm_img = "SELECT * FROM image WHERE id='$com_image'";
 								$res_comm_img = $conex->query($sel_comm_img);
 								$row_comm_img = $res_comm_img->fetch_assoc();
 								
 								$c_ext = $row_comm_img['img_type'];
 								$c_image_type = $row_comm_img['type'];	
-								$c_filename = "../photos/$c_image_type/$com_image$c_ext";
+								$c_filename = "../photos/$c_image_type/$com_image.$c_ext";
 											
 								if (file_exists($c_filename)) {
 									$c_filename = $c_filename;
@@ -174,7 +179,7 @@
 									$c_filename = "../photos/$c_image_type/default.png";
 								}	
 								
-								//select image---------user--------
+								//select user's image
 								$sel_user_img = "SELECT * FROM image WHERE type='user' AND papa_id='$com_user_id'";
 								$res_user_img = $conex->query($sel_user_img);
 								$row_user_img = $res_user_img->fetch_assoc();
@@ -182,7 +187,7 @@
 								$u_id = $row_user_img['id'];
 								$u_ext = $row_user_img['img_type'];
 								$u_image_type = $row_user_img['type'];	
-								$u_filename = "../photos/$u_image_type/$u_id$u_ext";
+								$u_filename = "../photos/$u_image_type/$u_id.$u_ext";
 											
 								if (file_exists($u_filename)) {
 									$u_filename = $u_filename;
@@ -191,18 +196,17 @@
 									$u_filename = "../photos/$u_image_type/default.png";
 								}	
 								
-								//select user nickname			
+								//select user's nickname			
 								$sel_user_nickname = "SELECT nickname FROM user WHERE id='$com_user_id'";
 								$res_user_nickname = $conex->query($sel_user_nickname);
 								$row_user_nickname = $res_user_nickname->fetch_assoc();								
 									$user_nickname = $row_user_nickname['nickname'];
 									
-							}
 					?>								
 							<!--Show information -->
 							<div class="col-md-12 container_one_comment">	
 								<div class="col-md-3 cont_one_user">		
-									<img class="comment_user_image" src="<?php echo $u_filename; ?>"></br>
+									<img class="comment_user_image com_img_tam" src="<?php echo $u_filename; ?>"></br>
 									<p class="comment_user_nickname"><?php echo $user_nickname;?></p>
 								</div>
 								<div class="col-md-6 cont_one_comment">	
@@ -210,76 +214,26 @@
 									<p class="comment_comment_details"><?php echo $com_comment;?></p>
 								</div>
 								<div class="col-md-3 cont_one_comment_image">	
-									<img class="comment_comment_image" src="<?php echo $c_filename; ?>">
-								</div>
-							</div>		
-							<div class="col-md-12 container_one_comment">	
-								<div class="col-md-3 cont_one_user">		
-									<img class="comment_user_image" src="<?php echo $u_filename; ?>"></br>
-									<p class="comment_user_nickname"><?php echo $user_nickname;?></p>
-								</div>
-								<div class="col-md-6 cont_one_comment">	
-									<p class="comment_comment_date"><?php echo $com_date;?></p>
-									<p class="comment_comment_details"><?php echo $com_comment;?></p>
-								</div>
-								<div class="col-md-3 cont_one_comment_image">	
-									<img class="comment_comment_image" src="<?php echo $c_filename; ?>">
-								</div>
-							</div>	
-							<div class="col-md-12 container_one_comment">	
-								<div class="col-md-3 cont_one_user">		
-									<img class="comment_user_image" src="<?php echo $u_filename; ?>"></br>
-									<p class="comment_user_nickname"><?php echo $user_nickname;?></p>
-								</div>
-								<div class="col-md-6 cont_one_comment">	
-									<p class="comment_comment_date"><?php echo $com_date;?></p>
-									<p class="comment_comment_details"><?php echo $com_comment;?></p>
-								</div>
-								<div class="col-md-3 cont_one_comment_image">	
-									<img class="comment_comment_image" src="<?php echo $c_filename; ?>">
-								</div>
-							</div>	
-							<div class="col-md-12 container_one_comment">	
-								<div class="col-md-3 cont_one_user">		
-									<img class="comment_user_image" src="<?php echo $u_filename; ?>"></br>
-									<p class="comment_user_nickname"><?php echo $user_nickname;?></p>
-								</div>
-								<div class="col-md-6 cont_one_comment">	
-									<p class="comment_comment_date"><?php echo $com_date;?></p>
-									<p class="comment_comment_details"><?php echo $com_comment;?></p>
-								</div>
-								<div class="col-md-3 cont_one_comment_image">	
-									<img class="comment_comment_image" src="<?php echo $c_filename; ?>">
-								</div>
-							</div>	
-							<div class="col-md-12 container_one_comment">	
-								<div class="col-md-3 cont_one_user">		
-									<img class="comment_user_image" src="<?php echo $u_filename; ?>"></br>
-									<p class="comment_user_nickname"><?php echo $user_nickname;?></p>
-								</div>
-								<div class="col-md-6 cont_one_comment">	
-									<p class="comment_comment_date"><?php echo $com_date;?></p>
-									<p class="comment_comment_details"><?php echo $com_comment;?></p>
-								</div>
-								<div class="col-md-3 cont_one_comment_image">	
-									<img class="comment_comment_image" src="<?php echo $c_filename; ?>">
+									<img class="comment_comment_image com_img_tam" src="<?php echo $c_filename; ?>">
 								</div>
 							</div>							
-					<?php												
+					<?php	
+							}											
 						} 
 						else {
-							echo "<p class='no_comments'>This place has not comments</p>";
+							echo "<p class='not_info_db'>This place has not comments</p>";
 						}		 
 					?>
 					</div>
 					<!--add comment-------->
 					<p class="button_comments_title_addcomms"><strong>Add Comment</strong></p>
-					<div class="col-md-6">
+					<div class="col-md-6 cont_add_comments">
 						<?php
 							//select user whit open session
-							$select_sesion = "SELECT nickname, image FROM user WHERE id = '$_SESSION[id]'";
+							$select_sesion = "SELECT id, nickname, image FROM user WHERE id = '$_SESSION[id]'";
 							$result_sesion = $conex->query($select_sesion);
-							$sesion_row = $result_sesion->fetch_assoc();							
+							$sesion_row = $result_sesion->fetch_assoc();
+								$sesion_user_id = $sesion_row['id'];							
 								$sesion_nickname = $sesion_row['nickname'];
 								$sesion_image = $sesion_row['image'];
 							
@@ -291,7 +245,7 @@
 							$sesion_id = $row_sesion_img['id'];
 							$sesion_ext = $row_sesion_img['img_type'];
 							$sesion_image_type = $row_sesion_img['type'];	
-							$sesion_filename = "../photos/$sesion_image_type/$sesion_id$sesion_ext";
+							$sesion_filename = "../photos/$sesion_image_type/$sesion_id.$sesion_ext";
 										
 							if (file_exists($sesion_filename)) {
 								$sesion_filename = $sesion_filename;
@@ -302,20 +256,22 @@
 						?>
 					    <div class="col-md-12 container_add_comment">	
 							<div class="col-md-3 cont_add_user">		
-								<img class="add_user_image" src="<?php echo $sesion_filename; ?>"></br>
+								<img class="add_user_image com_img_tam" src="<?php echo $sesion_filename; ?>"></br>
 								<p class="add_user_nickname"><?php echo $sesion_nickname;?></p>
 							</div>
 							<div class="col-md-9 cont_add_comment">	
-								<form>
+								<form method="post" action="../user/insert_comment.php?add=com" enctype="multipart/form-data">
 								  <div class="form-group">
 									<label>Comment</label>
-									<textarea class="form-control tam_textarea" rows="5" maxlength="150" placeholder="Write a comment" autofocus required></textarea>
+									<textarea name="comment" class="form-control tam_textarea" rows="5" maxlength="150" placeholder="Write a comment" autofocus required></textarea>
 								  </div>								 
 								  <div class="form-group">
 									<label for="exampleInputFile">Choose an image for the comment</label>
-									<input type="file" class="filestyle" data-buttonText="Choose image" data-size="sm" data-iconName="glyphicon glyphicon-picture">
-								  </div>								  
-								  <button type="submit" class="btn btn-primary tam_but_ok">Ok</button>
+									<input type="file" name="image" class="filestyle" data-buttonText="Choose image" data-size="sm" data-iconName="glyphicon glyphicon-picture">
+								  </div>
+								  <input type="hidden" name="place_id" value="<?php echo $id_place;?>">
+								  <input type="hidden" name="user_id" value="<?php echo $sesion_user_id;?>">							  
+								  <button type="submit" class="btn btn-primary tam_but_ok" onclick="return confirm_msg()">Ok</button>
 								</form>
 							</div>
 						</div>	
@@ -323,19 +279,58 @@
 				</div>
 				<!--button gallery-------------------------------------------------------->
 				<div class="button_gallery" id="ajax_button_gallery">
-					galerias
+					<?php	
+						$select_gallery = "SELECT * FROM gallery WHERE place_id = '$place_id' limit 10";
+						$result_gallery = $conex->query($select_gallery);
+						if ($result_gallery->num_rows > 0) {
+						
+						//create carrucel for promos
+						echo "<div id='button_gallery_gallery' class='owl-carousel'>";
+						
+							//select place's gallery
+							while ($gallery_row = $result_gallery->fetch_assoc()){
+								$gal_id = $gallery_row['id'];
+								$gal_comment = $gallery_row['comment'];
+						        $gal_date = $gallery_row['date'];								
+								$gal_type = $gallery_row['type'];
+								$gal_place_id = $gallery_row['place_id'];								
+																
+								$gal_filename = "../gallery/$place_name/$gal_id.$gal_type";		
+								
+								if (file_exists($gal_filename)) {
+									$gal_filename = $gal_filename;
+								} 
+								else {
+									//$gal_filename = "../gallery/default.png";
+									$gal_filename = $gal_filename;
+								}	
+					?>			
+								<!--Show information -->
+								<div>	
+									<p class="button_gallery_date"><?php echo $gal_date;?></p> </br>						
+									<img class="button_gallery_image" src="<?php echo $gal_filename;?>" title="<?php echo $gal_comment;?>">	
+									<p class="button_gallery_comment"><?php echo $gal_comment;?></p> </br>																
+								</div>
+					<?php			
+							}
+						echo "</div>";									
+						} 
+						else {
+							echo "<p class='not_info_db'>This place has not a photo gallery</p>";
+						} 
+					?>
 				</div>
 				<!--button promotions----------------------------------------------------->
 				<div class="button_promotions" id="ajax_button_promotions">
 					<?php	
-						$select_promotion = "SELECT * FROM promotion WHERE place_id = '$place_id' limit 10";
+						$select_promotion = "SELECT * FROM promotion WHERE place_id = '$place_id' order by day asc limit 10";
 						$result_promotion = $conex->query($select_promotion);
 						if ($result_promotion->num_rows > 0) {
 						
 						//create carrucel for promos
 						echo "<div id='button_promotions_promos' class='owl-carousel'>";
 						
-							//select info of promos
+							//select promo's info
 							while ($promo_row = $result_promotion->fetch_assoc()){
 								$promo_day = $promo_row['day'];
 						        $promo_promotion = $promo_row['promotion'];
@@ -365,14 +360,14 @@
 									$day_name="Saturday";
 								  }	  
 								
-								//select image on promos
+								//select promos's image
 								$pro_select_image = "SELECT * FROM image WHERE id='$promo_image'";
 								$pro_result_image = $conex->query($pro_select_image);
 								$pro_row_image = $pro_result_image->fetch_assoc();
 								
 								$pro_ext = $pro_row_image['img_type'];
 								$pro_image_type = $pro_row_image['type'];	
-								$pro_filename = "../photos/$pro_image_type/$promo_image$pro_ext";		
+								$pro_filename = "../photos/$pro_image_type/$promo_image.$pro_ext";		
 								
 								if (file_exists($pro_filename)) {
 									$pro_filename = $pro_filename;
@@ -382,44 +377,38 @@
 								}	
 					?>			
 								<!--Show information -->
-								<div>
-									<div class="col-md-2"></div>
-									<div class="col-md-5">								
-										<img class="button_promotions_image_details" src="<?php echo $pro_filename;?>" title="<?php echo $promo_promotion;?>">
-									</div>
-									<div class="col-md-4 button_promotions_promo_details">
-										<h4 class="button_promotions_title_details">Promotion</h4></br>
-										<p class="button_promotions_info_details">	
-										  <strong>Date: </strong>Every <?php echo $day_name;?></br>		  	  
-										  <strong>Promo: </strong><?php echo $promo_promotion;?></br>
-										</p></br>
-									</div>	
-									<div class="col-md-1"></div>
+								<div>	
+									<p class="button_promotion_date"><strong><?php echo $day_name;?></strong></p> </br>						
+									<img class="button_promotion_image" src="<?php echo $pro_filename;?>" title="<?php echo $promo_promotion;?>">	
+									<p class="button_promotion_comment"><?php echo $promo_promotion;?></p> </br>																
 								</div>
 					<?php			
 							}
 						echo "</div>";									
 						} 
 						else {
-							echo "<p class='no_promos'>This place has not promotions</p>";
-						}	 
+							echo "<p class='not_info_db'>This place has not promotions</p>";
+						}
+						//$conex->close();	 
 					?>
 				</div>
 				<!--end button promotions----------------------------------------------------->
 			</div>
 			<!--options_place----------------------------------------------------->
 			<div class="popup_place_options_place">
-				<a class="btn btn-primary popup_place_option_check" href="#" role="button">Check in</a></br>
-				<a class="btn btn-primary popup_place_option_take" href="#" onClick="calcRoute(<?php echo $place_id;?>)" role="button">Take me here</a></br>
-				<a class="btn btn-primary popup_place_option_rating" href="#" role="button">Rate</a></br>
+				<div class="cont_options_place">
+					<p class="txt_checkin">Check in</p>
+					<a class="btn btn-primary check_in_button" role="button" href="#" onclick="return confirm_check()"><img class="check_in" src="../images/check.png" title="Check in" /></a>				
+					<p class="txt_rating">Rating</p>
+					<input id="rating" type="number" class="rating">
+					<p class="txt_take">Take me here</p>
+					<a class="btn btn-primary route_button" role="button"  href="#" onclick="calcRoute(<?php echo $place_id;?>)"><img class="route" src="../images/route.png" title="Take me here" /></a>	
+				</div>				
 			</div>	
 		</div>
 		<div class="col-md-1"></div>
 	</div>
 </div>
-<?php
-	$conex->close();
-?>	
 
 <script>
 	//carrucel_buttons
@@ -435,8 +424,20 @@
 	});
 	
 	//carrucel_promos
-	var owl_pro_place = $("#button_promotions_promos");	 
-	owl_pro_place.owlCarousel({		 
+	var owl_pro_promos = $("#button_promotions_promos");	 
+	owl_pro_promos.owlCarousel({		 
+	  itemsCustom : [
+		[0, 1],
+		[450, 1],
+		[527, 1],
+		[650, 1]
+	  ],
+	  navigation : true	 
+	});	
+	
+	//carrucel_gallery
+	var owl_pro_gallery = $("#button_gallery_gallery");	 
+	owl_pro_gallery.owlCarousel({		 
 	  itemsCustom : [
 		[0, 1],
 		[450, 1],
@@ -445,7 +446,29 @@
 	  ],
 	  navigation : true	 
 	});		
+		
+	//functions
+	function confirm_msg(){ 
+		if (confirm('Are you sure to add a comment?')){ 			
+			return true;
+		} 
+		else{
+			return false;
+		}
+	} 
 	
+	function confirm_check(){ 
+		if (confirm('Are you sure to check in?')){ 	
+			create_check("<?php echo $sesion_user_id;?>", "<?php echo $place_lat;?>", "<?php echo $place_lon;?>", "<?php echo $date;?>", "<?php echo $sesion_nickname;?>", "<?php echo $sesion_filename;?>", "<?php echo $place_name;?>");
+			$('.mfp-close').click();			
+			return true;
+		} 
+		else{
+			return false;
+		}
+	}
+	
+	//document ready
 	$(document).ready(function(){
 	  //buttons of place	
 	   $("#ajax_button_place").show();
@@ -483,15 +506,54 @@
 	   	  $("#ajax_button_comments").hide();
 	      $("#ajax_button_gallery").hide();
 	      $("#ajax_button_promotions").show();
-	   });
+	   });  
 	   
 	   /*close de magnific popup*/ 
-	   $(".popup_place_option_take").click(function(evento){
+	   $(".route").click(function(evento){
 		  evento.preventDefault();		  
 		  $('.mfp-close').click();
-	   }); 
+	   });   
 	   
 	   /*scrollbar*/
-	   $('.scroll_comments_y').perfectScrollbar();  
+	   $('.scroll_comments_y').perfectScrollbar();
+	   
+	   /*rating*/
+	   $("#rating").rating({
+	        'min':0,
+			'max':5,
+			'step':1,
+			'showClear':false,
+			'showCaption':false
+	   });
+	   
+	   $("#rating").on("rating.change", function(event, value, caption) {
+			if (confirm('Are you sure to rating?')){
+				$("#rating").rating("refresh", {disabled: true, showClear: false});
+				/*insert database*/
+				var val_rating=value;				
+				<?php 
+					$val_rat = 1;
+					$date;
+					$sesion_user_id;
+					$place_id;
+					
+					add_rating($val_rat, $date, $sesion_user_id, $place_id);
+				?>
+				/*alert(val_rating);*/
+				return true;
+			} 
+			else{
+				return false;
+			}
+	   });
+	   
 	});
+	
 </script>
+<?php
+	$conex->close();
+?>
+
+
+<!--$val_rat = '<script>document.val_rating.value</script>'; -->
+<!--$val_rat = '<script> document.write(val_rating) </script>';		 -->

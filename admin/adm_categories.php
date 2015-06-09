@@ -11,13 +11,13 @@
 <button id="butt_add_cat" class="btn btn-default" type="submit">Add new</button>
 <div id="form_cat" class="form_container">
 	<label class="title_form">New</label>
-	<form>
+	<form method="post" action="inserts.php?add=cat">
 	  <div class="form-group label_input_form">
 		<label>Name</label>
-		<input type="text" class="form-control" placeholder="Enter name" maxlength="20" autofocus required>
+		<input type="text" name="name" class="form-control" placeholder="Enter name" title="Only letters" pattern="[A-z,ñ,Ñ ]{1,20}" maxlength="20" autofocus required>
 	  </div>
 	  <button type="button" id="butt_can_cat" class="btn btn-default butt_cancel">Cancel</button>
-	  <button type="submit" class="btn btn-default butt_add">Add</button>
+	  <button type="submit" class="btn btn-default butt_add" onclick="return confirm_msg()">Add</button>
 	</form>
 </div>
 
@@ -33,7 +33,7 @@
 			for(var i=0;i<json.length;i++){
 				$('.table_categories').append(				
 					"<tr class='rows_table'>"
-						 +"<td class='id_1'>"+json[i].id+"</td>"
+						 +"<td class='id'>"+json[i].id+"</td>"
 					     +"<td class='editable' data-campo='name'><span>"+json[i].name+"</span></td>"
 					+"</tr>");				
 			}
@@ -48,6 +48,7 @@
 			campo=$(this).closest("td").data("campo");
 			valor=$(this).text();
 			id=$(this).closest("tr").find(".id").text();
+			$("#butt_add_cat").hide();
 			
 			td.text("").html("<input type='text' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='link_pro save' href='#'>Save</a><a class='link_pro cancel' href='#'>Cancel</a>");
 		
@@ -58,6 +59,7 @@
 			e.preventDefault();
 			td.html("<span>"+valor+"</span>");
 			$("td:not(.id)").addClass("editable");
+			$("#butt_add_cat").show();
 		});
 		
 		/*save method*/
@@ -76,6 +78,7 @@
 					td.html("<span>"+nuevovalor+"</span>");
 					$("td:not(.id)").addClass("editable");
 					setTimeout(function() {$('.ok').fadeOut('fast');}, 3000);
+					$("#butt_add_cat").show();
 				});
 			}
 			else
@@ -108,9 +111,17 @@
 		});
 	   
 	});
+	
+	function confirm_msg(){ 
+		if (confirm('Are you sure to add a category?')){ 
+			return true;
+		} 
+		else{
+			return false;
+		}
+	} 
+	
 </script>
-
-
 
 
 

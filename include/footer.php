@@ -16,6 +16,7 @@
   <script src="../js/location.js"></script>
   <script src="../js/owl.carousel.js"></script>
   <script src="../js/perfect-scrollbar.jquery.js"></script>
+  <script src="../js/star-rating.min.js"></script>
   
   <script> 
 	$(document).ready(function(){	

@@ -104,242 +104,40 @@ a.link_pro{
 	text-indent:-999em;
 	vertical-align:middle;
 }
-			
-/*place--------------------popup place-------------------------place----------------popup place*/
-#popup_place_container {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 5px;
-    height: 600px;
+
+/*option search-------------------------------------------*/
+.ui-autocomplete, .ui-front, .ui-menu ui-widget, .ui-widget-content{
+	z-index: 501;
 }
 
-.popup_place_title {
-	color: #6AB0EC;
-	text-align: center;
-	text-transform: uppercase;
-	border-bottom-style: outset;
-	padding-bottom: 10px;
-	padding-top: 5px;
-	font-size: 20px;
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+  }
+  
+.LV_validation_message{
+    position: absolute;
+    top: 8px;
+    right: 67px;
+    color: firebrick;
 }
 
-.popup_place_content_botons{
-	margin-top: -10px;
-    text-transform: capitalize;
+/*options friends-------------------------------------------*/
+.conten_friend_info{
+	height: 120px;
 }
 
-.popup_place_botons{
-	border-radius: 0;
+.image_friends{
+	width:84px;
+	height:84px;
+	border-radius:5px;
 }
 
-.name_rating{
+.name_friends{
+    font-weight: bold;
 }
-
-.popup_place_name_place {
-	text-transform: uppercase;
-	color: rgb(51, 122, 183);
-	font-weight: bold;
-}
-
-.popup_place_place_raiting {
-    margin-top: -20px;
-}
-
-.rating_popup_default{
-}
-
-.popup_place_content_info{
-    color: whitesmoke;
-	text-align:center;
-}
-
-/*button place*/
-.button_place{
-}
-
-.button_place_title_info, .button_place_title_tags{
-    color: rgb(51, 122, 183);
-}
-
-.button_place_info_details, .button_place_tags_details{
-	  margin-top: -15px;
-}
-
-.button_place_image{
-}
-
-.button_place_image_details{
-	border-radius: 5px;
-    width: 328px;
-    height: inherit;
-}
-
-/*button comments*/
-.button_comments{
-}
-
-.button_comments_title_comms, .button_comments_title_addcomms{
-	position: absolute;
-	width: 50%;	
-	margin-top: -35px;
-	text-align: center;
-	color: rgb(51, 122, 183);
-	text-transform:uppercase;
-    font-size: 15px;
-}
-
-.button_comments_title_comms{
-	left: 0;
-}
-
-.button_comments_title_addcomms{
-	right: 0;
-}
-
-.scroll_comments_y{
-	height: 300px; 
-}
-
-/*comments--------comments---------comments--------------comments---------------*/
-.container_one_comment{
-	border-bottom-style: outset;
-    border-bottom-color: rgb(133, 155, 165);
-	height: 135px;
-}
-
-/*container user*/
-.cont_one_user{
-    margin-top: 25px;
-    margin-left: -15px;
-}
-
-.comment_user_image{
-	width:100%;
-	border-radius: 5px;
-}
-
-.comment_user_nickname{
-	font-size: 13px;
-}
-
-/*container comment*/
-.cont_one_comment{
-	width: 208px;
-}
-
-.comment_comment_date{
-	margin-top: 10px;
-}
-
-.comment_comment_details{
-}
-
-/*container comment image*/
-.cont_one_comment_image{
-	margin-top: 30px;
-}
-
-.comment_comment_image{
-	width:100%;
-	border-radius: 5px;
-}
-
-/*add comment-------------add comment*/
-.container_add_comment{
-	height: 135px;
-}
-
-/*cont_image user of add comment*/
-.cont_add_user{
-	margin-top: 62px;
-    margin-left: -15px;
-}
-
-.add_user_image{
-	width:100%;
-	border-radius: 5px;
-}
-
-.add_user_nickname{
-	font-size: 13px;
-}
-
-/* cont add comment*/
-.cont_add_comment{
-	width: 305px;
-	text-align: left;
-}
-
-.tam_textarea{
-	min-height:100px;
-	max-height:100px;
-	min-width:275px;
-	max-width:275px;
-}
-
-.tam_but_ok{
-	width: 100px;
-	margin-top: 20px;
-	margin-left: 87.5px;
-	background-color: darkslategrey;
-}
-
-/*button gallery*/
-.button_gallery{
-}
-
-/*button promotions*/
-.button_promotions{
-}
-
-.button_promotions_image_details {
-	border-radius: 5px;
-	width: 328px;
-	height: inherit;
-}
-
-.button_promotions_promo_details{
-	text-align: left;
-}
-
-.button_promotions_title_details{	
-    color: rgb(51, 122, 183);
-}
-
-.button_promotions_info_details{
-    margin-top: -15px;
-}
-
-/*options place*/
-.popup_place_options_place{
-	position: absolute;
-	top: 540px;
-	width:: 600px;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.popup_place_option_check{
-	position: absolute;
-	width: 12%;
-	left: 31%;
-}
-
-.popup_place_option_take{
-	position: absolute;
-	top: 0px;
-	width: 12%;
-	left: 44%;
-}
-
-.popup_place_option_rating{
-	position: absolute;
-	top: 0px;
-	width: 12%;
-	right: 31%;
-}
-
 
 
 

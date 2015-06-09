@@ -48,7 +48,7 @@
 				$row_select_image = $result2->fetch_assoc();
 					$id = $row_select_image['id'];
 					$ext = $row_select_image['img_type'];
-					$filename = "../photos/user/$id$ext";
+					$filename = "../photos/user/$id.$ext";
 								
 					if (file_exists($filename)) {
 						$filename = $filename;
@@ -82,5 +82,3 @@
 
 	include("../include/footer.php");
 ?>
-
-

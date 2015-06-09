@@ -407,6 +407,7 @@ if (typeof Object.create !== "function") {
                 buttonsWrapper = $("<div class=\"owl-buttons\"/>");
             base.owlControls.append(buttonsWrapper);
 
+			/*Option promotion*/
             base.buttonPrev = $("<div/>", {
                 "class" : "owl-prev",
                 "html" : base.options.navigationText[0] || ""

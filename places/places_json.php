@@ -21,7 +21,7 @@
 		$result_image = $conex->query($select_image);
 		$row_select_image = $result_image->fetch_assoc();
 			$ext = $row_select_image['img_type'];
-			$filename = "../photos/place/$type/$image_place$ext";
+			$filename = "../photos/place/$type/$image_place.$ext";
 					
 		if (file_exists($filename)) {
 			$filename = $filename;

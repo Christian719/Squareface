@@ -7,8 +7,8 @@
 			<th>Id</th>
 			<th>Comment</th>
 			<th>Date</th>
-			<th>Type</th>
-			<th>Place Id</th>
+			<th>Image</th>
+			<th>Place</th>
 		</tr>
 	</table>
 </div>	
@@ -16,27 +16,38 @@
 <button id="butt_add_gal" class="btn btn-default" type="submit">Add new</button>
 <div id="form_gal" class="form_container">
 	<label class="title_form">New</label>
-	<form>
+	<form method="post" action="inserts.php?add=gal" enctype="multipart/form-data">
 	  <div class="form-group label_input_form">
 		<label>Comment</label>
-		<input type="text" class="form-control" placeholder="Enter comment" maxlength="150" autofocus required>
+		<input type="text" name="comment" class="form-control" placeholder="Enter comment" maxlength="150" autofocus required>
 	  </div>
 	  <div class="form-group label_input_form">
 		<label>Image</label>
-		<input type="file" class="filestyle" data-buttonText="Choose image" data-size="sm" data-iconName="glyphicon glyphicon-picture" required>		
+		<input type="file" name="image" class="filestyle" data-buttonText="Choose image" data-size="sm" data-iconName="glyphicon glyphicon-picture" required>		
 	  </div>
-	  <div class="form-group label_input_form">
-		<label>Place Id</label>
-		<select class="form-control">
-		    <option>1</option>
-		    <option>2</option>
-		    <option>3</option>
-		    <option>4</option>
-		    <option>5</option>
+	  <div class="form-group label_input_form">	  	
+		<label>Place</label>
+		<select name="place_id" class="form-control">
+			<?php
+				//connection
+				include("../include/functions.php");
+				$conex = connection();
+				
+				//select id and name of place
+				$query_pla= "SELECT id, name FROM place order by name asc"; 
+				$result_pla= $conex->query($query_pla);
+				while ($row_pla = $result_pla->fetch_assoc()){
+					$id_place=$row_pla['id'];
+					$name_place=$row_pla['name'];
+					
+					echo '<option value="'.$id_place.'">'.$name_place.'</option>';
+				}	
+				$conex->close();
+			?>
 		</select>
 	  </div>
 	  <button type="button" id="butt_can_gal" class="btn btn-default butt_cancel">Cancel</button>
-	  <button type="submit" class="btn btn-default butt_add">Add</button>
+	  <button type="submit" class="btn btn-default butt_add" onclick="return confirm_msg()">Add</button>
 	</form>
 </div>
 
@@ -52,11 +63,11 @@
 			for(var i=0;i<json.length;i++){
 				$('.table_galleries').append(				
 					"<tr class='rows_table'>"
-						 +"<td class='id_1'>"+json[i].id+"</td>"
+						 +"<td class='id'>"+json[i].id+"</td>"
 					     +"<td class='editable' data-campo='comment'><span>"+json[i].comment+"</span></td>"
-						 +"<td class='editable' data-campo='date'><span>"+json[i].date+"</span></td>"
-						 +"<td class='editable' data-campo='type'><span>"+json[i].type+"</span></td>"
-						 +"<td class='editable' data-campo='place_id'><span>"+json[i].place_id+"</span></td>"
+						 +"<td>"+json[i].date+"</td>"
+						 +"<td>"+json[i].image_name+"</td>"
+						 +"<td>"+json[i].place_name+"</td>"
 					+"</tr>");				
 			}
 		});
@@ -70,6 +81,7 @@
 			campo=$(this).closest("td").data("campo");
 			valor=$(this).text();
 			id=$(this).closest("tr").find(".id").text();
+			$("#butt_add_gal").hide();
 			
 			td.text("").html("<input type='text' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='link_pro save' href='#'>Save</a><a class='link_pro cancel' href='#'>Cancel</a>");
 		
@@ -80,6 +92,7 @@
 			e.preventDefault();
 			td.html("<span>"+valor+"</span>");
 			$("td:not(.id)").addClass("editable");
+			$("#butt_add_gal").show();
 		});
 		
 		/*save method*/
@@ -98,6 +111,7 @@
 					td.html("<span>"+nuevovalor+"</span>");
 					$("td:not(.id)").addClass("editable");
 					setTimeout(function() {$('.ok').fadeOut('fast');}, 3000);
+					$("#butt_add_gal").show();
 				});
 			}
 			else
@@ -130,6 +144,16 @@
 		});
 	   
 	});
+	
+	function confirm_msg(){ 
+		if (confirm('Are you sure to add a gallery?')){ 
+			return true;
+		} 
+		else{
+			return false;
+		}
+	} 
+		
 </script>
 
 

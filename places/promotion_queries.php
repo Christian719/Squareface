@@ -110,7 +110,7 @@
 		  $row_image = $result_image->fetch_assoc();
 			$ext = $row_image['img_type'];
 			$image_type = $row_image['type'];	
-			$filename = "../photos/$image_type/$image$ext";
+			$filename = "../photos/$image_type/$image.$ext";
 						
 			if (file_exists($filename)) {
 				$filename = $filename;

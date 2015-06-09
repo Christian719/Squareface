@@ -1,0 +1,1215 @@
+/*user-----------infowindow----------------------infowindow----------------------*/
+.mark_date{
+    margin-left: 18px;
+	font-weight: 500;
+}
+
+.mark_image{
+	width: 150px;
+	max-height: 170px;
+	border-radius: 5px;
+    margin-top: -20px;
+    margin-left: 4px;
+}
+
+.mark_details{
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/*places-----------infowindow----------------------infowindow----------------------*/
+.place_conten{
+	padding-left:20px;
+	width: 223px;
+}
+
+.place_title{
+	text-align:center;
+	text-transform: uppercase;	
+}
+
+.place_image{
+	width: 49%;
+    max-width: 200px;
+    height: 100px;
+    border-radius: 5px;
+    margin-top: -20px;
+    margin-left: 25.5%;	
+}
+
+.place_raiting{
+	text-align: center;
+    margin-bottom: 20px;
+}
+
+.place_rating_color{
+	color: goldenrod;
+}
+
+.place_info{
+	margin-top: -25px;
+    text-align: center;
+}
+
+.place_more{
+	position: absolute;
+    margin-left: 33px;
+    margin-top: -28px;
+}
+
+.place_here{
+	width: 70%;
+	margin-left: 15%;
+}
+			
+/*place--------------------popup place-------------------------place----------------popup place*/
+#popup_place_container {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    height: 610px;
+}
+
+.popup_place_title {
+	color: #6AB0EC;
+	text-align: center;
+	text-transform: uppercase;
+	border-bottom-style: outset;
+	padding-bottom: 10px;
+	font-size: 20px;
+}
+
+.popup_place_content_botons{
+	margin-top: -10px;
+    text-transform: capitalize;
+}
+
+.popup_place_botons{
+	border-radius: 0;
+}
+
+.name_rating{
+}
+
+.popup_place_name_place {
+	text-transform: uppercase;
+	color: rgb(51, 122, 183);
+	font-weight: bold;
+}
+
+.popup_place_place_raiting {
+    margin-top: -20px;
+}
+
+.rating_popup_default{
+}
+
+.popup_place_content_info{
+    color: whitesmoke;
+	text-align:center;
+}
+
+/*button place--------------------------button place*/
+.button_place{
+}
+
+.button_place_info, .button_place_tags{
+	margin-top:25px;
+}
+
+.button_place_title_info, .button_place_title_tags{
+    color: rgb(51, 122, 183);
+	text-transform: capitalize;
+    text-align: left;
+}
+
+.button_place_info_details, .button_place_tags_details{
+	margin-top: -15px;
+	text-align:left;
+}
+
+.button_place_image{
+}
+
+.button_place_image_details{
+	border-radius: 5px;
+	width: 250px;
+	height: inherit;
+	max-height: 280px;
+}
+
+/*button comments------------------------------button comments*/
+.button_comments{
+}
+
+.button_comments_title_comms, .button_comments_title_addcomms{
+	position: absolute;
+	width: 50%;	
+	margin-top: -35px;
+	text-align: center;
+	color: rgb(51, 122, 183);
+	text-transform:uppercase;
+    font-size: 15px;
+}
+
+.button_comments_title_comms{
+	left: 0;
+}
+
+.button_comments_title_addcomms{
+	right: 0;
+}
+
+.scroll_comments_y{
+	height: 300px; 
+}
+
+.com_img_tam{
+    height: 63px;
+}
+
+/*comments--------show---------comments--------------show---------------*/
+.cont_show_comments{
+	background-color: rgba(128, 128, 128, 0.19);
+    border-radius: 5px;
+}
+
+.container_one_comment{
+	border-bottom-style: outset;
+    border-bottom-color: rgb(133, 155, 165);
+	height: 135px;
+}
+
+/*container user*/
+.cont_one_user{
+    margin-top: 25px;
+    margin-left: -15px;
+}
+
+.comment_user_image{
+	width:100%;
+	border-radius: 5px;
+}
+
+.comment_user_nickname{
+	font-size: 13px;
+}
+
+/*container comment*/
+.cont_one_comment{
+	width: 208px;
+}
+
+.comment_comment_date{
+	margin-top: 10px;
+}
+
+.comment_comment_details{
+}
+
+/*container comment image*/
+.cont_one_comment_image{
+	margin-top: 30px;
+}
+
+.comment_comment_image{
+	width:100%;
+	border-radius: 5px;
+}
+
+/*add comment-------------add comment*/
+.container_add_comment{
+	height: 135px;
+}
+
+/*cont_image user of add comment*/
+.cont_add_user{
+	margin-top: 62px;
+    margin-left: -15px;
+}
+
+.add_user_image{
+	width:100%;
+	border-radius: 5px;
+}
+
+.add_user_nickname{
+	font-size: 13px;
+}
+
+/* cont add comment*/
+.cont_add_comment{
+	width: 305px;
+	text-align: left;
+}
+
+.tam_textarea{
+	min-height:100px;
+	max-height:100px;
+	min-width:275px;
+	max-width:275px;
+}
+
+.tam_but_ok{
+	width: 100px;
+	margin-top: 20px;
+	margin-left: 87.5px;
+	background-color: darkslategrey;
+}
+
+/*button gallery----------------------------------button gallery*/
+.button_gallery{
+	margin-top: -15px;
+}
+
+.button_gallery_date{
+	margin-top: -4px;
+    color: rgb(165, 165, 165);
+}
+
+.button_gallery_image{
+	border-radius: 5px;
+	height: inherit;
+	max-width: 340px;	
+	max-height: 295px;
+	margin-top:-25px;
+}
+
+.button_gallery_comment{
+	position: absolute;
+	top: 21px;
+	left: 50%;
+	margin-left: -145px;
+	width: 285px;
+	max-height: 84px;
+	height: inherit;
+	background-color: rgba(48, 48, 48, 0.8);
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+/*carrucel-gallery*/
+
+/*button promotions---------------------------------button promotions*/
+.button_promotions{
+	margin-top:-15px;
+}
+
+.button_promotion_date{
+	margin-top: -4px;
+	text-transform:uppercase;
+    color: rgb(165, 165, 165);
+}
+
+.button_promotion_image{
+	border-radius: 5px;
+	height: inherit;
+	max-width: 340px;	
+	max-height: 295px;
+	margin-top:-25px;
+}
+
+.button_promotion_comment{
+	position: absolute;
+	top: 21px;
+	left: 50%;
+	margin-left: -145px;
+	width: 285px;
+	max-height: 84px;
+	height: inherit;
+	background-color: rgba(48, 48, 48, 0.8);
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+/*not_info_db*/
+.not_info_db{
+	text-transform: uppercase;
+    color: rgb(236, 137, 137);
+}
+
+/*options place------------------------buttons*/
+.popup_place_options_place{
+	position: absolute;
+	top: 520px;
+	height:90px;
+	width: 925px;
+	left: 0;
+	background-color: rgba(44, 44, 44, 0.5);
+	border-radius: inherit;
+}
+
+.check_in_button{
+    margin-top: 25px;
+	margin-left: 227.5px;
+	padding: 0px;
+	width: 80px;
+    height: 57px;
+	background-color: darkslategray;
+}
+
+.check_in{
+	width: 55px;
+}
+
+.route_button{
+	position: inherit;
+	margin-top: 25px;
+	margin-left: 310px;
+	padding: 0px;
+	width: 80px;
+    height: 57px;
+	background-color: darkslategray;
+}
+
+.route{
+	width: 44px;
+    padding-top: 6px;
+}
+
+/*rating*/
+.rating-md {
+  font-size: 2em;
+}
+
+.star-rating{
+	position: absolute;
+	top: 0px;
+	margin-top: 30px;
+	margin-left: 395px;
+}
+
+/*label*/
+.txt_checkin, .txt_rating, .txt_take{
+	position: absolute;
+    color: rgb(99, 174, 237);	
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.txt_checkin{
+	margin-left: 236px;
+}
+
+.txt_rating{
+	margin-left: 440px;
+    margin-top: -77px;
+}
+
+.txt_take{
+	margin-left: 610px;
+    margin-top: -77px;
+}
+
+/*Desktop ------------992--------------------Desktop------------1199---------------Desktop*/
+@media (min-width: 992px) and (max-width: 1199px) { 
+/*options place*/
+.popup_place_options_place{
+	width: 759px;
+}
+
+.txt_checkin{
+	margin-left: 160px;
+}
+
+.txt_rating{
+	margin-left: 355px;
+}
+
+.txt_take{
+	margin-left: 525px;
+}
+
+.check_in_button{
+	margin-left: 150px;
+}
+
+.route_button{
+    margin-left: 304px;
+}
+
+.star-rating{
+    margin-left: 308px;
+}
+
+/*button comments*/
+.container_one_comment {/*show comments*/
+    height: 125px;
+}
+
+.com_img_tam {
+    height: 45px;
+}
+
+.cont_one_user {
+	margin-top: 35px;
+    margin-left: -22px;
+}
+
+.cont_one_comment {
+    margin-left: -10px;
+}
+
+.cont_one_comment_image {
+	position: absolute;
+	right: 0px;
+    margin-right: -7px;  
+    margin-top: 40px;
+}
+
+.comment_comment_image {
+    width: 45px;
+}
+
+.cont_add_comment {/*add comment*/
+	position: absolute;
+	width: 280px;
+	margin-left: 52px;
+}
+
+.tam_textarea{
+	min-width: 250px;
+	max-width: 250px;
+}
+
+.cont_add_user {
+    margin-top: 47px;
+}
+
+.tam_but_ok {
+    margin-left: 77px;
+}
+
+}
+
+/*Tablet ----------768----------------------tablet--------------991-------------tablet*/
+@media (min-width: 768px) and (max-width: 991px) { 
+/*popup*/
+.popup_place_title {
+    padding-top: 9px;
+}
+
+/*options place*/
+.popup_place_options_place{
+	width: 690px;
+	top: 540px;
+    height: 70px;
+}
+
+.txt_checkin{
+	margin-left: 155px;
+    font-size: 13px;
+}
+
+.txt_rating{
+	margin-left: 320px;
+	font-size: 13px;
+	margin-top: -57px;
+}
+
+.txt_take{
+	margin-left: 465px;
+	font-size: 13px;
+	margin-top: -57px;
+}
+
+.check_in_button{
+	margin-left: 158px;
+    width: 50px;
+    height: 40px;
+	margin-top:22px;
+}
+
+.check_in {
+    width: 40px;
+}
+
+.route_button{
+    margin-left: 277.5px;
+	width: 50px;
+    height: 40px;
+	margin-top:22px;
+}
+
+.route {
+  width: 34px;
+  padding-top: 2px;
+}
+
+.star-rating{
+    margin-left: 289px;
+}
+
+.rating-md {
+  font-size: 1.5em;
+}
+
+/*button place*/
+.button_place_info{
+    width: 215px;
+}
+
+.button_place_image_details {
+	margin-top: -160px;
+	width: 215px;
+	max-height: 250px;
+}
+
+.button_place_tags{
+    margin-top: -209px;
+    width: 215px;
+    margin-left: 450px;
+}
+
+/*button comments*/
+.com_img_tam {
+    height: 45px;
+    width: 45px;
+}
+
+.cont_show_comments {/*show comments*/
+	width: 325px;
+}
+
+.container_one_comment {
+    height: 120px;
+}
+
+.cont_one_user {
+    position: absolute;
+    margin-left: -25px;
+}
+
+.cont_one_comment_image {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 215px;
+}
+
+.cont_one_comment {
+    margin-left: 28px;
+}
+
+.cont_add_comments {/*add comments*/
+	width: 320px;
+    margin-left: 318px;
+    margin-top: -378px;
+}
+
+.button_comments_title_addcomms {
+    margin-top: -350px;
+}
+
+.cont_add_user {
+    margin-left: 52px;
+}
+
+.add_user_image {
+    height: 63px;
+	width: 63px;
+}
+
+.cont_add_comment {
+   margin-top: -15px;
+}
+
+.tam_textarea {
+    min-height: 85px;
+    max-height: 85px;
+}
+
+.tam_but_ok {
+    margin-top: 10px;
+    margin-left: 86px;
+}
+
+.scroll_comments_y {
+    height: 316px;
+}
+
+}
+
+/*Tablet -----------2---------527------------tablet-----------2---------767-------tablet*/
+@media (min-width: 527px) and (max-width: 767px) { 
+/*popup*/
+#popup_place_container {
+    height: 735px;
+}
+
+.popup_place_title {
+    padding-top: 9px;
+}
+
+.name_rating {
+    margin-top: -15px;
+}
+
+/*options place*/
+.popup_place_options_place{
+	width: 100%;
+	top: 665px;
+    height: 70px;
+}
+
+.cont_options_place{
+	width: 430px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.txt_checkin{
+	margin-left: 25px;
+    font-size: 13px;
+}
+
+.txt_rating{
+	margin-left: 192px;
+	font-size: 13px;
+	margin-top: -57px;
+}
+
+.txt_take{
+	margin-left: 340px;
+	font-size: 13px;
+	margin-top: -57px;
+}
+
+.check_in_button{
+	margin-left: 28px;
+    width: 50px;
+    height: 40px;
+	margin-top:22px;
+}
+
+.check_in {
+    width: 40px;
+}
+
+.route_button{
+    margin-left: 278px;
+	width: 50px;
+    height: 40px;
+	margin-top:22px;
+}
+
+.route {
+  width: 34px;
+  padding-top: 2px;
+}
+
+.star-rating{
+    margin-left: 161px;
+}
+
+.rating-md {
+  font-size: 1.5em;
+}
+
+/*button gallery*/
+.button_gallery_comment {
+	position:relative;
+}
+
+/*button promotion*/
+.button_promotion_comment {
+	position:relative;
+}
+
+/*button place*/
+.button_place_image_details {
+	position: absolute;
+	margin-top: -370px;
+	width: 55%;
+	max-width: 215px;
+	height: inherit;
+	max-height: 280px;
+	left: 0%;
+	right: 0%;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.button_place_info{
+	margin-top: 225px;
+}
+
+.button_place_tags {
+	margin-top: 0px;
+}
+
+/*button comments*/
+.com_img_tam {
+    height: 60px;
+    width: 60px;
+}
+
+.cont_show_comments {/*show comments*/
+	width: 420px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button_comments_title_comms {
+	margin-top: -20px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container_one_comment {
+    height: 125px;
+}
+
+.cont_one_user {
+    position: absolute;
+    margin-left: -10px;
+}
+
+.cont_one_comment_image {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 280px;
+}
+
+.cont_one_comment {
+    margin-left: 68px;
+    width: 225px;
+}
+
+.cont_add_comments {/*add comments*/
+	width: 420px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button_comments_title_addcomms {
+	margin-top: 30px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cont_add_user {
+	position:absolute;
+	margin-top:45px;
+    margin-left: -18px;
+}
+
+.add_user_image {
+	width: 70px;
+	height: 70px;
+}
+
+.cont_add_comment {
+    margin-top: 55px;
+    margin-left: 70px;
+}
+
+.tam_textarea {
+    min-height: 85px;
+    max-height: 85px;
+}
+
+.tam_but_ok {
+    margin-top: -5px;
+    margin-left: 86px;
+}
+
+.scroll_comments_y {
+    height: 190px;
+}
+
+}
+
+/*mobile-------2--------451---------mobile-----------2----------526-------mobile*/
+@media (min-width: 451px) and (max-width:526px){
+/*popup*/
+#popup_place_container {
+    height: 735px;
+}
+
+.popup_place_title {
+    padding-top: 9px;
+}
+
+.name_rating {
+    margin-top: -15px;
+}
+
+/*options place*/
+.popup_place_options_place{
+	width: 100%;
+	top: 665px;
+    height: 70px;
+}
+
+.cont_options_place{
+	width: 330px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.txt_checkin{
+	margin-left: 25px;
+    font-size: 13px;
+}
+
+.txt_rating{
+	margin-left: 142.5px;
+	font-size: 13px;
+	margin-top: -57px;
+}
+
+.txt_take{
+	margin-left: 240px;
+	font-size: 13px;
+	margin-top: -57px;
+}
+
+.check_in_button{
+	margin-left: 28px;
+    width: 50px;
+    height: 40px;
+	margin-top:22px;
+}
+
+.check_in {
+    width: 40px;
+}
+
+.route_button{
+    margin-left: 178px;
+	width: 50px;
+    height: 40px;
+	margin-top:22px;
+}
+
+.route {
+  width: 34px;
+  padding-top: 2px;
+}
+
+.star-rating{
+    margin-left: 112px;
+}
+
+.rating-md {
+  font-size: 1.5em;
+}
+
+/*button gallery*/
+.button_gallery_comment {
+	position:relative;
+}
+
+/*button promotion*/
+.button_promotion_comment {
+	position:relative;
+}
+
+/*button place*/
+.button_place_image_details {
+	position: absolute;
+	margin-top: -370px;
+	width: 55%;
+	max-width: 215px;
+	height: inherit;
+	max-height: 280px;
+	left: 0%;
+	right: 0%;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.button_place_info{
+	margin-top: 225px;
+}
+
+.button_place_tags {
+	margin-top: 0px;
+}
+
+/*button comments*/
+.com_img_tam {
+    height: 45px;
+    width: 45px;
+}
+
+.cont_show_comments {/*show comments*/
+	width: 350px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button_comments_title_comms {
+	margin-top: -20px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container_one_comment {
+    height: 120px;
+}
+
+.cont_one_user {
+    position: absolute;
+    margin-left: -20px;
+}
+
+.cont_one_comment_image {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 235px;
+}
+
+.cont_one_comment {
+    margin-left: 39px;
+}
+
+.cont_add_comments {/*add comments*/
+	width: 320px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button_comments_title_addcomms {
+	margin-top: 20px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cont_add_user {
+	display:none;
+}
+
+.cont_add_comment {
+    margin-top: 35px;
+    margin-left: -25px;
+}
+
+.tam_textarea {
+    min-height: 85px;
+    max-height: 85px;
+}
+
+.tam_but_ok {
+    margin-top: -5px;
+    margin-left: 86px;
+}
+
+.scroll_comments_y {
+    height: 190px;
+}
+
+}
+
+/*mobile------------300-------------mobile----------------450--------------mobile*/
+@media (min-width: 300px) and (max-width:450px){
+/*popup*/
+#popup_place_container {
+    position:fixed;
+    width: 100%;
+	left:0%;
+    height: 786px;
+	top:0px;
+}
+
+.name_rating {
+    margin-top: -15px;
+}
+
+/*options place*/
+.popup_place_options_place{
+	width: 100%;
+	top: 716px;
+    height: 70px;
+}
+
+.cont_options_place{
+	width: 330px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.txt_checkin{
+	margin-left: 25px;
+    font-size: 13px;
+}
+
+.txt_rating{
+	margin-left: 142.5px;
+	font-size: 13px;
+	margin-top: -57px;
+}
+
+.txt_take{
+	margin-left: 240px;
+	font-size: 13px;
+	margin-top: -57px;
+}
+
+.check_in_button{
+	margin-left: 28px;
+    width: 50px;
+    height: 40px;
+	margin-top:22px;
+}
+
+.check_in {
+    width: 40px;
+}
+
+.route_button{
+    margin-left: 178px;
+	width: 50px;
+    height: 40px;
+	margin-top:22px;
+}
+
+.route {
+  width: 34px;
+  padding-top: 2px;
+}
+
+.star-rating{
+    margin-left: 112px;
+}
+
+.rating-md {
+  font-size: 1.5em;
+}
+
+/*button gallery*/
+.button_gallery_image {
+	max-width: 313px;
+}
+
+.button_gallery_comment {
+	position:relative;
+}
+
+/*button promotion*/
+.button_promotion_image {
+	max-width: 313px;
+}
+
+.button_promotion_comment {
+	position:relative;
+}
+
+/*button place*/
+.button_place_image_details {
+	position: absolute;
+	margin-left: -125px;
+	margin-top: -400px;
+}
+
+.button_place_info{
+	margin-top: 265px;
+}
+
+.button_place_tags {
+	margin-top: 0px;
+}
+
+/*button comments*/
+.com_img_tam {
+    height: 45px;
+    width: 45px;
+}
+
+.cont_show_comments {/*show comments*/
+	width: 315px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button_comments_title_comms {
+	margin-top: -20px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container_one_comment {
+    height: 120px;
+}
+
+.cont_one_user {
+    position: absolute;
+    margin-left: -30px;
+}
+
+.cont_one_comment_image {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 210px;
+}
+
+.cont_one_comment {
+    margin-left: 23px;
+}
+
+.cont_add_comments {/*add comments*/
+	width: 320px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button_comments_title_addcomms {
+	margin-top: 20px;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cont_add_user {
+	display:none;
+}
+
+.cont_add_comment {
+    margin-top: 35px;
+    margin-left: -25px;
+}
+
+.tam_textarea {
+    min-height: 85px;
+    max-height: 85px;
+}
+
+.tam_but_ok {
+    margin-top: -5px;
+    margin-left: 86px;
+}
+
+.scroll_comments_y {
+    height: 255px;
+}
+
+}
+
+
+
+
+
+
+

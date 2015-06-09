@@ -29,7 +29,7 @@
 		$row_select_image = $result->fetch_assoc();
 			$id = $row_select_image['id'];
 			$ext = $row_select_image['img_type'];
-			$filename = "../photos/user/$id$ext";
+			$filename = "../photos/user/$id.$ext";
 					
 		if (file_exists($filename)) {
 			$filename = $filename;
@@ -40,4 +40,16 @@
 		$conex->close();
 		echo $filename;
 	}	
+	
+	//add rating
+	function add_rating($val_rat, $date, $sesion_user_id, $place_id){
+		$val_rat=$val_rat;
+		$date=$date;
+		$sesion_user_id=$sesion_user_id;
+		$place_id=$place_id;
+	
+		$conex = connection();
+		$insert = "INSERT INTO rating (rating, date, user_id, place_id) VALUES ('$val_rat', '$date', '$sesion_user_id', '$place_id')";
+		$result = $conex->query($insert);
+	}
 ?>

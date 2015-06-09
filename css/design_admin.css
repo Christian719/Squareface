@@ -211,6 +211,11 @@ a.link_pro{
 	width:100px;
 }
 
+/*scroll*/
+.ps-scrollbar-x-rail, .ps-scrollbar-x{
+	display:none;
+}
+
 .scroll_form_y{
 	position:absolute;
 	height: 550px;	

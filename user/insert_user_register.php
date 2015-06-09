@@ -26,7 +26,7 @@
 		$result = $conex->query($insert);
 		
 		//Check if the data are stored in the database
-		$query= "SELECT * FROM user WHERE email='".$email."' AND password='".$password."'"; 
+		$query= "SELECT id FROM user WHERE email='".$email."' AND password='".$password."'"; 
 		$result= $conex->query($query);
 		$row = $result->fetch_assoc();
 		
@@ -47,7 +47,7 @@
 		$result = $conex->query($insert);
 		
 		//Check if the image are stored in the database
-		$query= "SELECT * FROM image WHERE papa_id='".$id_user."'"; 
+		$query= "SELECT * FROM image WHERE type='user' and papa_id='".$id_user."'"; 
 		$result= $conex->query($query);
 		$row = $result->fetch_array(MYSQLI_BOTH);
 		

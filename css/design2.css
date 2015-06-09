@@ -446,7 +446,7 @@ td .ui-state-default {
 /*Desktop ------------992--------------------Desktop------------1199---------------Desktop*/
 @media (min-width: 992px) and (max-width: 1199px) { 
 .promotion_calendar{
-    margin-top: 35px;
+    margin-top: 30px;
     margin-left: 29%;
 }
 
@@ -511,6 +511,7 @@ td .ui-state-default {
 .promotion_calendar {
 	margin-left: 0%;
 	text-align:center;
+	margin-top:0px;
 }
 
 }
