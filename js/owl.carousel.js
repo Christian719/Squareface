@@ -391,6 +391,7 @@ if (typeof Object.create !== "function") {
 
         buildControls : function () {
             var base = this;
+			var hola = this;
             if (base.options.navigation === true || base.options.pagination === true) {
                 base.owlControls = $("<div class=\"owl-controls\"/>").toggleClass("clickable", !base.browser.isTouch).appendTo(base.$elem);
             }
@@ -398,16 +399,23 @@ if (typeof Object.create !== "function") {
                 base.buildPagination();
             }
             if (base.options.navigation === true) {
-                base.buildButtons();
+				if (hola==true){
+					base.buildButtons();
+				}
+				else {
+					base.buildButtons_two();
+				}
+                /*base.buildButtons();
+				base.buildButtons_two();*/
             }
         },
 
+		/*carrucel's place*/
         buildButtons : function () {
             var base = this,
                 buttonsWrapper = $("<div class=\"owl-buttons\"/>");
             base.owlControls.append(buttonsWrapper);
-
-			/*Option promotion*/
+			
             base.buttonPrev = $("<div/>", {
                 "class" : "owl-prev",
                 "html" : base.options.navigationText[0] || ""
@@ -420,7 +428,7 @@ if (typeof Object.create !== "function") {
 
             buttonsWrapper
                 .append(base.buttonPrev)
-                .append(base.buttonNext);
+                .append(base.buttonNext)
 
             buttonsWrapper.on("touchstart.owlControls mousedown.owlControls", "div[class^=\"owl\"]", function (event) {
                 event.preventDefault();
@@ -429,9 +437,45 @@ if (typeof Object.create !== "function") {
             buttonsWrapper.on("touchend.owlControls mouseup.owlControls", "div[class^=\"owl\"]", function (event) {
                 event.preventDefault();
                 if ($(this).hasClass("owl-next")) {
-                    base.next();
-                } else {
-                    base.prev();
+                    base.next();					
+                } 
+				else {
+					base.prev();
+                }
+            });
+        },
+		
+		/*buttons's place*/
+		buildButtons_two : function () {
+            var base = this,
+                buttonsWrapper = $("<div class=\"owl-buttons\"/>");
+            base.owlControls.append(buttonsWrapper);
+			
+			base.buttonPrev_but = $("<div/>", {
+                "class" : "owl-prev_but",
+                "html" : base.options.navigationText[0] || ""				
+            });
+			
+			base.buttonNext_but = $("<div/>", {
+                "class" : "owl-next_but",
+                "html" : base.options.navigationText[1] || ""
+            });		
+
+            buttonsWrapper
+				.append(base.buttonPrev_but)
+				.append(base.buttonNext_but);
+
+            buttonsWrapper.on("touchstart.owlControls mousedown.owlControls", "div[class^=\"owl\"]", function (event) {
+                event.preventDefault();
+            });
+
+            buttonsWrapper.on("touchend.owlControls mouseup.owlControls", "div[class^=\"owl\"]", function (event) {
+                event.preventDefault();
+                if ($(this).hasClass("owl-next_but")) {
+                    base.next();					
+                } 
+				else {
+					base.prev();
                 }
             });
         },
@@ -516,15 +560,23 @@ if (typeof Object.create !== "function") {
                 if (base.currentItem === 0 && base.maximumItem === 0) {
                     base.buttonPrev.addClass("disabled");
                     base.buttonNext.addClass("disabled");
+					base.buttonPrev_but.addClass("disabled");
+                    base.buttonNext_but.addClass("disabled");
                 } else if (base.currentItem === 0 && base.maximumItem !== 0) {
                     base.buttonPrev.addClass("disabled");
                     base.buttonNext.removeClass("disabled");
+					base.buttonPrev_but.addClass("disabled");
+                    base.buttonNext_but.removeClass("disabled");
                 } else if (base.currentItem === base.maximumItem) {
                     base.buttonPrev.removeClass("disabled");
                     base.buttonNext.addClass("disabled");
+					base.buttonPrev_but.removeClass("disabled");
+                    base.buttonNext_but.addClass("disabled");
                 } else if (base.currentItem !== 0 && base.currentItem !== base.maximumItem) {
                     base.buttonPrev.removeClass("disabled");
                     base.buttonNext.removeClass("disabled");
+					base.buttonPrev_but.removeClass("disabled");
+                    base.buttonNext_but.removeClass("disabled");
                 }
             }
         },

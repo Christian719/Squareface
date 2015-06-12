@@ -1,14 +1,50 @@
 <h4 class="title_option">Categories</h4>
 <div id="table_cat" class="table-responsive design_tables">
-	<table class="table table-hover table_categories">
-		<tr class="active">
-			<th>Id</th>
-			<th>Name</th>
-		</tr>
-	</table>
+<?php
+	//connection	
+	include("../include/functions.php");
+	$conex = connection();
+	
+	//session start
+	session_start();
+	
+	//query
+	$query = "select * from category where status='1' order by id asc";
+	$result = $conex->query($query);
+	
+	if ($result->num_rows > 0) {
+		echo '<table class="table table-hover table_categories">';	   
+			echo '<tr class="active">'; 
+				echo '<th>Id</th>'; 
+				echo '<th>Name</th>';
+				echo '<th>Edit</th>';
+				echo '<th>Delete</th>';
+			echo '</tr>'; 	 			
+		// output data of each row		
+		while($category = $result->fetch_assoc()) {	
+			//obtain values
+			$id=$category['id'];
+			$name=$category['name'];
+			
+			//insert		
+			echo '<tr class="rows_table">
+					<td name="id">'.$id.'</td>
+					<td name="name">'.$name.'</td>
+					<td name="edit"><a class="btn btn-default btn_edit" role="button" href="#" onclick="edit_row('.$id.')"><img class="edit" src="../images/edit.png" title="Edit"/></a></td>
+					<td name="delete"><a class="btn btn-default btn_delete" role="button" href="deletes.php?del=cat&id='.$id.'" onclick="return confirm_delete()"><img class="delete" src="../images/delete.png" title="Delete"/></a></td>
+				  </tr>';	
+		}
+		echo '</table>';
+	} 
+	else {
+		 echo "<div class='no_results'><span>0 results</span></div>";
+	}	
+	$conex->close();
+?>
 </div>	
-<div class="message"></div>
-<button id="butt_add_cat" class="btn btn-default" type="submit">Add new</button>
+<!--button for add new-->
+<button id="butt_add_cat" class="btn btn-default btn_add" type="submit">Add new</button>
+<!--form for add new-->
 <div id="form_cat" class="form_container">
 	<label class="title_form">New</label>
 	<form method="post" action="inserts.php?add=cat">
@@ -20,79 +56,14 @@
 	  <button type="submit" class="btn btn-default butt_add" onclick="return confirm_msg()">Add</button>
 	</form>
 </div>
-
-<script>
-	$(document).ready(function(){
-		/* info of table */
-		$.ajax({
-			type: "GET",
-			url: "ajax_categories.php?indicator=1"
-		})
-		.done(function(json){
-			json = $.parseJSON(json)
-			for(var i=0;i<json.length;i++){
-				$('.table_categories').append(				
-					"<tr class='rows_table'>"
-						 +"<td class='id'>"+json[i].id+"</td>"
-					     +"<td class='editable' data-campo='name'><span>"+json[i].name+"</span></td>"
-					+"</tr>");				
-			}
-		});
-		
-		/*edit method*/
-		var td,campo,valor,id;
-		$(document).on("click","td.editable span",function(e){
-			e.preventDefault();
-			$("td:not(.id)").removeClass("editable");
-			td=$(this).closest("td");
-			campo=$(this).closest("td").data("campo");
-			valor=$(this).text();
-			id=$(this).closest("tr").find(".id").text();
-			$("#butt_add_cat").hide();
-			
-			td.text("").html("<input type='text' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='link_pro save' href='#'>Save</a><a class='link_pro cancel' href='#'>Cancel</a>");
-		
-		});
-		
-		/*cancel method*/
-		$(document).on("click",".cancel",function(e){
-			e.preventDefault();
-			td.html("<span>"+valor+"</span>");
-			$("td:not(.id)").addClass("editable");
-			$("#butt_add_cat").show();
-		});
-		
-		/*save method*/
-		$(document).on("click",".save",function(e){
-			$(".message").html("<img src='../images/loading.gif'>");
-			e.preventDefault();
-			nuevovalor=$(this).closest("td").find("input").val();
-			if(nuevovalor.trim()!=""){
-				$.ajax({
-					type: "POST",
-					data: { campo: campo, valor: nuevovalor, id:id},
-					url: "ajax_categories.php"					
-				})
-				.done(function( msg ) {
-					$(".message").html(msg);
-					td.html("<span>"+nuevovalor+"</span>");
-					$("td:not(.id)").addClass("editable");
-					setTimeout(function() {$('.ok').fadeOut('fast');}, 3000);
-					$("#butt_add_cat").show();
-				});
-			}
-			else
-				$(".message").html("<p class='ko'>You must enter a value</p>");
-				setTimeout(function() {$('.ko').fadeOut('fast');}, 3000);
-		});	
-				
-	});	
-</script>
+<!--form for edit-->
+<div id="form_cat_edit" class="form_container"></div>
 
 <!--script for hide and show divs-->
 <script>
 	$(document).ready(function(){
 		$("#form_cat").hide();
+		$("#form_cat_edit").hide();
 				
 		/*click button add*/		
 	    $("#butt_add_cat").click(function(evento){
@@ -108,10 +79,11 @@
 		    $("#table_cat").show();
 		    $("#butt_add_cat").show();
 			$("#form_cat").hide();
-		});
+		});	
 	   
 	});
 	
+	/*add*/
 	function confirm_msg(){ 
 		if (confirm('Are you sure to add a category?')){ 
 			return true;
@@ -120,6 +92,25 @@
 			return false;
 		}
 	} 
+	
+	/*delete*/
+	function confirm_delete(){ 
+		if (confirm('Are you sure to delete this category?')){ 
+			return true;
+		} 
+		else{
+			return false;
+		}
+	} 
+	
+	/*edit_row*/
+	function edit_row(id){ 
+		$("#form_cat").hide();
+		$("#table_cat").hide();
+		$("#butt_add_cat").hide();
+		$("#form_cat_edit").load("edit_cat.php?id="+id+"");
+		$("#form_cat_edit").show();
+	}  
 	
 </script>
 

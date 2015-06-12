@@ -95,7 +95,7 @@ html,body{
 	left:0%;
 	z-index:500;
 	border-radius: 0px;
-	border-bottom-color:#000000;
+	border-bottom-color:lightsteelblue;
 }
 
 .urvenue_image_mobile{
@@ -307,32 +307,6 @@ html,body{
     margin-top: -15px;
 	width:328px;
     height: inherit;
-}
-
-/*promos carrucel-----------------------------------------*/
-.owl-next{
-	background-image:url("../images/next.png")!important;
-	width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 49%;
-    right: 26%;
-    opacity: 1.0!important;
-    background-color: transparent!important;
-}
-.owl-prev{
-	background-image:url("../images/previous2.png")!important;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 49%;
-    left: 26%;
-    opacity: 1.0!important;
-    background-color: transparent!important;
-}
-
-.owl-pagination{
-	display:none;
 }
 
 /*promos calendar-----------------------------------*/
@@ -611,16 +585,6 @@ td .ui-state-default {
 	margin-top:40px;
 }
 
-.owl-next{
-	position:fixed;
-    right: 12%;
-}
-
-.owl-prev{
-	position:fixed;
-    left: 12%;
-}
-
 .scroll_y{
 	height: 515px; 
 }
@@ -707,15 +671,6 @@ td .ui-state-default {
 	margin-top:40px;
 }
 
-.owl-next{
-	position:fixed;
-    right: 60px;
-}
-.owl-prev{
-	position:fixed;
-    left: 60px;
-}
-
 .scroll_y{
 	height: 515px; 
 }
@@ -723,6 +678,7 @@ td .ui-state-default {
 .item{
 	min-height:630px;
 }
+
 }
 
 /*Tablet -------------max-----------451---------tablet----------------max--------991------tablet*/
@@ -902,15 +858,6 @@ td .ui-state-default {
 	margin-left: 0%;
 	text-align:center;
 	margin-top:40px;
-}
-
-.owl-next{
-	position:fixed;
-    right: 22px;
-}
-.owl-prev{
-	position:fixed;
-    left: 22px;
 }
 
 .scroll_y{

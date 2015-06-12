@@ -9,11 +9,11 @@
 	//Get the type of insertion
 	$add_type=$_GET['add'];
 	
-	//insert---------------------------------------------------
+
 	//category
 	if($add_type=="cat"){	
 		$name= $_POST['name'];
-		$insert = "INSERT INTO category (name) VALUES ('$name')";
+		$insert = "INSERT INTO category (name, status) VALUES ('$name', '1')";
 		$result = $conex->query($insert);
 	}
 	
@@ -21,7 +21,7 @@
 	if($add_type=="tag"){	
 		$name= $_POST['name'];
 		$category= $_POST['category'];
-		$insert = "INSERT INTO tags (name, category_id) VALUES ('$name', '$category')";
+		$insert = "INSERT INTO tags (name, category_id, status) VALUES ('$name', '$category', '1')";
 		$result = $conex->query($insert);
 	}
 	
@@ -37,7 +37,7 @@
 			$row_place_id_cat = $result_place_id_cat->fetch_assoc();		
 			$category_id=$row_place_id_cat['category_id'];
 			
-		$insert = "INSERT INTO promotion (day, promotion, place_id, category_id) VALUES ('$day', '$promotion', '$place_id', '$category_id')";
+		$insert = "INSERT INTO promotion (day, promotion, place_id, category_id, status) VALUES ('$day', '$promotion', '$place_id', '$category_id', '1')";
 		$result = $conex->query($insert);
 		
 		//select id promo
@@ -84,8 +84,17 @@
 		$update_up_pro = "UPDATE promotion SET image='$id_image' WHERE id = '$id_promotion'";
 		$result_up_pro= $conex->query($update_up_pro);	
 		
+		//select name of place
+		$query_name_pla= "SELECT name FROM place WHERE id='$place_id'"; 
+		$result_name_pla= $conex->query($query_name_pla);
+		$row_name_pla = $result_name_pla->fetch_assoc();		
+		$name_place=$row_name_pla['name'];	
+		
 		//upload image
-		$destination = "../photos/".$type."/";
+		$destination = "../photos/".$type."/".$name_place."/";
+		if(!file_exists($destination)){  //create the folder if it does not exist
+			mkdir ($destination);
+		}	
 		$route = "".$destination."".$id_image.".".$img_type.""; // add the route
 		move_uploaded_file ($path, $route); // Upload file	
 	}
@@ -101,10 +110,22 @@
 		$lat= $_POST['lat'];
 		$lon= $_POST['lon'];
 		$category_id= $_POST['category_id'];
-		$tags_id= $_POST['tags_id'];
-		$all_tags="|".$tags_id."|";
+		//tags
+		$tags_id=$_POST["tags_id"]; 
+		$size_tags = count($tags_id);
+		$tags_id_all = "";
+		for ($i = 0; $i<$size_tags; $i ++){ 
+			if($i>4){
+			}
+			else{   
+				if($i>0){
+					$tags_id_all=$tags_id_all.",";
+				}
+				$tags_id_all=$tags_id_all."|".$tags_id[$i]."|";					
+			}	
+		}  
 		
-		$insert = "INSERT INTO place (name, address, city, phone, schedule, rating, lat, lon, category_id, tags_id) VALUES ('$name', '$address', '$city', '$phone', '$schedule', '$rating', '$lat', '$lon', '$category_id', '$all_tags')";
+		$insert = "INSERT INTO place (name, address, city, phone, schedule, rating, lat, lon, category_id, tags_id, status) VALUES ('$name', '$address', '$city', '$phone', '$schedule', '$rating', '$lat', '$lon', '$category_id', '$tags_id_all', '1')";
 		$result = $conex->query($insert);
 		
 		//select id place
@@ -183,7 +204,7 @@
 			$date=date("Y-m-d");
 			$type=$ext_mime;
 			
-			$insert = "INSERT INTO gallery (comment, date, type, place_id) VALUES ('$comment', '$date', '$type', '$place_id')";
+			$insert = "INSERT INTO gallery (comment, date, type, place_id, status) VALUES ('$comment', '$date', '$type', '$place_id', '1')";
 			$result = $conex->query($insert);
 			
 			//select id gallery for the image
@@ -213,8 +234,7 @@
 		}
 		finfo_close($finfo);
 	}
-	
-	
+		
 	$conex->close();
 	header("Location: ./");
 ?>

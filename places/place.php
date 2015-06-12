@@ -168,9 +168,15 @@
 								$res_comm_img = $conex->query($sel_comm_img);
 								$row_comm_img = $res_comm_img->fetch_assoc();
 								
+								//select name of place
+								$query_name_pla= "SELECT name FROM place WHERE id='$com_place_id'"; 
+								$result_name_pla= $conex->query($query_name_pla);
+								$row_name_pla = $result_name_pla->fetch_assoc();		
+								$name_place=$row_name_pla['name'];	
+								
 								$c_ext = $row_comm_img['img_type'];
 								$c_image_type = $row_comm_img['type'];	
-								$c_filename = "../photos/$c_image_type/$com_image.$c_ext";
+								$c_filename = "../photos/$c_image_type/$name_place/$com_image.$c_ext";
 											
 								if (file_exists($c_filename)) {
 									$c_filename = $c_filename;
@@ -420,7 +426,7 @@
 		[527, 3],
 		[650, 4]
 	  ],
-	  navigation : true	 
+	  navigation : true
 	});
 	
 	//carrucel_promos
@@ -432,7 +438,7 @@
 		[527, 1],
 		[650, 1]
 	  ],
-	  navigation : true	 
+	  navigation : true
 	});	
 	
 	//carrucel_gallery
@@ -444,7 +450,7 @@
 		[527, 1],
 		[650, 1]
 	  ],
-	  navigation : true	 
+	  navigation : true
 	});		
 		
 	//functions
@@ -497,7 +503,7 @@
 		  $("#ajax_button_place").hide();
 	   	  $("#ajax_button_comments").hide();
 	      $("#ajax_button_gallery").show();
-	      $("#ajax_button_promotions").hide();
+	      $("#ajax_button_promotions").hide();		    
 	   });
 			
 	   $("#button_promotions").click(function(evento){

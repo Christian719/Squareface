@@ -104,7 +104,7 @@
 	  <li><a href="../user/complete_user.php" class="ajax-popup-link">Profile</a></li>
 	  <li><a href="../admin/index.php">Administration</a></li>
 	  <li class="divider"></li>
-	  <li><a href="logout.php" id="logout">Log out</a></li>
+	  <li><a href="../login/logout.php" id="logout">Log out</a></li>
     </ul>
   </div><!-- /.container-fluid -->
 </nav>

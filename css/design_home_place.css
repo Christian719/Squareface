@@ -287,8 +287,6 @@
 	font-size: 15px;
 }
 
-/*carrucel-gallery*/
-
 /*button promotions---------------------------------button promotions*/
 .button_promotions{
 	margin-top:-15px;
@@ -330,52 +328,18 @@
 /*options place------------------------buttons*/
 .popup_place_options_place{
 	position: absolute;
-	top: 520px;
-	height:90px;
-	width: 925px;
+	top: 540px;
+	height:70px;
+	width: 100%;
 	left: 0;
 	background-color: rgba(44, 44, 44, 0.5);
 	border-radius: inherit;
 }
 
-.check_in_button{
-    margin-top: 25px;
-	margin-left: 227.5px;
-	padding: 0px;
-	width: 80px;
-    height: 57px;
-	background-color: darkslategray;
-}
-
-.check_in{
-	width: 55px;
-}
-
-.route_button{
-	position: inherit;
-	margin-top: 25px;
-	margin-left: 310px;
-	padding: 0px;
-	width: 80px;
-    height: 57px;
-	background-color: darkslategray;
-}
-
-.route{
-	width: 44px;
-    padding-top: 6px;
-}
-
-/*rating*/
-.rating-md {
-  font-size: 2em;
-}
-
-.star-rating{
-	position: absolute;
-	top: 0px;
-	margin-top: 30px;
-	margin-left: 395px;
+.cont_options_place{
+	width: 430px;
+    height: 70px;
+    margin: 0 auto;
 }
 
 /*label*/
@@ -387,50 +351,114 @@
 }
 
 .txt_checkin{
-	margin-left: 236px;
+	margin-left: 25px;
+    font-size: 13px;
 }
 
 .txt_rating{
-	margin-left: 440px;
-    margin-top: -77px;
+	margin-left: 190px;
+    margin-top: -57px;
+	font-size: 13px;
 }
 
 .txt_take{
-	margin-left: 610px;
-    margin-top: -77px;
+	margin-left: 340px;
+    margin-top: -57px;
+	font-size: 13px;
+}
+
+.check_in_button{
+	margin-left: 28px;
+    width: 50px;
+    height: 40px;
+	margin-top:22px;
+	padding: 0px;
+	background-color: darkslategray;
+}
+
+.check_in{
+	width: 40px;
+}
+
+.route_button{
+	position: inherit;
+	margin-top: 22px;
+	margin-left: 280px;
+	padding: 0px;
+	width: 50px;
+    height: 40px;
+	background-color: darkslategray;
+}
+
+.route{
+	width: 34px;
+    padding-top: 2px;
+}
+
+/*rating*/
+.rating-md {
+  font-size: 1.5em;
+}
+
+.star-rating{
+	position: absolute;
+	top: 0px;
+	margin-top: 26px;
+	margin-left: 159px;
+}
+
+/*carrucel's*/
+/*carrucel-place*/
+.owl-next{
+	background-image:url("../images/next_pla.png")!important;
+	width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 49%;
+    right: 26.4%;
+    opacity: 1.0!important;
+    background-color: rgba(111, 111, 111, 0.25)!important;
+}
+.owl-prev{
+	background-image:url("../images/previous.png")!important;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 49%;
+    left: 26%;
+    opacity: 1.0!important;
+    background-color: rgba(111, 111, 111, 0.25)!important;
+}
+
+/*carrucel-place-buttons*/
+.owl-next_but{
+	background-image:url("../images/next_but.png")!important;
+	width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 7%;
+    right: 0%;
+    opacity: 1.0!important;
+	background-color: rgba(0, 0, 0, 0.4)!important;
+}
+
+.owl-prev_but{
+	background-image:url("../images/previous_but.png")!important;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 1.0!important;
+    background-color: rgba(0, 0, 0, 0.4)!important;
+}
+
+.owl-pagination{
+	display:none;
 }
 
 /*Desktop ------------992--------------------Desktop------------1199---------------Desktop*/
 @media (min-width: 992px) and (max-width: 1199px) { 
-/*options place*/
-.popup_place_options_place{
-	width: 759px;
-}
-
-.txt_checkin{
-	margin-left: 160px;
-}
-
-.txt_rating{
-	margin-left: 355px;
-}
-
-.txt_take{
-	margin-left: 525px;
-}
-
-.check_in_button{
-	margin-left: 150px;
-}
-
-.route_button{
-    margin-left: 304px;
-}
-
-.star-rating{
-    margin-left: 308px;
-}
-
 /*button comments*/
 .container_one_comment {/*show comments*/
     height: 125px;
@@ -479,6 +507,15 @@
     margin-left: 77px;
 }
 
+/*carrucel-place*/
+.owl-next{
+    right: 22.4%;
+}
+
+.owl-prev{
+    left: 22%;
+}
+
 }
 
 /*Tablet ----------768----------------------tablet--------------991-------------tablet*/
@@ -486,61 +523,6 @@
 /*popup*/
 .popup_place_title {
     padding-top: 9px;
-}
-
-/*options place*/
-.popup_place_options_place{
-	width: 690px;
-	top: 540px;
-    height: 70px;
-}
-
-.txt_checkin{
-	margin-left: 155px;
-    font-size: 13px;
-}
-
-.txt_rating{
-	margin-left: 320px;
-	font-size: 13px;
-	margin-top: -57px;
-}
-
-.txt_take{
-	margin-left: 465px;
-	font-size: 13px;
-	margin-top: -57px;
-}
-
-.check_in_button{
-	margin-left: 158px;
-    width: 50px;
-    height: 40px;
-	margin-top:22px;
-}
-
-.check_in {
-    width: 40px;
-}
-
-.route_button{
-    margin-left: 277.5px;
-	width: 50px;
-    height: 40px;
-	margin-top:22px;
-}
-
-.route {
-  width: 34px;
-  padding-top: 2px;
-}
-
-.star-rating{
-    margin-left: 289px;
-}
-
-.rating-md {
-  font-size: 1.5em;
 }
 
 /*button place*/
@@ -626,6 +608,15 @@
     height: 316px;
 }
 
+/*carrucel-place*/
+.owl-next{
+    right: 22.4%;
+}
+
+.owl-prev{
+    left: 22%;
+}
+
 }
 
 /*Tablet -----------2---------527------------tablet-----------2---------767-------tablet*/
@@ -645,63 +636,7 @@
 
 /*options place*/
 .popup_place_options_place{
-	width: 100%;
 	top: 665px;
-    height: 70px;
-}
-
-.cont_options_place{
-	width: 430px;
-    height: 70px;
-    margin: 0 auto;
-}
-
-.txt_checkin{
-	margin-left: 25px;
-    font-size: 13px;
-}
-
-.txt_rating{
-	margin-left: 192px;
-	font-size: 13px;
-	margin-top: -57px;
-}
-
-.txt_take{
-	margin-left: 340px;
-	font-size: 13px;
-	margin-top: -57px;
-}
-
-.check_in_button{
-	margin-left: 28px;
-    width: 50px;
-    height: 40px;
-	margin-top:22px;
-}
-
-.check_in {
-    width: 40px;
-}
-
-.route_button{
-    margin-left: 278px;
-	width: 50px;
-    height: 40px;
-	margin-top:22px;
-}
-
-.route {
-  width: 34px;
-  padding-top: 2px;
-}
-
-.star-rating{
-    margin-left: 161px;
-}
-
-.rating-md {
-  font-size: 1.5em;
 }
 
 /*button gallery*/
@@ -824,6 +759,17 @@
     height: 190px;
 }
 
+/*carrucel-place*/
+.owl-next{
+	position:fixed;
+    right: 12%;
+}
+
+.owl-prev{
+	position:fixed;
+    left: 12%;
+}
+
 }
 
 /*mobile-------2--------451---------mobile-----------2----------526-------mobile*/
@@ -843,63 +789,27 @@
 
 /*options place*/
 .popup_place_options_place{
-	width: 100%;
 	top: 665px;
-    height: 70px;
 }
 
 .cont_options_place{
-	width: 330px;
-    height: 70px;
-    margin: 0 auto;
-}
-
-.txt_checkin{
-	margin-left: 25px;
-    font-size: 13px;
+	width: 370px;
 }
 
 .txt_rating{
-	margin-left: 142.5px;
-	font-size: 13px;
-	margin-top: -57px;
+	margin-left: 160px;
 }
 
 .txt_take{
-	margin-left: 240px;
-	font-size: 13px;
-	margin-top: -57px;
-}
-
-.check_in_button{
-	margin-left: 28px;
-    width: 50px;
-    height: 40px;
-	margin-top:22px;
-}
-
-.check_in {
-    width: 40px;
+	margin-left: 278px;
 }
 
 .route_button{
-    margin-left: 178px;
-	width: 50px;
-    height: 40px;
-	margin-top:22px;
-}
-
-.route {
-  width: 34px;
-  padding-top: 2px;
+    margin-left: 215px;
 }
 
 .star-rating{
-    margin-left: 112px;
-}
-
-.rating-md {
-  font-size: 1.5em;
+    margin-left: 130px;
 }
 
 /*button gallery*/
@@ -1014,6 +924,19 @@
     height: 190px;
 }
 
+/*carrucel-place*/
+.owl-next{
+	position:fixed;
+    right: 60px;
+	top: 384px;
+}
+
+.owl-prev{
+	position:fixed;
+    left: 60px;
+	top: 384px;
+}
+
 }
 
 /*mobile------------300-------------mobile----------------450--------------mobile*/
@@ -1033,63 +956,35 @@
 
 /*options place*/
 .popup_place_options_place{
-	width: 100%;
 	top: 716px;
-    height: 70px;
 }
 
 .cont_options_place{
 	width: 330px;
-    height: 70px;
-    margin: 0 auto;
 }
 
 .txt_checkin{
-	margin-left: 25px;
-    font-size: 13px;
+	margin-left: 15px;
 }
 
 .txt_rating{
-	margin-left: 142.5px;
-	font-size: 13px;
-	margin-top: -57px;
+	margin-left: 140px;
 }
 
 .txt_take{
-	margin-left: 240px;
-	font-size: 13px;
-	margin-top: -57px;
+	margin-left: 243px;
 }
 
 .check_in_button{
-	margin-left: 28px;
-    width: 50px;
-    height: 40px;
-	margin-top:22px;
-}
-
-.check_in {
-    width: 40px;
+    margin-left: 18px;
 }
 
 .route_button{
-    margin-left: 178px;
-	width: 50px;
-    height: 40px;
-	margin-top:22px;
-}
-
-.route {
-  width: 34px;
-  padding-top: 2px;
+    margin-left: 190px;
 }
 
 .star-rating{
-    margin-left: 112px;
-}
-
-.rating-md {
-  font-size: 1.5em;
+    margin-left: 109px;
 }
 
 /*button gallery*/
@@ -1205,11 +1100,17 @@
     height: 255px;
 }
 
+/*carrucel-place*/
+.owl-next{
+	position:fixed;
+    right: 10px;
+	top: 384px;
 }
 
+.owl-prev{
+	position: fixed;
+	left: 10px;
+	top: 384px;
+}
 
-
-
-
-
-
+}

@@ -3,7 +3,7 @@ var marker;
 
 function initialize() {
   var mapOptions = {
-    zoom: 16,
+    zoom: 15,
 	disableDefaultUI: true
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),

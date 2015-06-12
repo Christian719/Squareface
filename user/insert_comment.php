@@ -65,10 +65,21 @@
 		$update_up_pro = "UPDATE comment SET image='$id_image' WHERE id = '$id_comment'";
 		$result_up_pro= $conex->query($update_up_pro);	
 		
-		//upload image
-		$destination = "../photos/".$type."/";
-		$route = "".$destination."".$id_image.".".$img_type.""; // add the route
-		move_uploaded_file ($path, $route); // Upload file	
+		//select name of place
+		$query_name_pla= "SELECT name FROM place WHERE id='$place_id'"; 
+		$result_name_pla= $conex->query($query_name_pla);
+		$row_name_pla = $result_name_pla->fetch_assoc();		
+		$name_place=$row_name_pla['name'];
 		
+		//upload image
+		$destination = "../photos/".$type."/".$name_place."/";
+		if(!file_exists($destination)){  //create the folder if it does not exist
+			mkdir ($destination);
+		}
+		$route = "".$destination."".$id_image.".".$img_type.""; // add the route
+		move_uploaded_file ($path, $route); // Upload file			
 	}
+	
+	$conex->close();
+	header("Location: ./");
 ?>

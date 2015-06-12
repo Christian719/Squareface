@@ -26,6 +26,7 @@
 	<!--css-->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 	<link href="../css/perfect-scrollbar.css" rel="stylesheet">
+	<link href="../css/multiple-select.css" rel="stylesheet">
 	<link href="../css/design_admin.css" rel="stylesheet">	
 	
 </head>
@@ -55,15 +56,43 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-		<li><a href="#" id="categories">Categories</a></li>
-		<li><a href="#" id="places">Places</a></li>
-		<li><a href="#" id="galleries">Galleries</a></li>
-		<li><a href="#" id="promotions">Promotions</a></li>
-		<li><a href="#" id="tags">Tags</a></li>
+		<li><a href="#" class="categories">Categories</a></li>
+		<li><a href="#" class="places">Places</a></li>
+		<li><a href="#" class="galleries">Galleries</a></li>
+		<li><a href="#" class="promotions">Promotions</a></li>
+		<li><a href="#" class="tags">Tags</a></li>
       </ul>     
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+<!-----------------------------------------------Mobile----------------------------------------------------->
+<nav class="navbar navbar-default header_container_mobile">
+  <div class="container-fluid">
+    <div class="navbar-header">
+	  <a href="#" data-toggle="dropdown"><img class="urvenue_image_mobile" src="../images/uv.png" title="Urvenue"></a>	   
+	  <a href="#" class="dropdown-toggle options_page_mobile" data-toggle="dropdown" id="dropdownMenu1" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		<li><a href="#" class="categories">Categories</a></li>
+		<li><a href="#" class="places">Places</a></li>
+		<li><a href="#" class="galleries">Galleries</a></li>
+		<li><a href="#" class="promotions">Promotions</a></li>
+		<li><a href="#" class="tags">Tags</a></li>
+	  </ul>	
+	</div>  
+    <a href="#" data-toggle="dropdown"><img class="user_image_mobile" src="<?php user_avatar(); ?>" title="Avatar"></a>      
+    <a href="#" class="dropdown-toggle options_user_mobile" data-toggle="dropdown" id="dropdownMenu2" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
+	    <li><a href="../login/home.php">Home</a></li>
+	    <li class="divider"></li>
+	    <li><a href="../login/logout.php" id="logout">Log out</a></li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
 	
 <!--HOME---------------------------------------------------------------->
 <img class="default_image_admin" id="default_image" src="../images/administration.png">
@@ -88,12 +117,13 @@
 <script src="../js/jquery.min.js"></script>  
 <script src="../js/bootstrap.min.js"></script> 
 <script src="../js/perfect-scrollbar.jquery.js"></script>  
+<script src="../js/jquery.multiple.select.js"></script>  
 
 <script>
 	$(document).ready(function(){
 		//load pages and show/hide------------------------------		
 		//categories	
-		$("#categories").click(function(evento){
+		$(".categories").click(function(evento){
 	   		$("#container_categories").load("adm_categories.php");
 			$("#container_categories").show();
 			$("#container_places").hide();
@@ -104,7 +134,7 @@
 	    });
 		
 		//places	
-		$("#places").click(function(evento){
+		$(".places").click(function(evento){
 	   		$("#container_places").load("adm_places.php");	
 			$("#container_categories").hide();
 			$("#container_places").show();
@@ -115,7 +145,7 @@
 	    });
 		
 		//galleries	
-		$("#galleries").click(function(evento){
+		$(".galleries").click(function(evento){
 	   		$("#container_galleries").load("adm_galleries.php");	
 			$("#container_categories").hide();
 			$("#container_places").hide();
@@ -126,7 +156,7 @@
 	    });
 		
 		//promotions	
-		$("#promotions").click(function(evento){
+		$(".promotions").click(function(evento){
 	   		$("#container_promotions").load("adm_promotions.php");	
 			$("#container_categories").hide();
 			$("#container_places").hide();
@@ -137,7 +167,7 @@
 	    });
 		
 		//tags	
-		$("#tags").click(function(evento){
+		$(".tags").click(function(evento){
 	   		$("#container_tags").load("adm_tags.php");	
 			$("#container_categories").hide();
 			$("#container_places").hide();
