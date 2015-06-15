@@ -110,7 +110,7 @@
 		  $row_image = $result_image->fetch_assoc();
 			$ext = $row_image['img_type'];
 			$image_type = $row_image['type'];	
-			$filename = "../photos/$image_type/$image.$ext";
+			$filename = "../photos/$image_type/$place_name/$image.$ext";
 						
 			if (file_exists($filename)) {
 				$filename = $filename;
@@ -219,7 +219,8 @@
 		[1400, 1],
 		[1600, 1]
 	  ],
-	  navigation : true	 
+	  navigation : true	 ,
+	  hola : true
 	});	
 	
 	$(document).ready(function(){	   

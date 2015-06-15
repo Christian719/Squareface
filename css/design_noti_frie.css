@@ -1,0 +1,195 @@
+/*panels notifications and friends---------------*/
+.panel{
+    display: none;
+    width: 343px;
+    background-color: rgba(50, 50, 50, 0.9);
+    color: #fff;
+    box-shadow: inset 0 0 4px 3px #222;
+}
+
+.title_panels{
+	text-align:center;
+	text-transform: uppercase;
+    font-size: 24px;
+    color: whitesmoke;
+	margin-top: 25px;
+}
+
+/*panels notifications*/
+.button_notifications{
+	position:absolute;
+	top:712px;
+	left:34.8%;
+	z-index:1;
+	width:10%;
+	height:34px;
+}
+
+.button_close_notifications{
+	position:absolute;
+	right: 10px;
+    top: 10px;
+	width: 40px;
+    height: 38px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.arrow_ago{
+	margin-left: -10px;
+    margin-top: -3px;
+}
+
+/*activity*/
+.container_one_activity{
+	border-bottom-style: outset;
+    border-bottom-color: rgba(0, 0, 0, 0.25);
+	width: 308px;
+	margin-left: 15px;
+	padding-bottom: 10px;
+	text-align: center;
+	font-size: 13px;
+}
+
+.scroll_activity{
+	position:absolute;
+	height: 715px;
+}
+
+.activity_img_tam{
+	width:40px;
+	height:40px;
+}
+
+.activity_user{    /* content user */
+	position: absolute;
+    margin-left: -35px;
+	margin-top: 30px;
+	width: 100px;
+}
+
+.activity_user_image{
+	border-radius: 5px;
+}
+
+.activity_user_nickname{
+}
+
+.activity_activity{    /* content activity */
+	margin-left: 30px;
+	width:210px;
+}
+
+.activity_activity_date{
+	margin-top: 10px;
+}
+
+.activity_activity_details{
+}
+
+.activity_activity_image{
+	border-radius: 5px;
+}
+
+.activity_place{    /* content place */
+	position:absolute;
+	margin-left: 210px;
+	margin-top: 30px;
+    width: 100px;
+}
+
+.activity_place_image{
+	border-radius: 5px;
+}
+
+.activity_place_name{
+}
+
+
+
+/*panels friends*/
+.button_friends{
+	position:absolute;
+	top:712px;
+	right:34.8%;
+	z-index:2;
+	width:10%;
+	height:34px;
+}
+
+.button_close_friends{
+	position:absolute;
+	left: 20px;
+    top: 37px;
+}
+
+/*Tablet -------------max-----------451---------tablet----------------max--------991------tablet*/
+@media (min-width: 451px) and (max-width: 991px) { 
+.button_notifications{
+	top:680px;
+	width:20%;
+	left:19.8%;
+	text-align:center;
+	padding: inherit;
+    padding-top: 5px;
+}
+
+.scroll_activity{
+	height: 690px;
+}
+
+.activity_user{
+	margin-top: 20px;
+}
+
+.activity_place{
+	top:-10px;
+}
+
+.button_friends{
+	top:680px;
+	width:20%;
+	right:19.8%;
+}
+
+}
+
+/*mobile------------300-------------mobile----------------450--------------mobile*/
+@media (min-width: 300px) and (max-width:450px){
+.button_notifications{
+	width:50%;
+	top: 62px;
+	left:0%;
+	z-index:1;
+	border-radius:0px;
+	height: 41px;
+	font-weight: bold;
+    font-size: large;
+	padding-top: 8px;
+}
+
+.scroll_activity{
+	height: 690px;
+}
+
+.activity_user{
+	margin-top: 20px;
+}
+
+.activity_place{
+	top:-10px;
+}
+
+.button_friends{
+	width:50%;
+	top:62px;
+	right:0%;
+	z-index:2;
+	border-radius:0px;
+	height: 41px;
+	font-weight: bold;
+    font-size: large;
+	padding-top: 8px;
+}
+
+}

@@ -27,6 +27,10 @@
 		$row_id_com = $result_id_com->fetch_assoc();		
 		$id_comment=$row_id_com['id'];
 		
+		//insert activity
+		$insert_activity = "INSERT INTO activity (date, papa_id, data, type, user_id, place_id) VALUES ('$date', '$id_comment', '$comment', 'Comment', '$user_id', 'place_id')";
+		$result_activity = $conex->query($insert_activity);
+		
 		//insert image for the comment
 		$path = $_FILES['image']['tmp_name'];
 		$img_type="";

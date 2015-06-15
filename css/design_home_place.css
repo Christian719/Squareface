@@ -321,8 +321,7 @@
 
 /*not_info_db*/
 .not_info_db{
-	text-transform: uppercase;
-    color: rgb(236, 137, 137);
+    color: whitesmoke;
 }
 
 /*options place------------------------buttons*/

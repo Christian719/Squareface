@@ -33,6 +33,7 @@
 	<link href="../css/star-rating.min.css" rel="stylesheet">	
 	<link href="../css/design2.css" rel="stylesheet">	
 	<link href="../css/design_home_place.css" rel="stylesheet">
+	<link href="../css/design_noti_frie.css" rel="stylesheet">
 	<link href="../css/design3.css" rel="stylesheet">
 	
 </head>

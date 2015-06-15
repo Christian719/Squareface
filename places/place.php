@@ -277,7 +277,7 @@
 								  </div>
 								  <input type="hidden" name="place_id" value="<?php echo $id_place;?>">
 								  <input type="hidden" name="user_id" value="<?php echo $sesion_user_id;?>">							  
-								  <button type="submit" class="btn btn-primary tam_but_ok" onclick="return confirm_msg()">Ok</button>
+								  <button type="submit" class="btn btn-primary tam_but_ok do_comment">Ok</button>
 								</form>
 							</div>
 						</div>	
@@ -373,7 +373,7 @@
 								
 								$pro_ext = $pro_row_image['img_type'];
 								$pro_image_type = $pro_row_image['type'];	
-								$pro_filename = "../photos/$pro_image_type/$promo_image.$pro_ext";		
+								$pro_filename = "../photos/$pro_image_type/$place_name/$promo_image.$pro_ext";		
 								
 								if (file_exists($pro_filename)) {
 									$pro_filename = $pro_filename;
@@ -404,12 +404,15 @@
 			<div class="popup_place_options_place">
 				<div class="cont_options_place">
 					<p class="txt_checkin">Check in</p>
-					<a class="btn btn-primary check_in_button" role="button" href="#" onclick="return confirm_check()"><img class="check_in" src="../images/check.png" title="Check in" /></a>				
+					<a class="btn btn-primary check_in_button" role="button" href="#"><img class="check_in" src="../images/check.png" title="Check in" /></a>				
 					<p class="txt_rating">Rating</p>
 					<input id="rating" type="number" class="rating">
 					<p class="txt_take">Take me here</p>
 					<a class="btn btn-primary route_button" role="button"  href="#" onclick="calcRoute(<?php echo $place_id;?>)"><img class="route" src="../images/route.png" title="Take me here" /></a>	
-				</div>				
+				</div>	
+				<span class="btn btn-primary com">Comentario</span>	
+				<span class="btn btn-primary che">Check in</span>
+				<span class="btn btn-primary rat">Rating</span>		
 			</div>	
 		</div>
 		<div class="col-md-1"></div>
@@ -438,7 +441,8 @@
 		[527, 1],
 		[650, 1]
 	  ],
-	  navigation : true
+	  navigation : true,
+	  hola : true
 	});	
 	
 	//carrucel_gallery
@@ -450,18 +454,9 @@
 		[527, 1],
 		[650, 1]
 	  ],
-	  navigation : true
+	  navigation : true,
+	  hola : true
 	});		
-		
-	//functions
-	function confirm_msg(){ 
-		if (confirm('Are you sure to add a comment?')){ 			
-			return true;
-		} 
-		else{
-			return false;
-		}
-	} 
 	
 	function confirm_check(){ 
 		if (confirm('Are you sure to check in?')){ 	
@@ -476,52 +471,104 @@
 	
 	//document ready
 	$(document).ready(function(){
-	  //buttons of place	
+	   //buttons of place	
 	   $("#ajax_button_place").show();
 	   $("#ajax_button_comments").hide();
 	   $("#ajax_button_gallery").hide();
 	   $("#ajax_button_promotions").hide();
 	   
 	   $("#button_place").click(function(evento){
-		  evento.preventDefault();		  
-		  $("#ajax_button_place").show();
-	   	  $("#ajax_button_comments").hide();
-	      $("#ajax_button_gallery").hide();
-	      $("#ajax_button_promotions").hide();
+		   evento.preventDefault();		  
+		   $("#ajax_button_place").show();
+	   	   $("#ajax_button_comments").hide();
+	       $("#ajax_button_gallery").hide();
+	       $("#ajax_button_promotions").hide();
 	   });
 	   
 	   $("#button_comments").click(function(evento){
-		  evento.preventDefault();		  
-		  $("#ajax_button_place").hide();
-	   	  $("#ajax_button_comments").show();
-	      $("#ajax_button_gallery").hide();
-	      $("#ajax_button_promotions").hide();
+		   evento.preventDefault();		  
+		   $("#ajax_button_place").hide();
+	   	   $("#ajax_button_comments").show();
+	       $("#ajax_button_gallery").hide();
+	       $("#ajax_button_promotions").hide();
 	   });
 	   
 	   $("#button_gallery").click(function(evento){
-		  evento.preventDefault();		  
-		  $("#ajax_button_place").hide();
-	   	  $("#ajax_button_comments").hide();
-	      $("#ajax_button_gallery").show();
-	      $("#ajax_button_promotions").hide();		    
+		   evento.preventDefault();		  
+		   $("#ajax_button_place").hide();
+	   	   $("#ajax_button_comments").hide();
+	       $("#ajax_button_gallery").show();
+	       $("#ajax_button_promotions").hide();		    
 	   });
 			
 	   $("#button_promotions").click(function(evento){
-		  evento.preventDefault();		  
-		  $("#ajax_button_place").hide();
-	   	  $("#ajax_button_comments").hide();
-	      $("#ajax_button_gallery").hide();
-	      $("#ajax_button_promotions").show();
+		   evento.preventDefault();		  
+		   $("#ajax_button_place").hide();
+	   	   $("#ajax_button_comments").hide();
+	       $("#ajax_button_gallery").hide();
+	       $("#ajax_button_promotions").show();
 	   });  
 	   
 	   /*close de magnific popup*/ 
 	   $(".route").click(function(evento){
-		  evento.preventDefault();		  
-		  $('.mfp-close').click();
+		   evento.preventDefault();		  
+		   $('.mfp-close').click();
 	   });   
 	   
 	   /*scrollbar*/
 	   $('.scroll_comments_y').perfectScrollbar();
+	   
+	   //socket------------
+		var socket = io.connect('http://localhost:8090'); //This variable is a new instance of socket , this var is individualy instanced for each user in the app
+        socket.on('connect',function(data){
+        });
+		
+		var comment = "comentario"; // get the username
+		var uno = "uno";
+	    var dos = "dos";
+	    var tres = "tres";
+	    var cuatro = "cuatro";
+		
+        // Events for the option buttons
+        $('.com').click(function(){
+			var comment = "comentario"
+            console.log("Emit a petition for the server");
+            socket.emit('showme',{ //emit a message to the server 
+               username:comment
+            });
+        });	
+		
+		$('.che').click(function(){
+			var comment = "check in";
+            console.log("Emit a petition for the server");
+            socket.emit('showme',{ //emit a message to the server 
+               username:comment  //send a data information
+            });
+        });	
+		
+		$('.rat').click(function(){
+			var comment = "rating";
+            console.log("Emit a petition for the server");
+            socket.emit('showme',{ //emit a message to the server 
+               username:comment  //send a data information
+            });
+        });	
+		
+		
+		
+		
+		 
+		
+	   //comment
+	   $('.do_comment').click(function(){
+            
+       });
+	   
+	   //check in
+	   $('.check_in_button').click(function(){
+            create_check("<?php echo $sesion_user_id;?>", "<?php echo $place_lat;?>", "<?php echo $place_lon;?>", "<?php echo $date;?>", "<?php echo $sesion_nickname;?>", "<?php echo $sesion_filename;?>", "<?php echo $place_name;?>");
+			$('.mfp-close').click();
+       });	
 	   
 	   /*rating*/
 	   $("#rating").rating({
@@ -533,26 +580,20 @@
 	   });
 	   
 	   $("#rating").on("rating.change", function(event, value, caption) {
-			if (confirm('Are you sure to rating?')){
-				$("#rating").rating("refresh", {disabled: true, showClear: false});
-				/*insert database*/
-				var val_rating=value;				
-				<?php 
-					$val_rat = 1;
-					$date;
-					$sesion_user_id;
-					$place_id;
-					
-					add_rating($val_rat, $date, $sesion_user_id, $place_id);
-				?>
-				/*alert(val_rating);*/
-				return true;
-			} 
-			else{
-				return false;
-			}
+			$("#rating").rating("refresh", {disabled: true, showClear: false});
+			/*insert database*/
+			var val_rating=value;	
+			/*alert (val_rating);*/
+			<?php 
+				/*$val_rat = 1;
+				$date;
+				$sesion_user_id;
+				$place_id;
+				
+				add_rating($val_rat, $date, $sesion_user_id, $place_id);*/
+			?>
 	   });
-	   
+	      		  
 	});
 	
 </script>
