@@ -380,9 +380,8 @@
 }
 
 .route_button{
-	position: inherit;
-	margin-top: 22px;
-	margin-left: 280px;
+	margin-top: -60px;
+	margin-left: 360px;
 	padding: 0px;
 	width: 50px;
     height: 40px;
@@ -404,6 +403,11 @@
 	top: 0px;
 	margin-top: 26px;
 	margin-left: 159px;
+}
+
+.form_rating{
+	position: absolute;
+    margin-top: -62px;
 }
 
 /*carrucel's*/
@@ -804,7 +808,7 @@
 }
 
 .route_button{
-    margin-left: 215px;
+    margin-left: 295px;
 }
 
 .star-rating{
@@ -979,7 +983,7 @@
 }
 
 .route_button{
-    margin-left: 190px;
+    margin-left: 260px;
 }
 
 .star-rating{

@@ -1,6 +1,6 @@
 <div id="footer">  
 	<div class="text_footer">
-	    <a href="#">About</a> | <a href="#">Help</a>
+	    <a href="../login/about.php" class="ajax-about">About</a> | <a href="../login/help.php" class="ajax-help">Help</a>
 	    <h5>SQUAREFACE 2015</h5>
 	</div>	
 </div>
@@ -22,7 +22,7 @@
 <script> 
 	$(document).ready(function(){	
 	    //maginific popup's
-	    $('.ajax-popup-link').magnificPopup({
+	    $('.ajax-profile').magnificPopup({
 		    type: 'ajax',
 		    closeOnBgClick:false,
 		    closeOnContentClick:false,
@@ -43,21 +43,27 @@
 		    closeBtnInside:false
 		});
 		
-		//continue register user
 		$('.continue_user').magnificPopup({
 		    type: 'ajax',
 		    closeOnBgClick:false,
 		    closeOnContentClick:false,
-		});
-		
+		    closeBtnInside:false
+		});		
 		$(".continue_user").click();
 		
-		//label of search----------------
-		var tags = new LiveValidation('tags');
-		tags.add(Validate.Presence);
-		
-		var tags_mobile = new LiveValidation('tags_mobile');
-		tags_mobile.add(Validate.Presence);		
+		$('.ajax-about').magnificPopup({
+	   		type: 'ajax',
+	   		closeOnBgClick: false,
+	   		closeOnContentClick: false,
+	   		closeBtnInside: false
+	    });
+
+	    $('.ajax-help').magnificPopup({
+	   		type: 'ajax',
+	   		closeOnBgClick: false,
+	   		closeOnContentClick: false,
+	   		closeBtnInside: false
+	    });
 	
 	    //panel notifications--------------------------
 		$('#left-panel-link').panelslider();	
@@ -82,7 +88,21 @@
               
         socket.on("showme",function(data){ // the client call this function , when the server respond a petition.
             console.log("Append");
-            $("#messages").append("<div>"+data.username+"</div>");    
+            $("#messages").prepend("<div class='col-md-12 container_one_activity'>"
+										+"<div class='col-md-3 activity_user'>"
+											+"<img class='activity_user_image activity_img_tam' src='"+data.userimage+"'></br>"
+											+"<p class='activity_user_nickname'>"+data.username+"</p>"											
+										+"</div>"
+										+"<div class='col-md-6 activity_activity'>"	
+											+"<p class='activity_activity_date'>"+data.date+"</p>"
+											+"<p class='activity_activity_details'>"+data.data+"</p>"
+											+"<img class='activity_img_tam activity_comment_image' src='"+data.image+"'>"	
+										+"</div>"
+										+"<div class='col-md-3 activity_place'>"		
+											+"<img class='activity_place_image activity_img_tam' src='"+data.placeimage+"'></br>"
+											+"<p class='activity_place_name'>"+data.placename+"</p>"
+										+"</div>"	
+									+"</div>");    
         });
 		
 	});	
@@ -100,11 +120,6 @@
   
 </body>
 </html>
-
-
-
-
-
 
 
 

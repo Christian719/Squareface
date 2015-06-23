@@ -8,8 +8,14 @@ io.sockets.on('connection', function (socket) { // this function start the serve
     });
     
     socket.on('showme',function(data){ // emit a message to all sockets connected on the server
-       io.sockets.emit('showme',{      // if the message require emit a aditional data
-           username:data.username
+       io.sockets.emit('showme',{      // if the message require emit a aditional data	  
+		   userimage:data.userimage,				   
+           username:data.username,
+		   placeimage:data.placeimage,
+		   placename:data.placename,
+		   date:data.date,
+		   data:data.data,
+		   image:data.image
        });
     });
     

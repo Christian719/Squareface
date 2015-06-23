@@ -3,7 +3,7 @@
     include("../include/functions.php");
 	$conex = connection();
 	
-	$query = "SELECT * FROM place";
+	$query = "SELECT * FROM place where status='1'";
 	$result = $conex->query($query);
 
 	$outp = "[";
@@ -12,7 +12,7 @@
 		//select category
 		$select_category = "SELECT name FROM category Where id ='$place_category'";
 		$result_category = $conex->query($select_category);
-		while ($row_select_category = $result_category->fetch_assoc())
+		$row_select_category = $result_category->fetch_assoc();
 			$type = $row_select_category['name'];
 		//select image
 		$id_place = $rs['id'];

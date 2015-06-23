@@ -1,5 +1,5 @@
 <h4 class="title_option">Tags</h4>
-<div id="table_tag" class="table-responsive design_tables">
+<div id="table_tag" class="table-responsive design_tables scroll_tables">
 <?php
 	//connection	
 	include("../include/functions.php");
@@ -9,21 +9,18 @@
 	session_start();
 	
 	//query
-	$query = "select * from tags where status='1' order by id asc Limit 12";
+	$query = "select * from tags where status='1' order by id asc";
 	$result = $conex->query($query);
 	
 	if ($result->num_rows > 0) {
 		echo '<table class="table table-hover table_tags">';
-			echo'<thead>';	   
-				echo '<tr class="active head_table">'; 
-					echo '<th>Id</th>'; 
-					echo '<th>Name</th>';
-					echo '<th>Category</th>';
-					echo '<th>Edit</th>';
-					echo '<th>Delete</th>';
-				echo '</tr>'; 
-			echo'</thead>';
-			echo'<tbody class="scroll_table_tags">';	
+			echo '<tr class="active head_table">'; 
+				echo '<th>Id</th>'; 
+				echo '<th>Name</th>';
+				echo '<th>Category</th>';
+				echo '<th>Edit</th>';
+				echo '<th>Delete</th>';
+			echo '</tr>'; 
 		// output data of each row
 		while($tags = $result->fetch_assoc()) {	
 			//obtain values
@@ -51,7 +48,6 @@
 					<td name="delete"><a class="btn btn-default btn_delete" role="button" href="deletes.php?del=tag&id='.$id.'" onclick="return confirm_delete()"><img class="delete" src="../images/delete.png" title="Delete"/></a></td>
 				  </tr>';		
 		}
-			echo'</tbody>';
 		echo '</table>';
 	} 
 	else {
@@ -117,7 +113,7 @@
 		});
 		
 		/*scrollbar*/
-	    $('.scroll_table_tags').perfectScrollbar();  
+	    $('.scroll_tables').perfectScrollbar();  
 	   
 	});
 	

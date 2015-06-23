@@ -11,10 +11,40 @@
 	
 
 	//category
-	if($add_type=="cat"){	
-		$name= $_POST['name'];
-		$insert = "INSERT INTO category (name, status) VALUES ('$name', '1')";
-		$result = $conex->query($insert);
+	if($add_type=="cat"){
+		//obtain the information of the image
+		$path = $_FILES['image']['tmp_name'];		
+		$finfo = finfo_open(FILEINFO_MIME_TYPE);
+		$mime = finfo_file($finfo, $path);
+		
+		if ($mime == 'image/png' || $mime == 'image/jpg' || $mime == 'image/gif' || $mime == 'image/jpeg') {
+			$ext = explode("image/",$mime);
+			$ext_mime = end($ext);		
+						
+			//obtain info form insert
+			$name= $_POST['name'];
+			$type=$ext_mime;
+			
+			$insert = "INSERT INTO category (name, icon, status) VALUES ('$name', 'png', '1')";
+			$result = $conex->query($insert);	
+			
+			//select id category for the image
+			$query_id_cat= "SELECT id FROM category WHERE name='$name'"; 
+			$result_id_cat= $conex->query($query_id_cat);
+			$row_id_cat = $result_id_cat->fetch_assoc();		
+			$id_category=$row_id_cat['id'];		
+			
+			//upload image
+			$destination = "../maps/icons/";
+			$route = "".$destination."".$id_category.".png"; // add the route
+			move_uploaded_file ($path, $route); // Upload file					
+		}
+		else{
+			echo '<script language = javascript>
+				alert("Invalid image format, this category will not be saved")
+			</script>';
+		}
+		finfo_close($finfo);		
 	}
 	
 	//tag

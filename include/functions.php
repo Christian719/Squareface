@@ -40,16 +40,4 @@
 		$conex->close();
 		echo $filename;
 	}	
-	
-	//add rating
-	function add_rating($val_rat, $date, $sesion_user_id, $place_id){
-		$val_rat=$val_rat;
-		$date=$date;
-		$sesion_user_id=$sesion_user_id;
-		$place_id=$place_id;
-	
-		$conex = connection();
-		$insert = "INSERT INTO rating (rating, date, user_id, place_id) VALUES ('$val_rat', '$date', '$sesion_user_id', '$place_id')";
-		$result = $conex->query($insert);
-	}
 ?>

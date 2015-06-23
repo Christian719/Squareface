@@ -14,7 +14,7 @@
 			<!--categories botons-->
 			<div id="owl_buttons" class="btn-group btn-group-justified owl-carousel promotion_botons" role="group" aria-label="...">
 			<?php
-				$category = "SELECT id, name FROM category";
+				$category = "SELECT id, name FROM category WHERE status='1'";
 				$category_result = $conex->query($category);
 				$cont = 0;
 				while ($category_row = $category_result->fetch_assoc()){

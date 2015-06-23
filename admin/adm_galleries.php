@@ -1,7 +1,7 @@
 <script src="../js/bootstrap-filestyle.min.js"> </script>
 
 <h4 class="title_option">Galleries</h4>
-<div id="table_gal" class="table-responsive design_tables">
+<div id="table_gal" class="table-responsive design_tables scroll_tables">
 <?php
 	//connection	
 	include("../include/functions.php");
@@ -121,6 +121,9 @@
 		    $("#butt_add_gal").show();
 			$("#form_gal").hide();
 		});
+		
+		/*scrollbar*/
+	    $('.scroll_tables').perfectScrollbar();  
 	   
 	});
 	

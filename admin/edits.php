@@ -12,9 +12,35 @@
 	//category
 	if($edit_table=="cat"){
 		$id = $_POST['id']; 	
-		$name = $_POST['name']; 	
-		$update = "update category set name='$name' where id='$id'";
-		$result_update = $conex->query($update);	
+		$name = $_POST['name']; 
+		
+		$path = $_FILES['image']['tmp_name'];
+		if (is_file($path)) {
+			$finfo = finfo_open(FILEINFO_MIME_TYPE);
+			$mime = finfo_file($finfo, $path);
+			
+			if ($mime == 'image/png' || $mime == 'image/jpg' || $mime == 'image/gif' || $mime == 'image/jpeg') {
+				$ext = explode("image/",$mime);
+				$ext_mime = end($ext);			
+								
+				$update = "update category set name='$name' where id='$id'";
+				$result_update = $conex->query($update);
+				
+				//upload image
+				$destination = "../maps/icons/";
+				$route = "".$destination."".$id.".png"; // add the route
+				move_uploaded_file ($path, $route); // Upload file					
+			}
+			else{
+				echo '<script language = javascript>
+					alert("Invalid image format, this category will not be saved")
+				</script>';
+			}	
+		}
+		else{
+			$update = "update category set name='$name' where id='$id'";
+			$result_update = $conex->query($update);			
+		}				
 	}
 	
 	//tags
@@ -152,9 +178,9 @@
 				$ext_mime = end($ext);			
 				$type=$ext_mime;
 				
-				//update promotion
+				//update place
 				$update = "update place set name='$name', address='$address', city='$city', phone='$phone', schedule='$schedule', image='$id_image', lat='$lat', lon='$lon', category_id='$category_id', tags_id='$tags_id_all' where id='$id_place'";
-			$result_update = $conex->query($update);	
+				$result_update = $conex->query($update);	
 				
 				//update image
 				$update_img = "update image set img_type='$type' where id='$id_image'";

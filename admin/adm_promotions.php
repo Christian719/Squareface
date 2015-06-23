@@ -1,7 +1,7 @@
 <script src="../js/bootstrap-filestyle.min.js"> </script>
 
 <h4 class="title_option">Promotions</h4>
-<div id="table_pro" class="table-responsive design_tables">
+<div id="table_pro" class="table-responsive design_tables scroll_tables">
 <?php
 	//connection	
 	include("../include/functions.php");
@@ -169,6 +169,9 @@
 		    $("#butt_add_pro").show();
 			$("#form_pro").hide();
 		});
+		
+		/*scrollbar*/
+	    $('.scroll_tables').perfectScrollbar();  
 	   
 	});
 	

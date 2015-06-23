@@ -9,13 +9,14 @@
 	session_start();
 	
 	//select place's id
-	$time = time();
-	$date = date("Y-m-d H:i:s", $time);
+	//$time = time();
+	//$date = date("Y-m-d H:i:s", $time);
+	$date = date("Y-m-d H:i:s");
 	
 	$id_place = $_GET["id_place"];
 	
 	//select all from the table 'place' whit the id
-	$query = "SELECT * FROM place WHERE id='$id_place'";
+	$query = "SELECT * FROM place WHERE id='$id_place' and status='1'";
 	$result = $conex->query($query);
 	$row = $result->fetch_assoc();
 		$place_id = $row['id'];
@@ -49,7 +50,7 @@
 			else {
 				$filename = "../photos/place/$image_type/default.png";
 			}		
-	?>
+?>
 
 <div class="container">
 	<div class="col-md-12">
@@ -77,24 +78,49 @@
 				<!--title of place----------------------------------------->
 				<div class="name_rating">
 					<h4 class="popup_place_name_place"><?php echo $category_name." ".$place_name;?></h4></br>
-					<h5 class='popup_place_place_raiting'>
+					<h5 class='popup_place_place_raiting' title="<?php echo $place_rating;?>">
 					  <?php
 						$cont = 0;
 						for($cont; $cont<$place_rating; $cont ++){
 							if($cont==0){
-								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								if($place_rating>=0.5){
+									echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								}
+								else{
+									echo"<span class='glyphicon glyphicon-star rating_popup_default' aria-hidden='true'></span>";
+								}								
 							}
 							if($cont==1){
-								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								if($place_rating>=1.5){
+									echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								}
+								else{
+									echo"<span class='glyphicon glyphicon-star rating_popup_default' aria-hidden='true'></span>";
+								}	
 							}
 							if($cont==2){
-								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								if($place_rating>=2.5){
+									echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								}
+								else{
+									echo"<span class='glyphicon glyphicon-star rating_popup_default' aria-hidden='true'></span>";
+								}	
 							}
 							if($cont==3){
-								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								if($place_rating>=3.5){
+									echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								}
+								else{
+									echo"<span class='glyphicon glyphicon-star rating_popup_default' aria-hidden='true'></span>";
+								}	
 							}
 							if($cont==4){
-								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								if($place_rating>=4.5){
+									echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+								}
+								else{
+									echo"<span class='glyphicon glyphicon-star rating_popup_default' aria-hidden='true'></span>";
+								}	
 							}
 						}
 						for($cont; $cont<5; $cont ++){
@@ -266,17 +292,15 @@
 								<p class="add_user_nickname"><?php echo $sesion_nickname;?></p>
 							</div>
 							<div class="col-md-9 cont_add_comment">	
-								<form method="post" action="../user/insert_comment.php?add=com" enctype="multipart/form-data">
+								<form enctype="multipart/form-data">
 								  <div class="form-group">
 									<label>Comment</label>
-									<textarea name="comment" class="form-control tam_textarea" rows="5" maxlength="150" placeholder="Write a comment" autofocus required></textarea>
+									<textarea id="comment" name="comment" class="form-control tam_textarea" rows="5" maxlength="150" placeholder="Write a comment" autofocus required></textarea>
 								  </div>								 
 								  <div class="form-group">
 									<label for="exampleInputFile">Choose an image for the comment</label>
-									<input type="file" name="image" class="filestyle" data-buttonText="Choose image" data-size="sm" data-iconName="glyphicon glyphicon-picture">
-								  </div>
-								  <input type="hidden" name="place_id" value="<?php echo $id_place;?>">
-								  <input type="hidden" name="user_id" value="<?php echo $sesion_user_id;?>">							  
+									<input id="image" type="file" name="image" class="filestyle" data-buttonText="Choose image" data-size="sm" data-iconName="glyphicon glyphicon-picture">
+								  </div>							  
 								  <button type="submit" class="btn btn-primary tam_but_ok do_comment">Ok</button>
 								</form>
 							</div>
@@ -286,7 +310,7 @@
 				<!--button gallery-------------------------------------------------------->
 				<div class="button_gallery" id="ajax_button_gallery">
 					<?php	
-						$select_gallery = "SELECT * FROM gallery WHERE place_id = '$place_id' limit 10";
+						$select_gallery = "SELECT * FROM gallery WHERE place_id = '$place_id' and status='1' limit 10";
 						$result_gallery = $conex->query($select_gallery);
 						if ($result_gallery->num_rows > 0) {
 						
@@ -329,7 +353,7 @@
 				<!--button promotions----------------------------------------------------->
 				<div class="button_promotions" id="ajax_button_promotions">
 					<?php	
-						$select_promotion = "SELECT * FROM promotion WHERE place_id = '$place_id' order by day asc limit 10";
+						$select_promotion = "SELECT * FROM promotion WHERE place_id = '$place_id' and status='1' order by day asc limit 10";
 						$result_promotion = $conex->query($select_promotion);
 						if ($result_promotion->num_rows > 0) {
 						
@@ -403,16 +427,52 @@
 			<!--options_place----------------------------------------------------->
 			<div class="popup_place_options_place">
 				<div class="cont_options_place">
-					<p class="txt_checkin">Check in</p>
-					<a class="btn btn-primary check_in_button" role="button" href="#"><img class="check_in" src="../images/check.png" title="Check in" /></a>				
+					<p class="txt_checkin">Check in</p>					
+					<form>
+						<button type="submit" class="btn btn-primary check_in_button do_checkin"><img class="check_in" src="../images/check.png" title="Check in" /></button>		
+					</form>	
 					<p class="txt_rating">Rating</p>
-					<input id="rating" type="number" class="rating">
+					<?php
+						$query_id_rat= "SELECT rating, date FROM rating WHERE user_id='$sesion_user_id' AND place_id='$id_place'"; 
+						$result_id_rat= $conex->query($query_id_rat);
+						
+						if($result_id_rat->num_rows > 0){
+							while ($row_id_rat = $result_id_rat->fetch_assoc()){
+								$my_rating=$row_id_rat['rating'];
+								$my_date=$row_id_rat['date'];
+							}
+							$arrayDate = explode(" ", $date, 2);
+							$ra_date=new DateTime($arrayDate[0]);
+							$arrayMyDate = explode(" ", $my_date, 2);
+							$ra_mydate=new DateTime($arrayMyDate[0]);
+							$interval = $ra_date->diff($ra_mydate);
+							$total=$interval->format('%a');
+							
+							if($total>60){					
+					?>
+								<form class="form_rating" method="post" action="../user/insert_activity.php?add=rat">
+									<input id="rating" name="rating" type="number" class="rating">
+									<!--<button type="submit" class="btn btn-primary do_rating">do</button> -->
+								</form>	
+					<?php
+							}
+							else{
+								echo '<input id="rating" value="'.$my_rating.'" title="My rating for this place" readonly="true">';
+																		
+							}
+						}
+						else{
+					?>	
+							<form class="form_rating" method="post" action="../user/insert_activity.php?add=rat">
+								<input id="rating" name="rating" type="number" class="rating">	
+								<!--<button type="submit" class="btn btn-primary do_rating" style="margin-top:-60px; margin-left:191px">do</button> -->							
+							</form>							
+					<?php
+						}
+					?>								
 					<p class="txt_take">Take me here</p>
 					<a class="btn btn-primary route_button" role="button"  href="#" onclick="calcRoute(<?php echo $place_id;?>)"><img class="route" src="../images/route.png" title="Take me here" /></a>	
-				</div>	
-				<span class="btn btn-primary com">Comentario</span>	
-				<span class="btn btn-primary che">Check in</span>
-				<span class="btn btn-primary rat">Rating</span>		
+				</div>
 			</div>	
 		</div>
 		<div class="col-md-1"></div>
@@ -456,19 +516,8 @@
 	  ],
 	  navigation : true,
 	  hola : true
-	});		
-	
-	function confirm_check(){ 
-		if (confirm('Are you sure to check in?')){ 	
-			create_check("<?php echo $sesion_user_id;?>", "<?php echo $place_lat;?>", "<?php echo $place_lon;?>", "<?php echo $date;?>", "<?php echo $sesion_nickname;?>", "<?php echo $sesion_filename;?>", "<?php echo $place_name;?>");
-			$('.mfp-close').click();			
-			return true;
-		} 
-		else{
-			return false;
-		}
-	}
-	
+	});	
+		
 	//document ready
 	$(document).ready(function(){
 	   //buttons of place	
@@ -516,60 +565,8 @@
 	   });   
 	   
 	   /*scrollbar*/
-	   $('.scroll_comments_y').perfectScrollbar();
-	   
-	   //socket------------
-		var socket = io.connect('http://localhost:8090'); //This variable is a new instance of socket , this var is individualy instanced for each user in the app
-        socket.on('connect',function(data){
-        });
-		
-		var comment = "comentario"; // get the username
-		var uno = "uno";
-	    var dos = "dos";
-	    var tres = "tres";
-	    var cuatro = "cuatro";
-		
-        // Events for the option buttons
-        $('.com').click(function(){
-			var comment = "comentario"
-            console.log("Emit a petition for the server");
-            socket.emit('showme',{ //emit a message to the server 
-               username:comment
-            });
-        });	
-		
-		$('.che').click(function(){
-			var comment = "check in";
-            console.log("Emit a petition for the server");
-            socket.emit('showme',{ //emit a message to the server 
-               username:comment  //send a data information
-            });
-        });	
-		
-		$('.rat').click(function(){
-			var comment = "rating";
-            console.log("Emit a petition for the server");
-            socket.emit('showme',{ //emit a message to the server 
-               username:comment  //send a data information
-            });
-        });	
-		
-		
-		
-		
-		 
-		
-	   //comment
-	   $('.do_comment').click(function(){
-            
-       });
-	   
-	   //check in
-	   $('.check_in_button').click(function(){
-            create_check("<?php echo $sesion_user_id;?>", "<?php echo $place_lat;?>", "<?php echo $place_lon;?>", "<?php echo $date;?>", "<?php echo $sesion_nickname;?>", "<?php echo $sesion_filename;?>", "<?php echo $place_name;?>");
-			$('.mfp-close').click();
-       });	
-	   
+	   $('.scroll_comments_y').perfectScrollbar();   
+	  	   
 	   /*rating*/
 	   $("#rating").rating({
 	        'min':0,
@@ -578,21 +575,118 @@
 			'showClear':false,
 			'showCaption':false
 	   });
-	   
-	   $("#rating").on("rating.change", function(event, value, caption) {
-			$("#rating").rating("refresh", {disabled: true, showClear: false});
-			/*insert database*/
-			var val_rating=value;	
-			/*alert (val_rating);*/
-			<?php 
-				/*$val_rat = 1;
-				$date;
-				$sesion_user_id;
-				$place_id;
-				
-				add_rating($val_rat, $date, $sesion_user_id, $place_id);*/
-			?>
-	   });
+	     	   
+	   //socket------------
+		var socket = io.connect('http://localhost:8090'); //This variable is a new instance of socket , this var is individualy instanced for each user in the app
+        socket.on('connect',function(data){
+        });
+		
+		//variables
+		var user_image = "<?php echo $sesion_filename; ?>"; // get info user
+		var user_nickname = "<?php echo $sesion_nickname;?>";
+		var place_image = "<?php echo $filename; ?>"; // get info place
+		var place_name = "<?php echo $place_name;?>";
+		var date = "<?php echo $date; ?>";
+		
+		var place_id = "<?php echo $id_place; ?>"; // get info place
+		var user_id = "<?php echo $sesion_user_id;?>";
+		
+		//add comment
+		$(".do_comment").click(function(){	
+			var comment = $("#comment").val();
+			var image = $("#image").val();
+						
+			// Returns successful data submission message when the entered information is stored in database.
+			var dataString = 'comment='+ comment + '&image="image"' + '&place_id='+ place_id + '&user_id='+ user_id;
+			
+			// AJAX Code To Submit Form.
+			$.ajax({
+				type: "POST",
+				url: "../user/insert_activity.php?add=com",
+				data: dataString,
+				success: function(result){
+					alert("Done!!");
+					//variables					
+					var date = date;
+					var data = comment;
+					var image_com = "../photos/comment/default.png";
+					
+					console.log("Emit a petition for the server");
+					socket.emit('showme',{ //emit a message to the server 
+					   userimage:user_image,				   
+					   username:user_nickname,
+					   placeimage:place_image,
+					   placename:place_name,
+					   date:date,
+					   data:data,
+					   image:image_com
+					});
+				}
+			});
+		});
+		
+		//add check in
+		$(".do_checkin").click(function(){								
+			// Returns successful data submission message when the entered information is stored in database.
+			var dataString = 'place_id='+ place_id + '&user_id='+ user_id;
+			
+			// AJAX Code To Submit Form.
+			$.ajax({
+				type: "POST",
+				url: "../user/insert_activity.php?add=che",
+				data: dataString,
+				success: function(result){		
+					alert("Done!!");				
+					//variables					
+					var date_che = date;
+					var data_che = "Check in";
+					var image_che = "../images/check.png";
+					
+					console.log("Emit a petition for the server");
+					socket.emit('showme',{ //emit a message to the server 
+					   userimage:user_image,				   
+					   username:user_nickname,
+					   placeimage:place_image,
+					   placename:place_name,
+					   date:date_che,
+					   data:data_che,
+					   image:image_che
+					});
+				}
+			});
+		});
+		
+		//add rating
+		$(".rating").click(function(){		
+			var rating_rat = $("#rating").val();
+			
+			// Returns successful data submission message when the entered information is stored in database.
+			var dataString = 'rating='+ rating_rat + '&place_id='+ place_id + '&user_id='+ user_id;
+			
+			// AJAX Code To Submit Form.
+			$.ajax({
+				type: "POST",
+				url: "../user/insert_activity.php?add=rat",
+				data: dataString,
+				success: function(result){
+					//variables					
+					var date_rat = date;
+					var data_rat = "Rating";
+					var image_rat = "../images/rating/"+rating_rat+".png";
+					
+					console.log("Emit a petition for the server");
+					socket.emit('showme',{ //emit a message to the server 
+					   userimage:user_image,				   
+					   username:user_nickname,
+					   placeimage:place_image,
+					   placename:place_name,
+					   date:date_rat,
+					   data:data_rat,
+					   image:image_rat
+					});
+				}
+			});
+		});		
 	      		  
 	});
 	
@@ -600,7 +694,3 @@
 <?php
 	$conex->close();
 ?>
-
-
-<!--$val_rat = '<script>document.val_rating.value</script>'; -->
-<!--$val_rat = '<script> document.write(val_rating) </script>';		 -->

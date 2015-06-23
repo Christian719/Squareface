@@ -1,108 +1,126 @@
 /*profile---------------------------------------------------------*/
-#profile_container {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 5px;
+#profile_container{
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 5px;
+	height: 600px;
 }
 
 .profile_title{
-	color:#EEEEEE;
+	color: #6AB0EC;
+	text-align: center;
+	text-transform: uppercase;
+	border-bottom-style: outset;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	font-size: 20px;
+}
+
+.profile_subtitle{
+	text-align: center;
+	color: rgb(51, 122, 183);
+	text-transform: uppercase;
+	font-size: 15px;
+}
+
+/*profile information-----------------*/
+.pro_info{ 
+    color: whitesmoke;
+}
+
+.cont_info{
+	text-align:center;
+}
+
+.pro_img_user{
+	border-radius: 5px;
+	height: inherit;
+	max-width: 240px;
+	max-height: 185px;
+}
+
+.nickname_details{
+	font-size: 15px;
+	text-transform: uppercase;
+	position: absolute;
+	margin-top: 10px;
+	left: 0px;
+	right: 0px;
+}
+
+.info_details{
+	text-align:left;
+    margin: 20px auto;
+	width: 396px;
+}
+
+.labels_info{
+	padding-top: 7px;
+	margin-bottom: 0;
+}
+
+.profile_btns{
+	margin-top: 20px;
+	width: 38%;
+}
+
+/*edit pass*/
+.form_edit_pass{
+	width: 70%;
+	margin: 20px auto;
+}
+
+.pass_btns{
+	width: 42%;
+	margin-left: 5%;
+}
+
+/*edit info*/
+.form_edit_profile{
+	width: 88%;
+	margin: 20px auto;
+}
+
+.edit_info_btns{
+	margin-top: 20px;
+	width: 38%;
+	margin-left: 7%;
+}
+
+/*profile activity-------------------*/
+.pro_acti{ 
+    color: whitesmoke;
+}
+
+.cont_acty{
+	text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*category-----------------------------------------------------*/
+#category_container {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+	height:600px;
+}
+
+.category_title{
+	color: #6AB0EC;
 	text-align:center;
 	text-transform: uppercase;
-	border-bottom-style:groove;
+	border-bottom-style:outset;
 	padding-bottom: 10px;
-	margin-top: 15px;    
-}
-
-.profile_user_image{
-    width: 100%;
-	margin-top:70%;
-	border-radius: 5px;
-}
-
-.design_table_information, design_table_activity{
-	color:#EEEEEE;
-}
-
-.table_title{
-	color:#EEEEEE;
-	text-align:center;
-    text-transform: uppercase;
-}
-
-.tag_table_info{
-	font-weight:bold;
-	width: 98px;
-}
-
-.label_table_activity{
-	color:#EEEEEE;
-}
-
-.info_table_activity{
-	color:#EEEEEE;
-}
-
-.editable span{
-	display:block;
-}
-
-.editable span:hover {
-	background:url(../images/edit.png) 90% 50% no-repeat;
-	cursor:pointer;
-}
-
-.text_editable{
-	color:#000000;
-}
-
-.cancel{
-	background:url(../images/cancel.png) 0 0 no-repeat;
-}
-
-.save{
-	background:url(../images/save.png) 0 0 no-repeat;
-}
-
-.message{
-	display:block;
-	text-align:center;
-	margin:0 0 20px 0;
-}
-
-.ok{
-	display:block;
-	padding:10px;
-	text-align:center;
-	background:green;
-	color:#fff;
-}
-
-.ko{
-	display:block;
-	padding:10px;
-	text-align:center;
-	background:red;
-	color:#fff;
-}
-
-td input{
-	height:24px;
-	width:170px;
-	border:1px solid #ddd;
-	padding:0 5px;
-	margin:0;
-	border-radius:6px;
-	vertical-align:middle;
-}
-
-a.link_pro{
-	display:inline-block;
-	width:24px;
-	height:24px;
-	margin:0 0 0 5px;
-	overflow:hidden;
-	text-indent:-999em;
-	vertical-align:middle;
+    padding-top: 5px;
+    font-size: 20px;
 }
 
 /*option search-------------------------------------------*/
@@ -143,6 +161,122 @@ a.link_pro{
 
 
 
+/*--------------about----------------------about----------------------*/
+
+.what{
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+}
+.about_content{
+    margin-left: 150px;
+    margin-top: 40px;
+    width: 600px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+.about_logo{
+    margin-top: -120px;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) { 
+.about_content{
+    margin-left: 128px;
+    margin-top: 32px;
+    width: 480px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) { 
+.about_content{
+    margin-left: 140px;
+    margin-top: 26px;
+    width: 384px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+}
+@media (min-width: 620px) and (max-width: 767px) { 
+.about_content{
+    margin-left: 140px;
+    margin-top: 26px;
+    width: 384px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+}
+@media (min-width: 601px) and (max-width: 619px) { 
+.about_content{
+    margin-left: 60px;
+    margin-top: 26px;
+    width: 384px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+}
+
+@media (min-width: 587px) and (max-width: 600px) { 
+.about_content{
+    margin-left: 50px;
+    margin-top: 26px;
+    width: 384px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+}
 
 
 
+@media (min-width: 527px) and (max-width: 586px) { 
+.about_content{
+    margin-left: 70px;
+    margin-top: 21px;
+    width: 307px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+}
+
+
+@media (min-width: 451px) and (max-width:526px){
+    .about_content{
+    margin-left: 90px;
+    margin-top: 18px;
+    width: 203px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+.about_scroll{
+    overflow-y:scroll;
+    max-height: 600px;
+}
+
+}
+
+
+/*-----------------help-------------------help-------------------------------*/
+dl dt {
+cursor: pointer;
+font-size: 19px;
+font-weight: bold;
+}
+.help_content{
+    margin-left: 20px;
+    margin-top: 20px;
+    color: white;
+    font-size: 17px;
+}

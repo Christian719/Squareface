@@ -135,17 +135,17 @@ html,body{
 
 /*complete user registration-------------------------------------*/
 #complete_register_container {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
 }
 
-.complete_register_title{
-	color:#EEEEEE;
+.complete_register_title{	
 	text-align:center;
-	border-bottom-style:groove;
+	text-transform: uppercase;
+	border-bottom-style:outset;
 	padding-bottom: 10px;
-    padding-top: 7px;
-    text-transform: uppercase;
+    color:#6AB0EC;
+	font-size:20px;
 }
 
 /*form complete user registration---*/
@@ -160,6 +160,7 @@ html,body{
 	margin-top:15%;
 	width:90%;
 	margin-left:5%;
+	border-radius: 5px;
 }
 
 .second{
@@ -188,6 +189,8 @@ html,body{
 	margin-top:5px;
 	margin-bottom:25px;
 	border-radius: 0px;
+	background-color: rgb(61, 97, 128);
+    border-color: transparent;
 }
 
 .but_skip{
@@ -196,6 +199,7 @@ html,body{
 	margin-top:5px;
 	margin-bottom:25px;
     border-radius: 0px;
+	background-color: whitesmoke;
 }
 
 /*promotions--------------------promotions-----------------------promotions-------------------*/
@@ -354,23 +358,6 @@ td .ui-state-default {
 	color: whitesmoke;
     text-align: center;
     margin-top: 15px;
-}
-
-/*category-----------------------------------------------------*/
-#category_container {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 5px;
-	height:600px;
-}
-
-.category_title{
-	color:#EEEEEE;
-	text-align:center;
-	text-transform: uppercase;
-	border-bottom-style:outset;
-	padding-bottom: 10px;
-    padding-top: 5px;
-    
 }
 
 /*Desktop ------------992--------------------Desktop------------1199---------------Desktop*/

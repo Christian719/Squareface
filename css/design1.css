@@ -105,21 +105,9 @@ html, body {
     margin-top: -26px;
     right: 25px;
 }
-
-.LV_valid {
-    color:#00CC00;
-}
 	
 .LV_invalid {
     color:#CC0000;
-}
-    
-.LV_valid_field,
-input.LV_valid_field:hover, 
-input.LV_valid_field:active,
-textarea.LV_valid_field:hover, 
-textarea.LV_valid_field:active {
-    border: 1px solid #00CC00;
 }
     
 .LV_invalid_field, 
@@ -138,7 +126,7 @@ textarea.LV_invalid_field:active {
 
 .container_login{
 	width: 350px;
-	height: 590px;
+	height: 600px;
 }
 
 .login_image{
@@ -185,7 +173,7 @@ textarea.LV_invalid_field:active {
 .container_login{
 	width:99%;
 	left:.5%;
-	height: 590px;
+	height: 600px;
 }
 
 .login_image{
@@ -214,6 +202,12 @@ textarea.LV_invalid_field:active {
 
 .LV_validation_message{
     right: 15%;
+}
+
+.row{
+	width:100%;
+	margin-left:0px;
+	margin-right:0px;
 }
 
 }

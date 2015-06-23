@@ -53,7 +53,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle options_user" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['nickname'];?><span class="caret"></span></a>
           <ul class="dropdown-menu " role="menu">
-            <li><a href="../user/profile.php" class="ajax-popup-link">Profile</a></li>
+            <li><a href="../user/profile.php" class="ajax-profile">Profile</a></li>
             <li><a href="../admin/index.php">Administration</a></li>
             <li class="divider"></li>
             <li><a href="logout.php" id="logout">Log out</a></li>
@@ -63,7 +63,7 @@
 	  
       <form class="navbar-form navbar-right search_header" role="search">
         <div class="form-group">
-          <input type="text" name="tags" id="tags" class="form-control" placeholder="Search place">
+          <input type="text" name="search" id="search" class="form-control" placeholder="Search place" required>
         </div>	
         <button type="submit" class="btn btn-default" title="Search"><span class="glyphicon glyphicon-search"></span></button>
       </form>
@@ -93,7 +93,7 @@
 	</div>  
     <form class="option_search" role="search">
 	  <div class="input-group">
-	    <input type="text" class="form-control" name="tags-mobile" id="tags_mobile" placeholder="Search">
+	    <input type="text" class="form-control" name="search-mobile" id="search_mobile" placeholder="Search" required>
 	    <div class="input-group-btn">
 		  <button type="submit" class="btn btn-default" title="Search"><span class="glyphicon glyphicon-search"></span></button>
 	    </div>
@@ -102,7 +102,7 @@
     <a href="#" data-toggle="dropdown"><img class="user_image_mobile" src="<?php user_avatar(); ?>" title="Avatar"></a>      
     <a href="#" class="dropdown-toggle options_user_mobile" data-toggle="dropdown" id="dropdownMenu2" role="button" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu2">
-	  <li><a href="../user/complete_user.php" class="ajax-popup-link">Profile</a></li>
+	  <li><a href="../user/profile.php" class="ajax-profile">Profile</a></li>
 	  <li><a href="../admin/index.php">Administration</a></li>
 	  <li class="divider"></li>
 	  <li><a href="../login/logout.php" id="logout">Log out</a></li>

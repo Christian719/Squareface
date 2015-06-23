@@ -4,11 +4,11 @@
 	$conex = connection();
 			
 	$email= $_POST['email_new'];
-	$password=md5($_POST['password1_new']);
-	
+	$password=md5($_POST['password1_new']);	
 	$name = $_POST['name'];
 	$last_name = $_POST['last_name'];
 	$nickname = $_POST['nickname'];
+	
 	//verify that the email exists
 	$newemail="SELECT email from user WHERE email='$email'";
 	$result = $conex->query($newemail);
@@ -28,9 +28,8 @@
 		//Check if the data are stored in the database
 		$query= "SELECT id FROM user WHERE email='".$email."' AND password='".$password."'"; 
 		$result= $conex->query($query);
-		$row = $result->fetch_assoc();
-		
-		$id_user=$row['id'];
+		$row = $result->fetch_assoc();		
+			$id_user=$row['id'];
 		
 		//Session variables
 		if (!isset($_SESSION)) {
@@ -43,15 +42,14 @@
 		$_SESSION['user_new'] = 1;
 		
 		//insert a default image for the user
-		$insert = "INSERT INTO image (img_type, type, papa_id) VALUES ('.png','user','$id_user')";
+		$insert = "INSERT INTO image (img_type, type, papa_id) VALUES ('png','user','$id_user')";
 		$result = $conex->query($insert);
 		
 		//Check if the image are stored in the database
-		$query= "SELECT * FROM image WHERE type='user' and papa_id='".$id_user."'"; 
+		$query= "SELECT id FROM image WHERE type='user' and papa_id='".$id_user."'"; 
 		$result= $conex->query($query);
-		$row = $result->fetch_array(MYSQLI_BOTH);
-		
-		$id_image=$row['id'];
+		$row = $result->fetch_assoc();		
+			$id_image=$row['id'];
 		
 		//update the user's image
 		$update = "UPDATE user SET image='$id_image' WHERE id = '$id_user'";

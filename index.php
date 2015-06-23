@@ -64,7 +64,6 @@
 
 <body>	
 	<h2 class="page_title">SQUAREFACE</h2>
-	<div id="aeiou"></div>
 	<div class="map_frame">
 		<div id="map-canvas" class="map_canvas"><img class="loading_map" src="images/loader.gif"/></div>
 	</div>	
@@ -99,7 +98,7 @@
 							<h3 class="register_title">Sign in</h3>
 						  </div>
 						  <div class="form-group">
-							<input type="text" name="name" id="name" class="form-control" maxlength="25" placeholder="Name">							
+							<input type="text" name="name" id="name" class="form-control" maxlength="25" placeholder="Name" autofocus>							
 						  </div>
 						  <div class="form-group">
 							<input type="text" name="last_name" id="last_name" class="form-control" maxlength="25" placeholder="Last name">

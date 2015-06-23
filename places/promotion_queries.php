@@ -44,11 +44,11 @@
 	//select * promos  
 	$select_promotion;	
 	if(!$_GET["id"]){
-		$select_promotion = "SELECT * FROM promotion WHERE day = '$num_day' limit 10";
+		$select_promotion = "SELECT * FROM promotion WHERE day = '$num_day' AND status='1' limit 10";
 	}
 	else{
 		$id=$_GET["id"];
-		$select_promotion = "SELECT * FROM promotion WHERE category_id = '$id' and day = '$num_day' limit 10";
+		$select_promotion = "SELECT * FROM promotion WHERE category_id = '$id' and day = '$num_day' and status='1' limit 10";
 	}
 	
 	$result = $conex->query($select_promotion);
@@ -132,24 +132,49 @@
 			</div>
 			<div class="col-md-6 promotion_info_placeandpromo">
 				<a href="#" onClick="calcRoute(<?php echo $place_id;?>)"><h4 class="promotion_title_name_place" title="Take me here"><?php echo $category_name." ".$place_name;?></h4></a></br>
-				<h5 class='promotion_place_raiting'>
+				<h5 class='promotion_place_raiting' title="<?php echo $place_rating;?>">
 				  <?php
 					$cont = 0;
 					for($cont; $cont<$place_rating; $cont ++){
 						if($cont==0){
-							echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							if($place_rating>=0.5){
+								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							}
+							else{
+								echo"<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+							}								
 						}
 						if($cont==1){
-							echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							if($place_rating>=1.5){
+								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							}
+							else{
+								echo"<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+							}	
 						}
 						if($cont==2){
-							echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							if($place_rating>=2.5){
+								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							}
+							else{
+								echo"<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+							}	
 						}
 						if($cont==3){
-							echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							if($place_rating>=3.5){
+								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							}
+							else{
+								echo"<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+							}	
 						}
 						if($cont==4){
-							echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							if($place_rating>=4.5){
+								echo"<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+							}
+							else{
+								echo"<span class='glyphicon glyphicon-star' aria-hidden='true'></span>";
+							}	
 						}
 					}
 					for($cont; $cont<5; $cont ++){

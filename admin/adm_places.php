@@ -1,7 +1,7 @@
 <script src="../js/bootstrap-filestyle.min.js"> </script>
 
 <h4 class="title_option">Places</h4>
-<div id="table_pla" class="table-responsive design_tables">
+<div id="table_pla" class="table-responsive design_tables scroll_tables">
 <?php
 	//connection	
 	include("../include/functions.php");
@@ -207,7 +207,8 @@
 		});
 		
 		/*scrollbar*/
-	    $('.scroll_form_y').perfectScrollbar();  
+	    $('.scroll_form_y').perfectScrollbar();
+	    $('.scroll_tables').perfectScrollbar();    
 		
 		/*form---select*/
 		$("#add_tags_place").multipleSelect({

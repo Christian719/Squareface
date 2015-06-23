@@ -125,6 +125,8 @@ html,body{
 
 .design_tables{
     text-align: left;
+	left:0px;
+	right:0px;
 }
 
 .rows_table{
@@ -162,7 +164,7 @@ html,body{
 
 /*button add_new*/
 .btn_add{
-	margin-top:20px;
+	margin-top:525px;
 }
 
 /*buttons add-delete*/
@@ -245,7 +247,7 @@ html,body{
 
 /*scroll*/
 .ps-scrollbar-x-rail, .ps-scrollbar-x{
-	display:none;
+	/*display:none;*/
 }
 
 .scroll_form_y{
@@ -257,8 +259,10 @@ html,body{
 .head_table{
 }
 
-.scroll_table_tags{
-	height: 550px;
+.scroll_tables{
+	position:absolute;
+    min-height: inherit;
+    max-height: 507px;
 }
 
 /*Tablet -------------max-----------451---------tablet----------------max--------991------tablet*/

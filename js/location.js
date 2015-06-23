@@ -7,11 +7,38 @@ var id_place;
 var xmlhttp = new XMLHttpRequest();
 var url = "../places/places_json.php";
 var customIcons = {   
-	1:{icon: '../images/icons/Bar.png'},
-    2:{icon: '../images/icons/Restaurant.png'},
-    3:{icon: '../images/icons/Zoo.png'},
-    4:{icon: '../images/icons/Workoffice.png'}
+	1:{icon: '../maps/icons/1.png'},
+    2:{icon: '../maps/icons/2.png'},
+    3:{icon: '../maps/icons/3.png'},
+    4:{icon: '../maps/icons/4.png'},
+	5:{icon: '../maps/icons/5.png'},
+    6:{icon: '../maps/icons/6.png'},
+    7:{icon: '../maps/icons/7.png'},
+    8:{icon: '../maps/icons/8.png'},
+	9:{icon: '../maps/icons/9.png'},
+    10:{icon: '../maps/icons/10.png'},
+	11:{icon: '../maps/icons/11.png'},
+    12:{icon: '../maps/icons/12.png'},
+    13:{icon: '../maps/icons/13.png'},
+    14:{icon: '../maps/icons/14.png'},
+	15:{icon: '../maps/icons/15.png'},
+    16:{icon: '../maps/icons/16.png'},
+    17:{icon: '../maps/icons/17.png'},
+    18:{icon: '../maps/icons/18.png'},
+	19:{icon: '../maps/icons/19.png'},
+    20:{icon: '../maps/icons/20.png'},
+	21:{icon: '../maps/icons/21.png'},
+    22:{icon: '../maps/icons/22.png'},
+    23:{icon: '../maps/icons/23.png'},
+    24:{icon: '../maps/icons/24.png'},
+	25:{icon: '../maps/icons/25.png'},
+    26:{icon: '../maps/icons/26.png'},
+    27:{icon: '../maps/icons/27.png'},
+    28:{icon: '../maps/icons/28.png'},
+	29:{icon: '../maps/icons/29.png'},
+    30:{icon: '../maps/icons/30.png'}	
 };
+
 var directionsDisplay = new google.maps.DirectionsRenderer({'map-canvas': map }); 
 var directionsService = new google.maps.DirectionsService();
 var point;
@@ -30,7 +57,7 @@ function initialize() {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+                                   position.coords.longitude);
 
 	    marker = new google.maps.Marker({
 		map: map,
@@ -107,13 +134,21 @@ function myFunction(response) {
 		
 		//Get the place icon
 		var category_id = arr[i].Category;
-		var icon = customIcons[category_id] || {};
+		var icon = customIcons[category_id] || {icon: '../maps/icons/default.png'};
+		
+		var icon_place = new google.maps.MarkerImage(
+         icon.icon,
+		new google.maps.Size(32,37),
+		new google.maps.Point(0, 0),
+		new google.maps.Point(16, 37),
+		new google.maps.Size(32, 37)
+		);
 		
 		//Create the place markers
 		marker_place = new google.maps.Marker({
 			map: map,
 			position: point,
-			icon: icon.icon,
+			icon: icon_place,
 			title: arr[i].Name
 		});	
 		
@@ -126,19 +161,29 @@ function myFunction(response) {
 		var rating = arr[i].Rating;
 		for (var cont_rat = 0; cont_rat<rating; cont_rat ++){
 			if(cont_rat==0){
-				star_1="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				if(rating>=0.5){
+					star_1="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				}
 			}
 			if(cont_rat==1){
-				star_2="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				if(rating>=1.5){
+					star_2="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				}
 			}
 			if(cont_rat==2){
-				star_3="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				if(rating>=2.5){
+					star_3="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				}
 			}
 			if(cont_rat==3){
-				star_4="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				if(rating>=3.5){
+					star_4="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				}
 			}
 			if(cont_rat==4){
-				star_5="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				if(rating>=4.5){
+					star_5="<span class='glyphicon glyphicon-star place_rating_color' aria-hidden='true'></span>";
+				}
 			}			
 		}
 		
@@ -146,7 +191,7 @@ function myFunction(response) {
 		out += "</br><div class='place_conten'>"
 		+ "<h4 class='place_title'>" + arr[i].Name + "</h4> </br>"
 		+ "<img class='place_image' src=" + arr[i].Image_place + "> </br>"		
-		+ "<h5 class='place_raiting'>" + star_1+star_2+star_3+star_4+star_5 + "</h5> </br>"
+		+ "<h5 class='place_raiting' title='"+rating+"'>" + star_1+star_2+star_3+star_4+star_5 + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Address + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Schedule + "</h5> </br>"
 		+ "<h5 class='place_info'>" + arr[i].Phone + "</h5> </br>"
@@ -255,7 +300,7 @@ function select_marker(type_mark){
 	}
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize, xmlhttp.onreadystatechange);
 
 
 

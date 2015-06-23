@@ -8,7 +8,7 @@
 <div class="container-fluid">									
 	<div class="row">
 		<div>
-			<button onClick="initialize()" type="button" class="btn btn-danger location_button">Locate me</button>
+			<button onClick="initialize(); xmlhttp.onreadystatechange()" type="button" class="btn btn-danger location_button">Locate me</button>
 		</div>
 	</div>	
 	<div class="row">
@@ -28,7 +28,7 @@
     <!--notifications---messages-->
 	<div id="messages" class="scroll_activity">
 		<?php	
-			$select_activity = "SELECT * FROM activity ORDER BY id DESC limit 10";
+			$select_activity = "SELECT * FROM activity ORDER BY id DESC limit 20";
 			$result_activity = $conex->query($select_activity);
 			if ($result_activity->num_rows > 0) {
 				while ($activity_row = $result_activity->fetch_assoc()){
@@ -114,21 +114,7 @@
 					
 					//option rating		
 					if($type=="Rating"){
-						if($data==1){
-							$c_filename = "../images/rating/one_star.png";
-						}
-						if($data==2){
-							$c_filename = "../images/rating/two_star.png";
-						}
-						if($data==3){
-							$c_filename = "../images/rating/three_star.png";
-						}
-						if($data==4){
-							$c_filename = "../images/rating/four_star.png";
-						}
-						if($data==5){
-							$c_filename = "../images/rating/five_star.png";
-						}
+						$c_filename = "../images/rating/".$data.".png";
 					}		
 		?>
 		<!--Show information -->
@@ -137,11 +123,35 @@
 				<img class="activity_user_image activity_img_tam" src="<?php echo $u_filename; ?>"></br>
 				<p class="activity_user_nickname"><?php echo $user_nickname;?></p>
 			</div>
-			<div class="col-md-6 activity_activity">	
-				<p class="activity_activity_date"><?php echo $date;?></p>
-				<p class="activity_activity_details"><?php echo $data;?></p>
-				<img class="activity_activity_image activity_img_tam" src="<?php echo $c_filename; ?>">
-			</div>
+			<?php
+				if($type=="Comment"){
+			?>	
+					<div class="col-md-6 activity_activity">	
+						<p class="activity_activity_date"><?php echo $date;?></p>
+						<p class="activity_activity_details"><?php echo $data;?></p>
+						<img class="activity_img_tam activity_comment_image" src="<?php echo $c_filename; ?>">
+					</div>
+			<?php
+				}
+				if($type=="Rating"){
+			?>
+					<div class="col-md-6 activity_activity">	
+						<p class="activity_activity_date"><?php echo $date;?></p>
+						<p class="activity_activity_details"><?php echo $type;?></p>
+						<img class="activity_img_tam activity_rating_image" src="<?php echo $c_filename; ?>">
+					</div>
+			<?php
+				}
+				if($type=="Check in"){
+			?>
+					<div class="col-md-6 activity_activity">	
+						<p class="activity_activity_date"><?php echo $date;?></p>
+						<p class="activity_activity_details"><?php echo $data;?></p>
+						<img class="activity_img_tam activity_checkin_image" src="<?php echo $c_filename; ?>">
+					</div>
+			<?php
+				}
+			?>		
 			<div class="col-md-3 activity_place">		
 				<img class="activity_place_image activity_img_tam" src="<?php echo $p_filename; ?>"></br>
 				<p class="activity_place_name"><?php echo $name_place;?></p>

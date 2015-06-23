@@ -6,125 +6,222 @@
 	//session start
 	session_start();
 	
-	//query
-	$modif_user = "SELECT * FROM user WHERE id = '$_SESSION[id]'";
-	$result = $conex->query($modif_user);
-	$row_modif_user = $result->fetch_assoc();
+	//select information
+	$select = "SELECT * FROM user WHERE id = '$_SESSION[id]'";
+	$result = $conex->query($select);
+	$row = $result->fetch_assoc();
+		$name = $row['name'];
+		$last_name = $row['last_name'];
+		$birthdate = $row['birthdate'];
+		$city = $row['city'];
+		$phone = $row['phone'];
+		$email = $row['email'];
+		$nickname = $row['nickname'];
+		$password = $row['password'];
+		$image = $row['image'];
+		
+		//select image
+		$select_img = "SELECT img_type FROM image WHERE id = 'image'";
+		$result_img = $conex->query($select_img);
+		$row_img = $result_img->fetch_assoc();
+			$img_type = $row_img['img_type'];
 ?>
 
 <script src="../js/bootstrap-filestyle.min.js"> </script>
 
-	<div class="container">
-		<div class="col-md-12">
-            <div class="col-md-1"></div>
-            <div class="col-md-10" id="profile_container">
-				<h3 class="profile_title">My profile</h3>
-				<div class="col-md-2">
-					<div class="form-group">
-						<img class="profile_user_image" name="image_user" src="<?php user_avatar(); ?>">
+<div class="container">
+	<div class="col-md-12">
+		<div class="col-md-1"></div>
+		<div class="col-md-10" id="profile_container">
+			<h4 class="profile_title">My profile</h4>
+			<!--container info-->			
+			<div class="col-md-6 pro_info">		
+				<p class="profile_subtitle"><strong>Information</strong></p>
+				<div class="cont_info">
+					<div id="img_nick">
+						<img class="pro_img_user" src="<?php user_avatar(); ?>"><br />
+						<strong class="nickname_details"><?php echo $nickname; ?></strong><br />
+					</div>	
+					<!--form information-->
+					<div id="form_info" class="info_details">
+						<form class="form-horizontal">
+							<div>
+								<label class="col-md-3 labels_info">Name:</label>
+								<div class="col-md-9">
+								    <p class="form-control-static"><?php echo $name; ?></p>
+								</div>
+							</div>
+							<div>
+								<label class="col-md-3 labels_info">Last name:</label>
+								<div class="col-md-9">
+								    <p class="form-control-static"><?php echo $last_name; ?></p>
+								</div>
+							</div>
+							<div>
+								<label class="col-md-3 labels_info">Birthdate:</label>
+								<div class="col-md-9">
+								    <p class="form-control-static"><?php echo $birthdate; ?></p>
+								</div>
+							</div>
+							<div>
+								<label class="col-md-3 labels_info">City:</label>
+								<div class="col-md-9">
+								    <p class="form-control-static"><?php echo $city; ?></p>
+								</div>
+							</div>
+							<div>
+								<label class="col-md-3 labels_info">Phone:</label>
+								<div class="col-md-9">
+								    <p class="form-control-static"><?php echo $phone; ?></p>
+								</div>
+							</div>
+							<div>
+								<label class="col-md-3 labels_info">E-mail:</label>
+								<div class="col-md-9">
+								    <p class="form-control-static"><?php echo $email; ?></p>
+								</div>
+							</div>
+						</form>
 					</div>
-					<div class="form-group">
-						<input type="file" name="new_image_user" class="filestyle" data-buttonText="Change" data-size="sm" data-iconName="glyphicon glyphicon-user">
-					</div>					
-				</div>	
-				<div class="col-md-5">		
-					<div class="message"></div>
-					<table class="table profile_information design_table_information">
-						<tr><h4 class="table_title">Information</h4></tr>
-					</table>	
+					<!--buttons edit-->
+					<button id="pass" class="btn btn-primary profile_btns" type="submit">Change password</button>
+					<button id="date" class="btn btn-primary profile_btns" type="submit">Change Information</button>
 				</div>
-				<div class="col-md-5">
-					<div class="message"></div>
-					<table class="table design_table_activity">
-						<tr><h4 class="table_title">Activity</h4></tr>	
-						<tr>
-							<td><label class="label_table_activity">Name:</label></td>
-							<td><span class="info_table_activity"><?php echo $row_modif_user['name']; ?></span></td>
-						</tr>	
-						<tr>
-							<td><label class="label_table_activity">Last name:</label></td>
-							<td><span class="info_table_activity"><?php echo $row_modif_user['last_name']; ?></span></td>
-						</tr>
-						<tr>
-							<td><label class="label_table_activity">Birthdate:</label></td>
-							<td><span class="info_table_activity"><?php echo $row_modif_user['birthdate']; ?></span></td>
-						</tr>
-					</table>
+				<!--form password-->
+				<div id="form_pass" class="form_edit_pass">
+					<form method="post" action="#">
+					    <div class="form-group">
+							<label>Old password</label>
+							<input type="password" name="old_pass" class="form-control" placeholder="Enter old password" maxlength="16" autofocus required>
+					    </div>
+					    <div class="form-group">
+							<label>New password</label>
+							<input type="password" name="new_pass" class="form-control" placeholder="New password" maxlength="16" required>
+					    </div>
+						<div class="form-group">
+							<label>Confirm new password</label>
+							<input type="password" name="new_pass_2" class="form-control" placeholder="Confirm new password" maxlength="16" required>
+					    </div>
+						<button id="cancel_pass" class="btn btn-primary pass_btns" type="submit">Cancel</button>
+						<button class="btn btn-primary pass_btns" type="submit">Accept</button>
+					</form>  
+				</div>
+				<!--form information-->
+				<div id="form_profile_edit" class="form_edit_profile">
+					<form class="form-horizontal" method="post" action="#" enctype="multipart/form-data">
+					    <div class="form-group">
+							<label class="col-md-3 labels_info">Name:</label>
+							<div class="col-md-9">
+							    <input type="text" name="name" class="form-control" value="<?php echo $name; ?>" maxlength="25" placeholder="Name" autofocus>	
+							</div>
+						</div>
+					    <div class="form-group">
+							<label class="col-md-3 labels_info">Last name:</label>
+							<div class="col-md-9">
+							    <input type="text" name="last_name" class="form-control" value="<?php echo $last_name; ?>" maxlength="25" placeholder="Last name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 labels_info">Birthdate:</label>
+							<div class="col-md-9">
+							    <input type="date" name="birthdate" class="form-control" value="<?php echo $birthdate; ?>" data-format="yyyy-mm-dd" placeholder="12/05/1995">	
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 labels_info">City:</label>
+							<div class="col-md-9">
+							    <input type="text" name="city" class="form-control" value="<?php echo $city; ?>" maxlength="20" placeholder="Morelia">	
+							</div>
+						</div>
+					    <div class="form-group">
+							<label class="col-md-3 labels_info">Phone:</label>
+							<div class="col-md-9">
+							    <input type="number" name="phone" class="form-control" value="<?php echo $phone; ?>" maxlength="10" placeholder="4521168810">	
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 labels_info">E-mail:</label>
+							<div class="col-md-9">
+							    <input type="text" name="email" class="form-control" value="<?php echo $email; ?>" maxlength="50" placeholder="E-mail">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 labels_info">Nickname:</label>
+							<div class="col-md-9">
+							    <input type="text" name="nickname" class="form-control" value="<?php echo $nickname; ?>" maxlength="20" placeholder="Nickname">	
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 labels_info">Image:</label>
+							<div class="col-md-9">
+							    <input type="hidden" name="id_image" value="<?php echo $image; ?>">
+								<input type="file" name="new_image_user" class="filestyle" data-buttonText="Change image" data-size="sm" data-iconName="glyphicon glyphicon-user">
+							</div>
+						</div>
+						<button id="cancel_edit_info" class="btn btn-primary edit_info_btns" type="submit">Cancel</button>
+						<button class="btn btn-primary edit_info_btns" type="submit">Accept</button>
+					</form>  
 				</div>
 			</div>
-			<div class="col-md-1"></div>
-        </div>
+			<!--container activity-->
+			<div class="col-md-6 pro_acti">		
+				<p class="profile_subtitle"><strong>Activity</strong></p>
+				<div class="cont_acty">
+					in repair
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
 	</div>
+</div>
 	
-	<?php
-		$conex->close();
-	?>
-	
-	<script>
+<?php
+	$conex->close();
+?>
+
+<script>
 	$(document).ready(function(){
-		/* info of table */
-		$.ajax({
-			type: "GET",
-			url: "../user/update_profile.php?tabla=1"
-		})
-		.done(function(json){
-			json = $.parseJSON(json)
-			for(var i=0;i<json.length;i++){
-				$('.profile_information').append(
-					"<tr><td class='tag_table_info'>Name:</td><td class='editable' data-campo='name'><span>"+json[i].name+"</span></td></tr>"+
-					"<tr><td class='tag_table_info'>Last name:</td><td class='editable' data-campo='last_name'><span>"+json[i].last_name+"</span></td></tr>"+
-					"<tr><td class='tag_table_info'>Birthdate:</td><td class='editable' data-campo='birthdate'><span>"+json[i].birthdate+"</span></td></tr>"+
-					"<tr><td class='tag_table_info'>City:</td><td class='editable' data-campo='city'><span>"+json[i].city+"</span></td></tr>"+
-					"<tr><td class='tag_table_info'>Phone:</td><td class='editable' data-campo='phone'><span>"+json[i].phone+"</span></td></tr>"+
-					"<tr><td class='tag_table_info'>Nickname:</td><td class='editable' data-campo='nickname'><span>"+json[i].nickname+"</span></td></tr>"+
-					"<tr><td class='tag_table_info'>email:</td><td class='editable' data-campo='email'><span>"+json[i].email+"</span></td></tr>"+
-					"<tr><td></td><td></td></tr>");
-			}
+		$("#form_pass").hide();
+		$("#form_profile_edit").hide();
+		
+		/*click button edit pass*/		
+	    $("#pass").click(function(evento){
+		  evento.preventDefault();		  
+		    $("#form_pass").show();
+			$("#form_info").hide();
+		    $("#pass").hide();
+		    $("#date").hide();
 		});
-		/*edit method*/
-		var td,campo,valor,id;
-		$(document).on("click","td.editable span",function(e){
-			e.preventDefault();
-			$("td:not(.id)").removeClass("editable");
-			td=$(this).closest("td");
-			campo=$(this).closest("td").data("campo");
-			valor=$(this).text();
-			id=$(this).closest("tr").find(".id").text();
-			
-			if(campo=="birthdate"){
-				td.text("").html("<input type='date' data-format='yyyy-mm-dd' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='link_pro save' href='#'>Save</a><a class='link_pro cancel' href='#'>Cancel</a>");				
-			}
-			else{
-				td.text("").html("<input type='text' class='text_editable' name='"+campo+"' value='"+valor+"'><a class='link_pro save' href='#'>Save</a><a class='link_pro cancel' href='#'>Cancel</a>");
-			}	
+		
+		/*click button edit pass*/		
+	    $("#cancel_pass").click(function(evento){
+		  evento.preventDefault();		  
+		    $("#form_pass").hide();
+			$("#form_info").show();
+		    $("#pass").show();
+		    $("#date").show();
 		});
-		/*cancel method*/
-		$(document).on("click",".cancel",function(e){
-			e.preventDefault();
-			td.html("<span>"+valor+"</span>");
-			$("td:not(.id)").addClass("editable");
+		
+		/*click button edit info*/		
+	    $("#date").click(function(evento){
+		  evento.preventDefault();		  
+		    $("#form_profile_edit").show();
+			$("#img_nick").hide();
+			$("#form_info").hide();
+		    $("#pass").hide();
+		    $("#date").hide();
 		});
-		/*save method*/
-		$(document).on("click",".save",function(e){
-			$(".message").html("<img src='../images/loading.gif'>");
-			e.preventDefault();
-			nuevovalor=$(this).closest("td").find("input").val();
-			if(nuevovalor.trim()!=""){
-				$.ajax({
-					type: "POST",
-					data: { campo: campo, valor: nuevovalor},
-					url: "../user/update_profile.php"					
-				})
-				.done(function( msg ) {
-					$(".message").html(msg);
-					td.html("<span>"+nuevovalor+"</span>");
-					$("td:not(.id)").addClass("editable");
-					setTimeout(function() {$('.ok').fadeOut('fast');}, 3000);
-				});
-			}
-			else
-				$(".message").html("<p class='ko'>You must enter a value</p>");
-				setTimeout(function() {$('.ko').fadeOut('fast');}, 3000);
+		
+		/*click button edit info*/		
+	    $("#cancel_edit_info").click(function(evento){
+		  evento.preventDefault();		  
+		    $("#form_profile_edit").hide();
+			$("#img_nick").show();
+			$("#form_info").show();
+		    $("#pass").show();
+		    $("#date").show();
 		});
-	});	
-	</script>
+		
+	});
+	
+</script>	

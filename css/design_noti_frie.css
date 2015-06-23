@@ -43,12 +43,16 @@
 /*activity*/
 .container_one_activity{
 	border-bottom-style: outset;
-    border-bottom-color: rgba(0, 0, 0, 0.25);
+    border-bottom-color: rgba(0, 0, 0, 0.5);
 	width: 308px;
 	margin-left: 15px;
 	padding-bottom: 10px;
 	text-align: center;
 	font-size: 13px;
+}
+
+.ps-scrollbar-x-rail, .ps-scrollbar-x{	/* Scroll */
+	display:none;
 }
 
 .scroll_activity{
@@ -59,6 +63,7 @@
 .activity_img_tam{
 	width:40px;
 	height:40px;
+	border-radius: 5px;
 }
 
 .activity_user{    /* content user */
@@ -69,7 +74,6 @@
 }
 
 .activity_user_image{
-	border-radius: 5px;
 }
 
 .activity_user_nickname{
@@ -87,8 +91,19 @@
 .activity_activity_details{
 }
 
-.activity_activity_image{
-	border-radius: 5px;
+.activity_comment_image{	/* image comment */
+}
+
+.activity_rating_image{	/* image rating */
+	margin-top: -10px;
+    width: 110px;
+    height: 34px;
+}
+
+.activity_checkin_image{	/* image checkin */
+	margin-top: -10px;
+	width: 60px;
+    height: 60px;
 }
 
 .activity_place{    /* content place */
@@ -99,7 +114,6 @@
 }
 
 .activity_place_image{
-	border-radius: 5px;
 }
 
 .activity_place_name{
